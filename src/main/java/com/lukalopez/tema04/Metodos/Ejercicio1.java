@@ -9,7 +9,7 @@ public class Ejercicio1 {
      * @param x El primer número.
      * @param y El segundo número.
      * @return La suma de los dos números.
-     * @author Luka López
+     * @author luklpz
      *
      */
     public static int sumar(int x, int y) {

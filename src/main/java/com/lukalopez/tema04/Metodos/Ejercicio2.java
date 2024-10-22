@@ -31,7 +31,7 @@ public class Ejercicio2 {
      * @return El perímetro calculado del círculo.
      * @throws IllegalArgumentException Si el radio es negativo.
      * @see Math#PI
-     * @author Luka López
+     * @author luklpz
      *
      */
 
