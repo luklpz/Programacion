@@ -23,6 +23,6 @@ public class Ejercicio1 {
         System.out.println("Segundo número:");
         int y = Integer.parseInt(lector.nextLine());
         int suma=sumar(x,y);
-        System.out.printf("%x%s%x%s%x%s",x,"+",y,"=",suma,"\n");
+        System.out.printf("%1x + %2x = %3x\n",x,y,suma);
     }
 }

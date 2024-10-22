@@ -50,6 +50,6 @@ public class Ejercicio2 {
         float r = Float.parseFloat(lector.nextLine());
         float a = area(r);
         float p = perimetro(r);
-        System.out.printf("%s%f%s%f%s","El área es de ",a,"cm², el perímetro es de ",p,"cm.\n");
+        System.out.printf("El área es de %fcm², el perímetro es de %fcm.\n",a,p);
     }
 }
