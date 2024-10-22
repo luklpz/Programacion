@@ -1,4 +1,4 @@
-package com.lukalopez.tema03.lib;
+package com.lukalopez.lib;
 
 import java.util.IllegalFormatException;
 import java.util.Random;
@@ -87,7 +87,7 @@ public class ANSI {
 
     /**
      * Obtiene la cadena ANSI correspondiente para representar texto con las características indicadas como parámetros.
-     * Se trata de un método para uso interno. Por eso es privado
+     * Se trata de un métod0 para uso interno. Por eso es privado
      * @param bold Determina si el caracter aparecerá en negrita o no
      * @param fg Determina el Color ANSI del texto
      * @param bg Determina el Color ANSI del fondo
