@@ -12,17 +12,17 @@ public class Ejercicio1 {
      * @author Luka López
      *
      */
-    public static float sumar(float x, float y) {
+    public static int sumar(int x, int y) {
         return x + y;
     }
 
     public static void main(String args[]) {
         Scanner lector = new Scanner(System.in);
-        System.out.println("\nIntroduce dos números y los sumaré.Primer número: ");
-        float x = Float.parseFloat(lector.nextLine());
+        System.out.println("\nIntroduce dos números enteros y los sumaré.Primer número: ");
+        int x = Integer.parseInt(lector.nextLine());
         System.out.println("Segundo número:");
-        float y = Float.parseFloat(lector.nextLine());
-        float suma=sumar(x,y);
-        System.out.printf("%f%s%f%s%f%s",x,"+",y,"=",suma,"\n");
+        int y = Integer.parseInt(lector.nextLine());
+        int suma=sumar(x,y);
+        System.out.printf("%x%s%x%s%x%s",x,"+",y,"=",suma,"\n");
     }
 }
