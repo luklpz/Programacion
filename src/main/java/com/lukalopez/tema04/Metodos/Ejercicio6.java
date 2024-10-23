@@ -9,15 +9,26 @@ public class Ejercicio6 {
      * @param c Número de conjuntos que se desea imprimir.
      * @author luklpz
      */
-    private static void repetir(String imprimir, int n, int c){
+    private static String repetir(char imprimir, int n, int c){
+        if ((n<1)||(c<1)) {
+            return null;
+        }
+        String resultado = "";
         for (int i=c;i!=0;i--){
             for (int j=n;j!=0;j--){
-                System.out.println(imprimir);
+                resultado+=imprimir+"\n";
             }
-            System.out.println();
+            resultado+="\n";
         }
+        return resultado;
     }
     public static void main(String args[]){
-        repetir("Mensaje por defecto.",4, 3);
+        String texto = repetir('h', 2,2);
+        if (texto == null){
+            System.err.println("Debes indicar un número positivo.");
+        }
+        else {
+            System.out.print(texto);
+        }
     }
 }

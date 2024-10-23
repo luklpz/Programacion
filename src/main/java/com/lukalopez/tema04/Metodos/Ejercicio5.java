@@ -8,13 +8,24 @@ public class Ejercicio5 {
      * @param n Número de veces que se desaea imprimir.
      * @author luklpz
      */
-    private static void repetir(String imprimir,int n){
-        for (int i=Math.abs(n);i!=0;i--){
-            System.out.println(imprimir);
+    private static String repetir(char imprimir,int n){
+        if (n<1) {
+            return null;
         }
+        String resultado="";
+        for (int i=n;i!=0;i--){
+            resultado+=imprimir+"\n";
+        }
+        return resultado;
     }
 
     public static void main(String args[]){
-        repetir("Mensaje por defecto.", 9);
+        String texto = repetir('h', -2);
+        if (texto == null){
+            System.err.println("Debes indicar un número positivo.");
+        }
+        else {
+            System.out.print(texto);
+        }
     }
 }
