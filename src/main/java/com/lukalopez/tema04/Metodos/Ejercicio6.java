@@ -10,8 +10,8 @@ public class Ejercicio6 {
      * @author luklpz
      */
     private static void repetir(String imprimir, int n, int c){
-        for (int i=c;i==0;i--){
-            for (int j=n;j==0;j--){
+        for (int i=c;i!=0;i--){
+            for (int j=n;j!=0;j--){
                 System.out.println(imprimir);
             }
             System.out.println();

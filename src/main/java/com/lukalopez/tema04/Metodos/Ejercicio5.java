@@ -9,7 +9,7 @@ public class Ejercicio5 {
      * @author luklpz
      */
     private static void repetir(String imprimir,int n){
-        for (int i=Math.abs(n);i==0;i--){
+        for (int i=Math.abs(n);i!=0;i--){
             System.out.println(imprimir);
         }
     }
