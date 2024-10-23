@@ -13,7 +13,7 @@ public class Ejercicio2 {
      * @author Luka López
      *
      */
-    public static float area(float r) {
+    private static float area(float r) {
         if (r < 0) {
             throw new IllegalArgumentException("El radio no puede ser negativo.");
         }
@@ -34,8 +34,7 @@ public class Ejercicio2 {
      * @author luklpz
      *
      */
-
-    public static float perimetro(float r) {
+    private static float perimetro(float r) {
         if (r < 0) {
             throw new IllegalArgumentException("El radio no puede ser negativo.");
         } else {
