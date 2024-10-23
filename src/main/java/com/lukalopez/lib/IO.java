@@ -1,7 +1,5 @@
 package com.lukalopez.lib;
 
-import com.sun.nio.sctp.IllegalReceiveException;
-
 import java.util.Scanner;
 
 public class IO {
@@ -23,7 +21,7 @@ public class IO {
             respuesta = lector.nextLine();
             //Validamos la respuesta
             if (respuesta.length() < lngMin || respuesta.length() > lngMax) {
-                System.out.printf("La respuesta proporcionada no puede tener una longitud inferior a %s, ni superior a %s caracteres.\n\n", lngMin, lngMax);
+                System.err.printf("La respuesta proporcionada no puede tener una longitud inferior a %s, ni superior a %s caracteres.\n\n", lngMin, lngMax);
             }
         } while (respuesta.length() < lngMin || respuesta.length() > lngMax);
         return respuesta;
@@ -49,7 +47,7 @@ public class IO {
             respuesta = Integer.parseInt(lector.nextLine());
             //Validamos la respuesta
             if (respuesta<min||respuesta>max) {
-                System.out.printf("El número introducido no puede ser inferior a %d, ni superior a %d.\n\n", min, max);
+                System.err.printf("El número introducido no puede ser inferior a %d, ni superior a %d.\n\n", min, max);
             }
         } while (respuesta<min||respuesta>max);
         return respuesta;
@@ -75,7 +73,7 @@ public class IO {
             respuesta = Float.parseFloat(lector.nextLine());
             //Validamos la respuesta
             if (respuesta<min||respuesta>max) {
-                System.out.printf("El número introducido no puede ser inferior a %f, ni superior a %f.\n\n", min, max);
+                System.err.printf("El número introducido no puede ser inferior a %f, ni superior a %f.\n\n", min, max);
             }
         } while (respuesta<min||respuesta>max);
         return respuesta;
@@ -100,7 +98,7 @@ public class IO {
             respuesta = Double.parseDouble(lector.nextLine());
             //Validamos la respuesta
             if (respuesta<min||respuesta>max) {
-                System.out.printf("El número introducido no puede ser inferior a %f, ni superior a %f.\n\n", min, max);
+                System.err.printf("El número introducido no puede ser inferior a %f, ni superior a %f.\n\n", min, max);
             }
         } while (respuesta<min||respuesta>max);
         return respuesta;
