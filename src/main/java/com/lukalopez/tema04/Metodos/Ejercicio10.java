@@ -37,5 +37,6 @@ public class Ejercicio10 {
     public static void main(String args[]){
         String tablas = tablaMultiplicar("Introduce un números y al introducir un número negativo devolveremos sus respectivas tablas de multiplicar.");
         System.out.print(tablas);
+        Ejercicio10.dispose();
     }
 }
