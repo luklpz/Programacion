@@ -3,6 +3,10 @@ package com.lukalopez.lib;
 import java.util.Scanner;
 
 public class IO {
+
+    private static Scanner lector = new Scanner(System.in);
+
+
     /**
      * Solicita un 'String' y valida que su longitud esté comprendida entre una longitud mínima 'lngMin' y una longitud máxima 'lngMax'.
      *
@@ -13,7 +17,6 @@ public class IO {
      * @author luklpz
      */
     public static String solicitarString(String mensaje, int lngMin, int lngMax) {
-        Scanner lector = new Scanner(System.in);
         String respuesta;
         do {
             //Solicitamos el 'String'
@@ -39,7 +42,6 @@ public class IO {
      * @author luklpz
      */
     public static int solicitarInt(String mensaje, int min, int max) {
-        Scanner lector = new Scanner(System.in);
         int respuesta;
         do {
             //Solicitamos el 'int'
@@ -65,7 +67,6 @@ public class IO {
      * @author luklpz
      */
     public static float solicitarFloat(String mensaje, float min, float max) {
-        Scanner lector = new Scanner(System.in);
         float respuesta;
         do {
             //Solicitamos el 'float'
@@ -90,7 +91,6 @@ public class IO {
      * @return
      */
     public static double solicitarDouble(String mensaje, double min, double max) {
-        Scanner lector = new Scanner(System.in);
         double respuesta;
         do {
             //Solicitamos el 'double'
@@ -102,5 +102,10 @@ public class IO {
             }
         } while (respuesta<min||respuesta>max);
         return respuesta;
+    }
+
+
+    public static void dispose(){
+        lector.close();
     }
 }
