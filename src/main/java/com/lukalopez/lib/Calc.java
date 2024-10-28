@@ -13,7 +13,7 @@ public class Calc {
      * @return Deuvelve un entero aleatorio 'resultado'.
      */
     public static int randomInt(int min, int max){
-        int resultado=(int) (Math.random() *(max))+min;
+        int resultado=(int) (Math.random() *(max-1))+min;
         return resultado;
     }
 
