@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Ejercicio15 {
 
     //Abrir escaner
-    private static Scanner lector = new Scanner(System.in);
+    private static final Scanner lector = new Scanner(System.in);
     //Cerrar escaner
     private static void dispose(){
         lector.close();
@@ -19,8 +19,7 @@ public class Ejercicio15 {
      * @return Devuelve 'String titulo'
      */
     private static String msgTitulo(){
-        String titulo = "\n                                               *===========*\n                                                 D A D O S\n                                               *===========*";
-        return titulo;
+        return "\n                                               *===========*\n                                                 D A D O S\n                                               *===========*";
     }
 
     /**
@@ -28,8 +27,7 @@ public class Ejercicio15 {
      * @return Devuelve 'String plantarse'
      */
     private static String msgPlantarse(){
-        String plantarse = "                                         ¿Quieres plantarte? (\u001b[1;32mSi\u001b[0m/\u001b[1;31mNo\u001b[0m)\n";
-        return plantarse;
+        return "                                         ¿Quieres plantarte? (\u001b[1;32mSi\u001b[0m/\u001b[1;31mNo\u001b[0m)\n";
     }
 
     /**
@@ -37,8 +35,7 @@ public class Ejercicio15 {
      * @return Devuelve 'String contador'
      */
     private static String msgContador(){
-        String contador = "\n                                             >---------------<\n                                               R O N D A   %d\n                                             >---------------<\n\n\n";
-        return contador;
+        return "\n                                             >---------------<\n                                               R O N D A   %d\n                                             >---------------<\n\n\n";
     }
 
     /**
@@ -46,8 +43,8 @@ public class Ejercicio15 {
      * @return Devuelve 'String tirarDado'
      */
     private static String msgTirarDado(){
-        String tirarDado ="                                       Para comenzar  tirarás un dado\n                                        \u001b[1;31mP\u001b[32mu\u001b[33ml\u001b[34ms\u001b[35me \u001b[36m'\u001b[37mE\u001b[38mN\u001b[31mT\u001b[32mE\u001b[33mR\u001b[34m' \u001b[35mp\u001b[36ma\u001b[37mr\u001b[38ma \u001b[31mc\u001b[32mo\u001b[33mn\u001b[34mt\u001b[35mi\u001b[36mn\u001b[37mu\u001b[38ma\u001b[31mr\u001b[0m";
-        return tirarDado;
+        return "                                       Para comenzar  tirarás un dado\n                                        \u001b[1;31mP\u001b[32mu\u001b[33ml\u001b[34ms\u001b[35me \u001b[36m'\u001b[37mE\u001b[38mN\u001b[31mT\u001b[32mE\u001b[33mR\u001b[34m' \u001b[35mp\u001b[36ma\u001b[37mr\u001b[38ma \u001b[31mc\u001b[32mo\u001b[33mn\u001b[34mt\u001b[35mi\u001b[36mn\u001b[37mu\u001b[38ma\u001b[31mr\u001b[0m";
+
     }
 
     /**
@@ -55,8 +52,7 @@ public class Ejercicio15 {
      * @return Devuelve un 'String' que contiene las relgas del juego
      */
     private static String msgReglas(){
-        String reglas = ("\n\n\n\u001b[1m|************************************************ REGLAS ************************************************|\u001b[0m\n\u001b[1m|   \u001b[0mSe dispone de un dado normal de 6 caras con valores comprendidos entre el 1 y 6. El objetivo del     |\n\u001b[1m|   \u001b[0mjuego es sumar más puntos que \u001b[1;35mel rival\u001b[0m sin pasasrse de 11 puntos. Empezarás \u001b[1;33mtú\u001b[0m, que lanzarás         |\n\u001b[1m|   \u001b[0mlos dados hasta que ocurra alguno de los siguientes acontecimientos:                                 |\n\u001b[1m|   \u001b[0m a) Obtengas exactamente 11 puntos.                                                                  |\n\u001b[1m|   \u001b[0m     - Sumarás dos porras (1 por ganar y otra como bonificación por alcanzar la puntuación máxima.   |\n\u001b[1m|   \u001b[0m b) Decidas plantarte con una puntuación inferior a 11.                                              |\n\u001b[1m|   \u001b[0m     - \u001b[1;35mEl rival\u001b[0m jugará e intentará igualarte o superarte sin pasarse de 11 puntos.                   |\n\u001b[1m|   \u001b[0m       Si lo consigue sumará porra, si además consigue 11 puntos sumará una porra extra.             |\n\u001b[1m|   \u001b[0m c) Te pases de los 11 puntos.                                                                       |\n\u001b[1m|   \u001b[0m     - En este caso perderás y \u001b[1;35mtu rival\u001b[0m sumará automáticamente una porra sin jugar.                  |\n\u001b[1m|   \u001b[1;36mEl primero que sume 5 porras gana la partida.\u001b[0m                                                        |\n\u001b[1m|********************************************************************************************************|\u001b[0m\n\n\n");
-        return reglas;
+        return ("\n\n\n\u001b[1m|************************************************ REGLAS ************************************************|\u001b[0m\n\u001b[1m|   \u001b[0mSe dispone de un dado normal de 6 caras con valores comprendidos entre el 1 y 6. El objetivo del     |\n\u001b[1m|   \u001b[0mjuego es sumar más puntos que \u001b[1;35mel rival\u001b[0m sin pasasrse de 11 puntos. Empezarás \u001b[1;33mtú\u001b[0m, que lanzarás         |\n\u001b[1m|   \u001b[0mlos dados hasta que ocurra alguno de los siguientes acontecimientos:                                 |\n\u001b[1m|   \u001b[0m a) Obtengas exactamente 11 puntos.                                                                  |\n\u001b[1m|   \u001b[0m     - Sumarás dos porras (1 por ganar y otra como bonificación por alcanzar la puntuación máxima.   |\n\u001b[1m|   \u001b[0m b) Decidas plantarte con una puntuación inferior a 11.                                              |\n\u001b[1m|   \u001b[0m     - \u001b[1;35mEl rival\u001b[0m jugará e intentará igualarte o superarte sin pasarse de 11 puntos.                   |\n\u001b[1m|   \u001b[0m       Si lo consigue sumará porra, si además consigue 11 puntos sumará una porra extra.             |\n\u001b[1m|   \u001b[0m c) Te pases de los 11 puntos.                                                                       |\n\u001b[1m|   \u001b[0m     - En este caso perderás y \u001b[1;35mtu rival\u001b[0m sumará automáticamente una porra sin jugar.                  |\n\u001b[1m|   \u001b[1;36mEl primero que sume 5 porras gana la partida.\u001b[0m                                                        |\n\u001b[1m|********************************************************************************************************|\u001b[0m\n\n\n");
     }
 
     /**
@@ -64,8 +60,7 @@ public class Ejercicio15 {
      * @return Devuelve 'String victoria'
      */
     private static String msgVictoria(){
-        String victoria = "\n                                               \u001b[1;32m*===============*\n                                                V I C T O R I A\n                                               *===============*\u001b[0m\n\n                        \u001b[33mHas conseguido 5 o más porras, por lo que has ganado la partida.\u001b[0m\n\n\n";
-        return victoria;
+        return "\n                                               \u001b[1;32m*===============*\n                                                V I C T O R I A\n                                               *===============*\u001b[0m\n\n                        \u001b[33mHas conseguido 5 o más porras, por lo que has ganado la partida.\u001b[0m\n\n\n";
     }
 
     /**
@@ -73,8 +68,7 @@ public class Ejercicio15 {
      * @return Devuelve 'String derrota'
      */
     private static String msgDerrota(){
-        String derrota = "\n                                              \u001b[1;31m*=============*\n                                               D E R R O T A\n                                              *=============*\u001b[0m\n\n                 \u001b[35mTu rival \u001b[33mha conseguido 5 o más porras, por lo que has perdido la partida.\u001b[0m\n\n\n";
-        return derrota;
+        return "\n                                              \u001b[1;31m*=============*\n                                               D E R R O T A\n                                              *=============*\u001b[0m\n\n                 \u001b[35mTu rival \u001b[33mha conseguido 5 o más porras, por lo que has perdido la partida.\u001b[0m\n\n\n";
     }
 
 
@@ -109,19 +103,17 @@ public class Ejercicio15 {
                 valido=true;
             }
             else if (respuesta.equals("No")||respuesta.equals("NO")||respuesta.equals("no")) {
-                plantarse = false;
                 valido = true;
             }
             else {
-                valido=false;
-                System.out.printf("Respuesta introducida \u001b[1;31mno valida\u001b[0m. Prueba otra vez.\n\n");
+                System.out.print("Respuesta introducida \u001b[1;31mno valida\u001b[0m. Prueba otra vez.\n\n");
             }
-        } while (valido==false);
+        } while (!valido);
         return plantarse;
     }
 
     private static int juegaOrdenador(int pcPuntos){
-        int npcPuntos=0, dado, ganaRival=0;
+        int npcPuntos=0, dado;
         do {
             System.out.println("\n                                           \u001b[0;35mTu rival\u001b[0m tira un dado.");
             dado = tirarDado();
@@ -131,15 +123,15 @@ public class Ejercicio15 {
         } while (npcPuntos<pcPuntos&&npcPuntos<11);
         if (npcPuntos>11){
             System.out.println("                         \u001b[0;35mTu rival\u001b[0m se ha pasado de 11. \u001b[0;32mGanas la ronda\u001b[0m y sumas una porra.");
-            return ganaRival=0;
+            return 0;
         }
         else if (npcPuntos==11) {
             System.out.println("\u001b[0;35mTu rival\u001b[0m ha conseguido exactamente 11. \u001b[0;31mPierdes la ronda\u001b[0m y \u001b[0;35mtu rival\u001b[0m suma una porra de victoria y otra de bonificación.");
-            return ganaRival = 2;
+            return 2;
         }
         else {
             System.out.println("                 \u001b[0;35mTu rival\u001b[0m ha superado tus puntos. \u001b[0;31mPierdes la ronda\u001b[0m y \u001b[0;35mtu rival\u001b[0m suma una porra.");
-            return ganaRival = 1;
+            return 1;
         }
     }
 
@@ -220,7 +212,6 @@ public class Ejercicio15 {
                         break;
                     case 2:
                         salirMenu=true;
-                        cerrar=false;
                         break;
                     case 3:
                         salirMenu=true;
