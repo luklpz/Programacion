@@ -2,8 +2,6 @@ package com.lukalopez.tema04.Metodos;
 
 import com.lukalopez.lib.Calc;
 
-import java.sql.SQLOutput;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Ejercicio15 {
