@@ -2,7 +2,6 @@ package com.lukalopez.lib;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import static com.lukalopez.lib.Escaner.lector;
 
 public class Fecha {
     /**
@@ -13,7 +12,7 @@ public class Fecha {
      */
     public static LocalDate solicitarFormatoEuropeo(String mensaje) {
         System.out.println(mensaje);
-        String fechaString = lector.nextLine();
+        String fechaString = Escaner.lector.nextLine();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate fecha = LocalDate.parse(fechaString, formatter);
         return fecha;

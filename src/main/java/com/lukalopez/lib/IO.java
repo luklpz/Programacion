@@ -1,6 +1,4 @@
 package com.lukalopez.lib;
-import static com.lukalopez.lib.Escaner.lector;
-import java.util.Scanner;
 
 public class IO {
     /**
@@ -17,7 +15,7 @@ public class IO {
         do {
             //Solicitamos el 'String'
             System.out.println(mensaje);
-            respuesta = lector.nextLine();
+            respuesta = Escaner.lector.nextLine();
             //Validamos la respuesta
             if (respuesta.length() < lngMin || respuesta.length() > lngMax) {
                 System.err.printf("La respuesta proporcionada no puede tener una longitud inferior a %s, ni superior a %s caracteres.\n\n", lngMin, lngMax);
@@ -42,7 +40,7 @@ public class IO {
         do {
             //Solicitamos el 'int'
             System.out.println(mensaje);
-            respuesta = Integer.parseInt(lector.nextLine());
+            respuesta = Integer.parseInt(Escaner.lector.nextLine());
             //Validamos la respuesta
             if (respuesta<min||respuesta>max) {
                 System.err.printf("El número introducido no puede ser inferior a %d, ni superior a %d.\n\n", min, max);
@@ -67,7 +65,7 @@ public class IO {
         do {
             //Solicitamos el 'float'
             System.out.println(mensaje);
-            respuesta = Float.parseFloat(lector.nextLine());
+            respuesta = Float.parseFloat(Escaner.lector.nextLine());
             //Validamos la respuesta
             if (respuesta<min||respuesta>max) {
                 System.err.printf("El número introducido no puede ser inferior a %f, ni superior a %f.\n\n", min, max);
@@ -91,7 +89,7 @@ public class IO {
         do {
             //Solicitamos el 'double'
             System.out.println(mensaje);
-            respuesta = Double.parseDouble(lector.nextLine());
+            respuesta = Double.parseDouble(Escaner.lector.nextLine());
             //Validamos la respuesta
             if (respuesta<min||respuesta>max) {
                 System.err.printf("El número introducido no puede ser inferior a %f, ni superior a %f.\n\n", min, max);
