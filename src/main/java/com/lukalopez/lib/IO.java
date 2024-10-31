@@ -1,12 +1,8 @@
 package com.lukalopez.lib;
-
+import static com.lukalopez.lib.Escaner.lector;
 import java.util.Scanner;
 
 public class IO {
-
-    private static Scanner lector = new Scanner(System.in);
-
-
     /**
      * Solicita un 'String' y valida que su longitud esté comprendida entre una longitud mínima 'lngMin' y una longitud máxima 'lngMax'.
      *
@@ -102,10 +98,5 @@ public class IO {
             }
         } while (respuesta<min||respuesta>max);
         return respuesta;
-    }
-
-
-    public static void dispose(){
-        lector.close();
     }
 }
