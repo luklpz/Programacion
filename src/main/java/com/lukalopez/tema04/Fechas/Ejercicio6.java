@@ -15,7 +15,7 @@ public class Ejercicio6 {
      * @param fecha2 Segunda fecha que recibe como 'LocalDateTime'.
      * @return Devuelve un 'LocalDateTime' que retiene el tiempo que separa las dos fechas.
      */
-    public static LocalDateTime calcDiferenciaEntreLDT(LocalDateTime fecha1, LocalDateTime fecha2){
+    private static LocalDateTime calcDiferenciaEntreLDT(LocalDateTime fecha1, LocalDateTime fecha2){
         if (fecha1.isBefore(fecha2)){
             fecha2 = fecha2.minusYears(fecha1.getYear());
             fecha2 = fecha2.minusMonths(fecha1.getMonthValue());
@@ -33,6 +33,7 @@ public class Ejercicio6 {
             return fecha1;
         }
     }
+
     public static void main(String args[]){
         Timer reloj = new Timer();
         reloj.scheduleAtFixedRate(new TimerTask() {
@@ -49,9 +50,9 @@ public class Ejercicio6 {
                 String fechaHoraActualString = FH.formatearFechaHoraDMSHmS(fechaHoraActual);
 
                 //Imprimimos las horas
-                System.out.printf("\u001B[2J\u001B[H%s\nRestante para año nuevo: %d meses, %d días, %d horas, %d minutos y %d segundos.\n",fechaHoraActualString, diferenciaFechas.getMonthValue(), diferenciaFechas.getDayOfMonth(),diferenciaFechas.getHour(), diferenciaFechas.getMinute(), diferenciaFechas.getSecond());
+                System.out.print("\033[H\033[2J");
                 System.out.flush();
-
+                System.out.printf("%s\nRestante para año nuevo: %d meses, %d días, %d horas, %d minutos y %d segundos.\n",fechaHoraActualString, diferenciaFechas.getMonthValue(), diferenciaFechas.getDayOfMonth(),diferenciaFechas.getHour(), diferenciaFechas.getMinute(), diferenciaFechas.getSecond());
             }
         }, 0, 1000);
     }
