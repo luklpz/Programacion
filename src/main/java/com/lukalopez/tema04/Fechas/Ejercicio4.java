@@ -1,12 +1,10 @@
 package com.lukalopez.tema04.Fechas;
 
 import com.lukalopez.lib.Escaner;
-import com.lukalopez.lib.Fecha;
+import com.lukalopez.lib.FH;
 
 import java.time.LocalDate;
-import java.time.Month;
 import java.time.MonthDay;
-import java.util.Arrays;
 
 public class Ejercicio4 {
     public enum Signos {
@@ -52,7 +50,7 @@ public class Ejercicio4 {
 
     public static void main(String args[]){
         LocalDate fechaNacimiento;
-        fechaNacimiento = Fecha.solicitarFormatoEuropeo("¿Cuál es tu fecha de nacimiento? (dd/mm/yyyy)");
+        fechaNacimiento = FH.solicitarFechaDMY("¿Cuál es tu fecha de nacimiento? (dd/mm/yyyy)");
         Signos signo = calcZodiaco(fechaNacimiento);
         System.out.printf("Tu signo del zodiaco es %s.",signo);
         Escaner.dispose();

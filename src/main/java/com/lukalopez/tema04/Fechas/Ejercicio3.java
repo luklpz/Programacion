@@ -1,7 +1,6 @@
 package com.lukalopez.tema04.Fechas;
 
-import com.lukalopez.lib.ANSI;
-import com.lukalopez.lib.Fecha;
+import com.lukalopez.lib.FH;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -61,7 +60,7 @@ public class Ejercicio3 {
             }
         } while (planeta<0||planeta>7);
         Planeta planetaSeleccionado = Planeta.values()[planeta];
-        LocalDate fechaNacimiento = Fecha.solicitarFormatoEuropeo("¿Cual es su fecha de nacimiento? (dd/mm/yyyy)");
+        LocalDate fechaNacimiento = FH.solicitarFechaDMY("¿Cual es su fecha de nacimiento? (dd/mm/yyyy)");
         edad = calcEdadSegunPlaneta(fechaNacimiento,planetaSeleccionado);
         System.out.printf("Tienes %d años.",edad);
     }
