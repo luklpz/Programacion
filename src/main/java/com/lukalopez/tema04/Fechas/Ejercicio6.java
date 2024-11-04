@@ -8,6 +8,13 @@ import java.util.TimerTask;
 
 public class Ejercicio6 {
 
+    /**
+     * Calcula la diferencia de tiempo entre dos fechas.
+     *
+     * @param fecha1 Primera fecha que recibe como 'LocalDateTime'.
+     * @param fecha2 Segunda fecha que recibe como 'LocalDateTime'.
+     * @return Devuelve un 'LocalDateTime' que retiene el tiempo que separa las dos fechas.
+     */
     public static LocalDateTime calcDiferenciaEntreLDT(LocalDateTime fecha1, LocalDateTime fecha2){
         if (fecha1.isBefore(fecha2)){
             fecha2 = fecha2.minusYears(fecha1.getYear());
