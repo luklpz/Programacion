@@ -1,8 +1,11 @@
 package com.lukalopez.tema04.Fechas;
 
+import com.lukalopez.lib.ANSI;
 import com.lukalopez.lib.FH;
+
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.time.Period;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -39,15 +42,12 @@ public class Ejercicio6 {
         reloj.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                int anyo;
                 //Establecemos los valores
                 LocalDateTime fechaHoraActual, fechaHoraAnyoNuevo, diferenciaFechas;
-
                 fechaHoraActual = LocalDateTime.now();
-                anyo = fechaHoraActual.getYear();
-                fechaHoraAnyoNuevo = LocalDateTime.of(anyo, Month.DECEMBER,31,23,59,59);
+                fechaHoraAnyoNuevo = LocalDateTime.of(fechaHoraActual.getYear(), Month.DECEMBER,31,23,59,59);
                 diferenciaFechas = calcDiferenciaEntreLDT(fechaHoraActual,fechaHoraAnyoNuevo);
-                String fechaHoraActualString = FH.formatearFechaHoraDMSHmS(fechaHoraActual);
+                String fechaHoraActualString = FH.formatearFechaHora(fechaHoraActual,"dd/MM/yyyy HH:mm:ss");
 
                 //Imprimimos las horas
                 System.out.print("\033[H\033[2J");

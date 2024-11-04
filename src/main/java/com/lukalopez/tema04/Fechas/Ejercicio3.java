@@ -60,7 +60,7 @@ public class Ejercicio3 {
             }
         } while (planeta<0||planeta>7);
         Planeta planetaSeleccionado = Planeta.values()[planeta];
-        LocalDate fechaNacimiento = FH.solicitarFechaDMY("¿Cual es su fecha de nacimiento? (dd/mm/yyyy)");
+        LocalDate fechaNacimiento = FH.solicitarFecha("¿Cual es su fecha de nacimiento? (dd/mm/yyyy)","dd/MM/yyyy");
         edad = calcEdadSegunPlaneta(fechaNacimiento,planetaSeleccionado);
         System.out.printf("Tienes %d años.",edad);
     }
