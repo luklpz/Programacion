@@ -1,11 +1,9 @@
 package com.lukalopez.tema04.Fechas;
 
-import com.lukalopez.lib.ANSI;
 import com.lukalopez.lib.FH;
 
 import java.time.LocalDateTime;
 import java.time.Month;
-import java.time.Period;
 import java.util.Timer;
 import java.util.TimerTask;
 

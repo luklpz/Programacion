@@ -7,7 +7,7 @@ import java.time.format.DateTimeFormatter;
 
 public class FH {
     /**
-     * Solicita una fecha escrita en formato DMY.
+     * Solicita una fecha escrita en el formato indicado.
      *
      * @param mensaje Mensaje que se imprime para solicitar la fecha.
      * @param formato Formato en que se desea devolver la fecha.
@@ -20,10 +20,10 @@ public class FH {
     }
 
     /**
-     * Solicita una hora escrita en formato HmS.
+     * Solicita una hora escrita en el formato indicado.
      *
      * @param mensaje Mensaje que se imprime para solicitar la hora.
-     * @param formato Formato en que se desea devolver la hora.
+     * @param formato Formato en que se desea devolver la fecha.
      * @return Es el 'LocalTime' que contiene la hora en el formato indicado.
      */
     public static LocalTime solicitarHoraHmS(String mensaje, String formato) {
@@ -36,7 +36,7 @@ public class FH {
      * Solicita una fecha y una hora escritas en el formato indicado.
      *
      * @param mensaje Mensaje que se imprime para solicitar la fecha y la hora.
-     * @param formato Formato en que se desea devolver la fecha y la hora.
+     * @param formato Formato en que se desea devolver la fecha.
      * @return Es el 'LocalDateTime' que contiene la fecha y la hora en el formato indicado.
      */
     public static LocalDateTime solicitarFechaHora(String mensaje, String formato) {
@@ -55,5 +55,17 @@ public class FH {
     public static String formatearFechaHora(LocalDateTime fechaHora,String formato){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(formato);
         return fechaHora.format(formatter);
+    }
+
+    /**
+     * Recibe una fecha y la formatea en el formato indicado.
+     *
+     * @param fecha Fecha que recibe en cualquier formato.
+     * @param formato Formato en que se desea devolver la fecha.
+     * @return Devuelve un String de 'fecha' en el formato indicado.
+     */
+    public static String formatearFecha(LocalDate fecha,String formato){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(formato);
+        return fecha.format(formatter);
     }
 }

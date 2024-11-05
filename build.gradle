@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'applications'
+    id 'application'
 }
 
 group = 'com.lukalopez.tema03'
@@ -11,7 +11,7 @@ repositories {
 }
 
 application {
-    mainClassName = "com.lukalopez.tema04.Fechas.Ejercicio6"
+    mainClassName = "com.lukalopez.tema04.Fechas.Ejercicio7"
 }
 
 dependencies {
