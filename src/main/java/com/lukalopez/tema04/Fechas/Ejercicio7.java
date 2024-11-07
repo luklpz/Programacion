@@ -50,46 +50,53 @@ public class Ejercicio7 {
 
     }
 
+    /**
+     * Devuelve la fecha una vez realizada la operación deseada.
+     *
+     * @param operacion Operación que se desea realizar.
+     * @param fecha Fecha sobre la cual se desea trabajar.
+     * @return Devuelve la fecha modificada.
+     */
     private static LocalDate ejecutarMenuOpciones(int operacion, LocalDate fecha){
         int modificador=0;
         switch (operacion){
-            case 1:
+            case 1-> {
                 do {
-                    modificador = IO.solicitarInt("Introduce la candidad de años a sumar:",1,9999);
-                } while (modificador<1||modificador>9999);
+                    modificador = IO.solicitarInt("Introduce la candidad de años a sumar:", 1, 9999);
+                } while (modificador < 1 || modificador > 9999);
                 fecha = fecha.plusYears(modificador);
-                break;
-            case 2:
+            }
+            case 2-> {
                 do {
-                    modificador = IO.solicitarInt("Introduce la candidad de meses a sumar:",1,9999);
-                } while (modificador<1||modificador>9999);
+                    modificador = IO.solicitarInt("Introduce la candidad de meses a sumar:", 1, 9999);
+                } while (modificador < 1 || modificador > 9999);
                 fecha = fecha.plusMonths(modificador);
-                break;
-            case 3:
+            }
+            case 3-> {
                 do {
-                    modificador = IO.solicitarInt("Introduce la candidad de dias a sumar:",1,9999);
-                } while (modificador<1||modificador>9999);
+                    modificador = IO.solicitarInt("Introduce la candidad de dias a sumar:", 1, 9999);
+                } while (modificador < 1 || modificador > 9999);
                 fecha = fecha.plusDays(modificador);
-                break;
-            case 4:
+            }
+            case 4-> {
                 do {
-                    modificador = IO.solicitarInt("Introduce la candidad de años a restar:",1,9999);
-                } while (modificador<1||modificador>9999);
+                    modificador = IO.solicitarInt("Introduce la candidad de años a restar:", 1, 9999);
+                } while (modificador < 1 || modificador > 9999);
                 fecha = fecha.minusYears(modificador);
-                break;
-            case 5:
+            }
+            case 5-> {
                 do {
-                    modificador = IO.solicitarInt("Introduce la candidad de meses a restar:",1,9999);
-                } while (modificador<1||modificador>9999);
+                    modificador = IO.solicitarInt("Introduce la candidad de meses a restar:", 1, 9999);
+                } while (modificador < 1 || modificador > 9999);
                 fecha = fecha.minusMonths(modificador);
-                break;
-            case 6:
+            }
+            case 6-> {
                 do {
-                    modificador = IO.solicitarInt("Introduce la candidad de dias a restar:",1,9999);
-                } while (modificador<1||modificador>9999);
+                    modificador = IO.solicitarInt("Introduce la candidad de dias a restar:", 1, 9999);
+                } while (modificador < 1 || modificador > 9999);
                 fecha = fecha.minusDays(modificador);
-                break;
-            default:
+            }
+            default-> {}
         }
         return fecha;
     }
@@ -104,10 +111,10 @@ public class Ejercicio7 {
             System.out.flush();
             seleccion = llamarMenuPrincipal("", fecha);
             switch (seleccion){
-                case 1:
-                    fecha = FH.solicitarFecha("Establece la fecha a partir de la cual se realizarán los cálculos: (dd/mm/yyyy)","dd/MM/yyyy");
-                    break;
-                case 2:
+                case 1-> {
+                    fecha = FH.solicitarFecha("Establece la fecha a partir de la cual se realizarán los cálculos: (dd/mm/yyyy)", "dd/MM/yyyy");
+                }
+                case 2-> {
                     fechaModificada = fecha;
                     do {
                         fecha = fechaModificada;
@@ -116,13 +123,10 @@ public class Ejercicio7 {
                         operacion = llamarMenuOperaciones("", fecha);
                         fechaModificada = ejecutarMenuOpciones(operacion, fecha);
                     } while (!fecha.isEqual(fechaModificada));
-                    break;
-                case 0:
-                    cerrar=true;
-                    break;
-                default:
-                    System.out.println("\n\u001B[1;31mERROR: \u001B[0;31mEntrada inesperada.\u001B[0m");
+                }
+                case 0-> {}
+                default-> System.out.println("\n\u001B[1;31mERROR: \u001B[0;31mEntrada inesperada.\u001B[0m");
             }
-        }while (!cerrar);
+        }while (seleccion!=0);
     }
 }
