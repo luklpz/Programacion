@@ -22,7 +22,6 @@ public class Ejercicio3 {
         //Solicitamos le texto
         System.out.println("Escribe un texto y te diré cuantas palabras contiene:");
         texto = Escaner.lector.nextLine();
-        texto= texto.replaceAll("\\s+", " ");
 
         //Comprobamos el número de palabras
         palabras = contarPalabras(texto);
