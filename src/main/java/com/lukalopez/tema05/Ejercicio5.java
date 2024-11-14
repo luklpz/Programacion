@@ -9,7 +9,7 @@ public class Ejercicio5 {
      * @param texto Texto en el que se desea buscar.
      * @return Devuelve un 'String' que contiene la palabra de mayor longitud presente en el texto.
      */
-    public static String palabraMayorLongitud(String texto){
+    private static String palabraMayorLongitud(String texto){
         String palabra="";
         int caracterFinal, caracterInicial=0;
 

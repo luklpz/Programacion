@@ -62,37 +62,37 @@ public class Ejercicio7 {
         switch (operacion){
             case 1-> {
                 do {
-                    modificador = IO.solicitarInt("Introduce la candidad de años a sumar:", 1, 9999);
+                    modificador = IO.solicitarInt("Introduce la candidad de años a sumar:", 1, 9999,"Error");
                 } while (modificador < 1 || modificador > 9999);
                 fecha = fecha.plusYears(modificador);
             }
             case 2-> {
                 do {
-                    modificador = IO.solicitarInt("Introduce la candidad de meses a sumar:", 1, 9999);
+                    modificador = IO.solicitarInt("Introduce la candidad de meses a sumar:", 1, 9999,"Error");
                 } while (modificador < 1 || modificador > 9999);
                 fecha = fecha.plusMonths(modificador);
             }
             case 3-> {
                 do {
-                    modificador = IO.solicitarInt("Introduce la candidad de dias a sumar:", 1, 9999);
+                    modificador = IO.solicitarInt("Introduce la candidad de dias a sumar:", 1, 9999,"Error");
                 } while (modificador < 1 || modificador > 9999);
                 fecha = fecha.plusDays(modificador);
             }
             case 4-> {
                 do {
-                    modificador = IO.solicitarInt("Introduce la candidad de años a restar:", 1, 9999);
+                    modificador = IO.solicitarInt("Introduce la candidad de años a restar:", 1, 9999,"Error");
                 } while (modificador < 1 || modificador > 9999);
                 fecha = fecha.minusYears(modificador);
             }
             case 5-> {
                 do {
-                    modificador = IO.solicitarInt("Introduce la candidad de meses a restar:", 1, 9999);
+                    modificador = IO.solicitarInt("Introduce la candidad de meses a restar:", 1, 9999,"Error");
                 } while (modificador < 1 || modificador > 9999);
                 fecha = fecha.minusMonths(modificador);
             }
             case 6-> {
                 do {
-                    modificador = IO.solicitarInt("Introduce la candidad de dias a restar:", 1, 9999);
+                    modificador = IO.solicitarInt("Introduce la candidad de dias a restar:", 1, 9999,"Error");
                 } while (modificador < 1 || modificador > 9999);
                 fecha = fecha.minusDays(modificador);
             }

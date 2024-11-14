@@ -29,21 +29,21 @@ public class IO {
     /**
      * Solicita un 'int' y valida que se encuentre en el rango comprendido entre un mínimo 'min' y un máximo 'max'.
      *
-     * @param mensaje Mensaje que se le muestra al usuario.
+     * @param solicitud Mensaje que se le muestra al usuario.
      * @param min Número mínimo valido que puede valer el 'int'.
      * @param max Número máximo válido que puede valer el 'int'.
      * @return Devuelve un 'int' validado.
      * @author luklpz
      */
-    public static int solicitarInt(String mensaje, int min, int max) {
+    public static int solicitarInt(String solicitud, int min, int max, String mensajeError) {
         int respuesta;
         do {
             //Solicitamos el 'int'
-            System.out.println(mensaje);
+            System.out.println(solicitud);
             respuesta = Integer.parseInt(Escaner.lector.nextLine());
             //Validamos la respuesta
             if (respuesta<min||respuesta>max) {
-                System.err.printf("El número introducido no puede ser inferior a %d, ni superior a %d.\n\n", min, max);
+                System.err.printf(mensajeError);
             }
         } while (respuesta<min||respuesta>max);
         return respuesta;
