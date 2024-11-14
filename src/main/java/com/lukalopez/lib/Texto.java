@@ -30,7 +30,7 @@ public class Texto {
      */
     public static int contarVocales(String texto){
         int contador=0;
-        for (int i=1;i<=texto.length();i++) {
+        for (int i=0;i<texto.length();i++) {
             if (esVocal(texto.charAt(i))){
                 contador++;
             }
