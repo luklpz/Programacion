@@ -6,6 +6,10 @@ import com.lukalopez.lib.Texto;
 
 public class Ejercicio13 {
 
+    /**
+     * Mostrar el menú principal
+     * @return Opción validada que devuelve el usuario
+     */
     private static int mostrarMenu(){
         //Imprimimos el menú
         System.out.println("\n\nMENÚ PRINCIPAL\n==============\n1. Palabra más larga.\n2. Palabra más corta.\n3. Número de vocales.\n------------------------------------\n0. Salir\n");
@@ -13,6 +17,13 @@ public class Ejercicio13 {
         return IO.solicitarInt("",0,3,"\nSe ha introducido una opción inválida. Ingrese una entrada válida:\n");
     }
 
+    /**
+     * Solicita un número determinado de palabras
+     *
+     * @param mensajeSolicitud Mensaje que se imprime para solicitar las palabras
+     * @param numeroDePalabras Número de palabras que se desea obtener
+     * @return Devuelve un string que contiene el número de palabras deseado.
+     */
     private static String solicitarNumeroPalabras(String mensajeSolicitud, int numeroDePalabras){
         //Definimos las variables
         String palabras;
