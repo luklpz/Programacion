@@ -20,6 +20,12 @@ public class Ejercicio17 {
         return false;
     }
 
+    /**
+     * Solicitar un Nif y validarlo.
+     *
+     * @param mensajeSolicitud Mensaje que se imprime para solicitar al usuario introducir el NIF.
+     * @return Devuelve un 'String' que contiene el NIF validado.
+     */
     private static String solicitarNif(String mensajeSolicitud){
         //Definimos variables
         StringBuilder nif = new StringBuilder();
