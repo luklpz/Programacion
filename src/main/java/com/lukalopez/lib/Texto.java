@@ -121,4 +121,23 @@ public class Texto {
         }
         return palabra;
     }
+
+    /**
+     * SVvalida que un texto tenga un número de caracteres determinado.
+     * @param texto Texto que se desea validar.
+     * @param maximo Número máximo de caracteres que puede tener el texto.
+     * @param minimo Número mínimo de caracteres que puede tener el texto.
+     * @param mensajeError Mensaje de error que se imprime al introducir un texto con una longitud no válida.
+     * @return Devuelve el true si el número de caracteres es correcto.
+     */
+    public static boolean validarLongitud(String texto, int maximo, int minimo, String mensajeError) {
+        //Declaramos variables
+        boolean validado = false;
+
+        if (texto.length() <= maximo || texto.length() >= minimo) {
+            return validado = true;
+        }
+        System.err.print(mensajeError);
+        return validado;
+    }
 }

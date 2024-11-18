@@ -1,6 +1,20 @@
 package com.lukalopez.lib;
 
 public class IO {
+
+    /**
+     * Retorna un 'int' proveniente de retirar todos los caracteres no numericos de un 'String'.
+     *
+     * @param texto Texto sobre el cual trabajar.
+     * @return Devuelve un "String" de los caracteres numericos de un 'String'.
+     */
+    public static String retirarCaracteresNoNumericos(String texto){
+        if (texto.isEmpty()){
+            return "";
+        }
+        return (texto.trim()).replaceAll("\\D+","");
+    }
+
     /**
      * Solicita un 'String' y valida que su longitud esté comprendida entre una longitud mínima 'lngMin' y una longitud máxima 'lngMax'.
      *
@@ -24,7 +38,9 @@ public class IO {
         return respuesta;
     }
 
-
+    public static int solicitarInt(String solicitud) {
+        return solicitarInt(solicitud, Integer.MIN_VALUE, Integer.MAX_VALUE, "");
+    }
 
     /**
      * Solicita un 'int' y valida que se encuentre en el rango comprendido entre un mínimo 'min' y un máximo 'max'.
@@ -36,11 +52,12 @@ public class IO {
      * @author luklpz
      */
     public static int solicitarInt(String solicitud, int min, int max, String mensajeError) {
+        String textoRespuesta;
         int respuesta;
         do {
             //Solicitamos el 'int'
-            System.out.println(solicitud);
-            respuesta = Integer.parseInt(Escaner.lector.nextLine());
+            System.out.print(solicitud);
+            respuesta = Integer.parseInt(retirarCaracteresNoNumericos(Escaner.lector.nextLine().trim()));
             //Validamos la respuesta
             if (respuesta<min||respuesta>max) {
                 System.err.printf(mensajeError);
@@ -97,4 +114,6 @@ public class IO {
         } while (respuesta<min||respuesta>max);
         return respuesta;
     }
+
+
 }
