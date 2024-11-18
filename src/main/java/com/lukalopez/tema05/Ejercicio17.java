@@ -52,5 +52,6 @@ public class Ejercicio17 {
         } else {
             System.out.println("La letra del NIF no es correcta.");
         }
+        Escaner.dispose();
     }
 }
