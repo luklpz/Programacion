@@ -11,6 +11,7 @@ public class Ejercicio14 {
     private static String contadorConExcepcion(int numeroExcepcion, char charSustituto){
         StringBuilder contador = new StringBuilder();
         StringBuilder textoContador = new StringBuilder();
+        textoContador.ensureCapacity(60000);
         String stringSustituto = String.valueOf(charSustituto);
         String stringNumeroExcepcion = String.valueOf(numeroExcepcion);
 
