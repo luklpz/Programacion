@@ -1,4 +1,4 @@
-package com.lukalopez.tema05;
+package com.lukalopez.tema05.Strings;
 
 public class Ejercicio14 {
     /**

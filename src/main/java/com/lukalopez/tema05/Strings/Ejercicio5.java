@@ -1,4 +1,4 @@
-package com.lukalopez.tema05;
+package com.lukalopez.tema05.Strings;
 
 import com.lukalopez.lib.Escaner;
 
