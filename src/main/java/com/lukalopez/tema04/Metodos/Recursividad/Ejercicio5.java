@@ -23,6 +23,6 @@ public class Ejercicio5 {
     }
 
     public static void main(String args[]) {
-        System.out.println(secuenciaFibonacci(10));
+        System.out.println(secuenciaFibonacci(7));
     }
 }

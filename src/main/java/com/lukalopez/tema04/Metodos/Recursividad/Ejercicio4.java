@@ -12,12 +12,12 @@ public class Ejercicio4 {
             System.err.println("No se puede hacer un sumatorio de un número inferior a 1.");
             return 0;
         }
-        if (numero==0){
-            return 0;
+        if (numero<10){
+            return numero;
         }
-        String num = String.valueOf(numero);
 
-        return Integer.parseInt(String.valueOf(num.charAt(num.length()-1)))+sumatorioDeDigitos(numero/10);
+
+        return (numero % 10)+sumatorioDeDigitos(numero/10);
     }
 
     public static void main(String args[]) {

@@ -13,8 +13,8 @@ public class Ejercicio3 {
         if (numero<1){
             numero = -numero;
         }
-        if (numero==0){
-            return 0;
+        if (numero==1){
+            return 1;
         }
         contador = 1 + numeroDeDigitos(numero/10);
         return contador;

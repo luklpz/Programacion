@@ -4,7 +4,7 @@ public class Ejercicio7 {
 
     private static int potencia(int numero, int potencia){
         if (potencia<1){
-            System.err.println("No se puede hacer el factorial de un número inferior a 1.");
+            System.err.println("No se puede hacer la potencia de un número inferior a 1.");
             return -1;
         } else if (potencia==1){
             return numero;
