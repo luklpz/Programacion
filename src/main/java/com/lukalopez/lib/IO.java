@@ -12,7 +12,7 @@ public class IO {
         if (texto.isEmpty()){
             return "";
         }
-        return (texto.trim()).replaceAll("\\D+","");
+        return (texto.trim()).replaceAll("\\d+","");
     }
 
     /**
@@ -43,6 +43,23 @@ public class IO {
     }
 
     /**
+     * Solicita un int mediante un mensaje, validando que sea un valor superior a un mínimo.
+     *
+     * @param solicitud Mensaje que se imprime para solicitar el 'int'.
+     * @param minimo Valor mínimo que puede valer.
+     * @return Devuelve el 'int' una vez validado.
+     */
+    public static int solicitarInt(String solicitud, int minimo, String mensajeError) {
+        return solicitarInt(solicitud, minimo, Integer.MAX_VALUE, mensajeError);
+    }
+
+    /*
+    public static int solicitarInt(String solicitud, int maximo) {
+        return solicitarInt(solicitud,Integer.MIN_VALUE, maximo, "");
+    }
+    */
+
+    /**
      * Solicita un 'int' y valida que se encuentre en el rango comprendido entre un mínimo 'min' y un máximo 'max'.
      *
      * @param solicitud Mensaje que se le muestra al usuario.
@@ -52,7 +69,6 @@ public class IO {
      * @author luklpz
      */
     public static int solicitarInt(String solicitud, int min, int max, String mensajeError) {
-        String textoRespuesta;
         int respuesta;
         do {
             //Solicitamos el 'int'
@@ -60,7 +76,7 @@ public class IO {
             respuesta = Integer.parseInt(retirarCaracteresNoNumericos(Escaner.lector.nextLine().trim()));
             //Validamos la respuesta
             if (respuesta<min||respuesta>max) {
-                System.err.printf(mensajeError);
+                System.err.println(mensajeError);
             }
         } while (respuesta<min||respuesta>max);
         return respuesta;
