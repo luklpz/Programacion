@@ -2,14 +2,24 @@ package com.lukalopez.lib;
 
 public class Array {
 
-    public static void solicitarDatosArray(double[] array, double minimo) {
-        solicitarDatosArray(array,minimo ,Double.MAX_VALUE);
-    }
+//******************************** SOLICITAR DATOS ********************************\\
 
+    /**
+     * Solicita al usuario introducir los datos de un array 'double[]'.
+     *
+     * @param array Array que se desea rellenar.
+     */
     public static void solicitarDatosArray(double[] array) {
         solicitarDatosArray(array, Double.MAX_VALUE,Double.MAX_VALUE);
     }
 
+    /**
+     * Solicita al usuario introducir los datos de un array 'double[]'.
+     *
+     * @param array Array que se desea rellenar.
+     * @param minimo Valor mínimo que se permite introducir en el array.
+     * @param maximo Valor maximo que se permite introducir en el array.
+     */
     public static void solicitarDatosArray(double[] array, double minimo, double maximo) {
         double valor;
         if (array == null) {
@@ -34,6 +44,11 @@ public class Array {
         }
     }
 
+    /**
+     * Solicita al usuario introducir los datos de un array 'char[]'.
+     *
+     * @param array Array que se desea rellenar.
+     */
     public static void solicitarDatosArray(char[] array) {
         if (array == null) {
             return;
@@ -44,6 +59,15 @@ public class Array {
         }
     }
 
+//******************************** ARRAY TO STRING ********************************\\
+    //----------DOUBLE----------\\
+    /**
+     * Convierte a un array 'double[]' a un 'String'.
+     *
+     * @param array Array que se desea convertir.
+     * @param decimales Número de decimales con los que se imprimirán los valores.
+     * @return Devuelve un 'String' que contiene el array.
+     */
     public static String arrayToString(double[] array, int decimales) {
         if (array == null) {
             return null;
@@ -66,23 +90,29 @@ public class Array {
         return sb.toString();
     }
 
-    public enum Paridad{
-        PAR, IMPAR
-    }
+    //----------DOUBLE COMO TABLA----------\\
 
-    public static String arrayToString(char[] array, Paridad paridad) {
-        StringBuilder sb = new StringBuilder();
-        int inicio = paridad == Paridad.PAR ? 0 : 1;
-        for (int i = inicio; i < array.length; i += 2) {
-            sb.append(array[i]);
-        }
-        return sb.toString();
-    }
-
+    /**
+     * Convierte a un array 'double[]' a un 'String' en forma de tabla.
+     *
+     * @param array Array que se desea convertir.
+     * @param decimales Número de decimales con los que se imprimirán los valores.
+     * @param columnas Número de columas con las que se creará la tabla.
+     * @return Devuelve un 'String' que contiene el array.
+     */
     public static String arrayToString(double[] array, int decimales, int columnas){
         return arrayToString(array,decimales,columnas,2);
     }
 
+    /**
+     * Convierte a un array 'double[]' a un 'String' en forma de tabla.
+     *
+     * @param array Array que se desea convertir.
+     * @param decimales Número de decimales con los que se imprimirán los valores.
+     * @param columnas Número de columas con las que se creará la tabla.
+     * @param padding Espacios en blanco que se dejan como margen.
+     * @return Devuelve un 'String' que contiene el array.
+     */
     public static String arrayToString(double[] array, int decimales, int columnas, int padding) {
         if (array == null) {
             return null;
@@ -100,6 +130,100 @@ public class Array {
         return sb.toString();
     }
 
+    //----------CHAR----------\\
+    public enum Paridad{
+        PAR, IMPAR
+    }
+    /**
+     * Convierte a un array las posiciones pares o impares de un array 'char[]' a un 'String'
+     *
+     * @param array Array que se desea convertir.
+     * @param paridad Propiedad que determina si se desean sacar los pares o los impares.
+     * @return Devuelve un 'String' que contiene las posiciones deseadas del array.
+     */
+    public static String arrayToString(char[] array, Paridad paridad) {
+        StringBuilder sb = new StringBuilder();
+        int inicio = paridad == Paridad.PAR ? 0 : 1;
+        for (int i = inicio; i < array.length; i += 2) {
+            sb.append(array[i]);
+        }
+        return sb.toString();
+    }
+
+//******************************** RELLENAR ALEATORIAMENTE UN ARRAY ********************************\\
+
+    /**
+     * Rellena aleatoriamente un array 'double[]' con valores dentro de un rango
+     *
+     * @param array Array que se desea rellenar.
+     * @param valorMinimo Valor mínimo que pueden tener los valores aleatorios.
+     * @param valorMaximo Valor máximo que pueden tener los valores aleatorios.
+     */
+    public static void rellenarArray(double[] array, double valorMinimo, double valorMaximo) {
+        for (int i = 0; i < array.length; i++) {
+            array[i] = Random.aleatorio(valorMinimo,valorMaximo);
+        }
+    }
+
+    /**
+     * Rellena aleatoriamente un array 'double[]' con valores dentro de un rango
+     *
+     * @param array Array que se desea rellenar.
+     * @param caracterMinimo Valor mínimo que pueden tener los valores aleatorios.
+     * @param caracterMaximo Valor máximo que pueden tener los valores aleatorios.
+     */
+    public static void rellenarArray(char[] array, char caracterMinimo, char caracterMaximo) {
+        java.util.Random random = new java.util.Random();
+        for (int i = 0; i < array.length; i++) {
+            array[i] = (char)Random.aleatorio(caracterMinimo, caracterMaximo);
+        }
+    }
+
+//******************************** MEDIA DEL ARRAY ********************************\\
+
+    /**
+     * Calcular la media de todos los valores contenidos en un array 'double[]'.
+     *
+     * @param array Array sobre el que se desea trabajar.
+     * @return Devuelve la media de los valores que contiene el array, devuelve 0 si el array se encuentra vacío.
+     */
+    public static double mediaArray(double[] array){
+        return mediaArray(array, Double.MIN_VALUE, Double.MAX_VALUE);
+    }
+
+    /**
+     * Calcular la media de los valores contenidos en un array 'double[]' dentro de un rango.
+     *
+     * @param array Array sobre el que se desea trabajar.
+     * @param minimo Valor mínimo 'double' que puede valer para contar en la media.
+     * @param maximo Valor máximo 'double' que puede valer para contar en la media.
+     * @return Devuelve la media de los valores presentes dentro del rango, devuelve 0 si el array se encuentra vacío.
+     */
+    public static double mediaArray(double[] array, double minimo, double maximo){
+        if (array==null){
+            return 0;
+        }
+        int contador = 0;
+        double sumatorio = 0;
+        for (double i:array){
+            if ((minimo<=i)&&(i<=maximo)){
+                sumatorio+=i;
+                contador++;
+            }
+        }
+
+        return sumatorio/contador;
+    }
+
+//******************************** CALCULOS VARIOS SOBRE EL ARRAY ********************************\\
+
+    /**
+     * Determina la longitud mayor de los indices de un array 'double[]'.
+     *
+     * @param array Array sobre el que se desea trabajar.
+     * @param decimales Número de decimales que se han de tener en cuenta.
+     * @return Devuelve la máxima longitud del array como un 'int'.
+     */
     public static int determinarLongitudMaxima(double[] array, int decimales) {
         int longitudMaxima = 0;
         String formato = "%." + decimales + "f";
@@ -112,41 +236,19 @@ public class Array {
         return longitudMaxima;
     }
 
-    public static void rellenarArray(double[] array, double valorMinimo, double valorMaximo) {
-        for (int i = 0; i < array.length; i++) {
-            array[i] = Random.aleatorio(valorMinimo,valorMaximo);
-        }
-    }
-
-    public static void rellenarArray(char[] array, char caracterMinimo, char caracterMaximo) {
-        java.util.Random random = new java.util.Random();
-        for (int i = 0; i < array.length; i++) {
-            array[i] = (char)random.nextInt(caracterMinimo, caracterMaximo);
-        }
-    }
-
     /**
-     * Calcular la media de los valores contenidos en un array.
+     * Verifica si un número existe dentro de un array 'double[]'.
      *
-     * @param array Array de 'double' sobre el que trabajar.
-     * @param valorMinimo Valor mínimo 'double' que puede valer para contar en la media.
-     * @param valorMaximo Valor máximo 'double' que puede valer para contar en la media.
-     * @return Devuelve la media de los valores presentes en el segmento, devuelve 0 si no se encuentran argumentos.
+     * @param array Array sobre el que se desea trabajar.
+     * @param numero Número a buscar.
+     * @return Devuelve 'true' si el número se encuentra en el array.
      */
-    public static double mediaArray(double[] array, double valorMinimo, double valorMaximo){
-        int contador = 0;
-        double sumatorio = 0;
-        for (double i:array){
-            if ((valorMinimo<=i)&&(i<=valorMaximo)){
-                sumatorio+=i;
-                contador++;
+    public static boolean verificarNumero(double[] array, double numero){
+        for (double i : array) {
+            if (numero == i) {
+                return true;
             }
-
         }
-        if (contador==0){
-            return 0;
-        }
-        return sumatorio/contador;
+        return false;
     }
-
 }

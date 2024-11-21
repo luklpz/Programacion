@@ -12,7 +12,7 @@ public class IO {
         if (texto.isEmpty()){
             return "";
         }
-        return (texto.trim()).replaceAll("\\d+","");
+        return (texto.trim()).replaceAll("\\D+","");
     }
 
     /**
@@ -39,7 +39,7 @@ public class IO {
     }
 
     public static int solicitarInt(String solicitud) {
-        return solicitarInt(solicitud, Integer.MIN_VALUE, Integer.MAX_VALUE, "");
+        return solicitarInt(solicitud, Integer.MIN_VALUE, Integer.MAX_VALUE, "Error inesperado. Prueba otra vez: ");
     }
 
     /**
@@ -62,21 +62,21 @@ public class IO {
     /**
      * Solicita un 'int' y valida que se encuentre en el rango comprendido entre un mínimo 'min' y un máximo 'max'.
      *
-     * @param solicitud Mensaje que se le muestra al usuario.
+     * @param mensajeSolicitud Mensaje que se le muestra al usuario.
      * @param min Número mínimo valido que puede valer el 'int'.
      * @param max Número máximo válido que puede valer el 'int'.
      * @return Devuelve un 'int' validado.
      * @author luklpz
      */
-    public static int solicitarInt(String solicitud, int min, int max, String mensajeError) {
+    public static int solicitarInt(String mensajeSolicitud, int min, int max, String mensajeError) {
         int respuesta;
         do {
             //Solicitamos el 'int'
-            System.out.print(solicitud);
+            System.out.print(mensajeSolicitud);
             respuesta = Integer.parseInt(retirarCaracteresNoNumericos(Escaner.lector.nextLine().trim()));
             //Validamos la respuesta
             if (respuesta<min||respuesta>max) {
-                System.err.println(mensajeError);
+                System.err.print(mensajeError);
             }
         } while (respuesta<min||respuesta>max);
         return respuesta;
@@ -115,7 +115,7 @@ public class IO {
      * @param mensaje Mensaje que se le muestra al usuario.
      * @param min Número mínimo válido que puede valer el 'double'.
      * @param max Número máximo válido que puede valer el 'double'.
-     * @return
+     * @return Devuelve un 'Double' validado en un rango.
      */
     public static double solicitarDouble(String mensaje, double min, double max) {
         double respuesta;
