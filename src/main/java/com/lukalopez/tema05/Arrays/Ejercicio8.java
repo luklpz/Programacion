@@ -12,31 +12,31 @@ public class Ejercicio8 {
      * @param numero Número a buscar.
      * @return Devuelve 'true' si el número se encuentra en el array.
      */
-    private static boolean verificarNumero(double[] array, double numero){
-        for (double i : array) {
-            if (numero == i) {
-                return true;
+    private static int verificarNumero(double[] array, double numero){
+        for (int i=0;i<array.length;i++) {
+            if (numero == array[i]) {
+                return i;
             }
         }
-        return false;
+        return -1;
     }
 
     public static void main(String[] args) {
         //Declaramos las variables
-        boolean encontrado;
+        int posicion;
         double numero;
         double[] array;
         array = new double[100];
+        final int MAXIMO=100,MINIMO=1;
 
         //Rellenamos el array
-        Array.rellenarArray(array,1,2);
-
+        Array.rellenarArray(array,MINIMO,MAXIMO);
         //Solicitamos el número y verificamos si se encuentra en el array
-        numero = IO.solicitarDouble("Introduce un número del 1.00 al 100.00: ",1,100);
-        encontrado = Array.verificarNumero(array, numero);
+        numero = IO.solicitarDouble("Introduce un número del 1.00 al 100.00: ",MINIMO,MAXIMO);
+        posicion = verificarNumero(array, numero);
         //Imprimimos el resultado
-        if (encontrado){
-            System.out.printf("El numero %.2f se encuentra en el array.", numero);
+        if (posicion!=-1){
+            System.out.printf("El numero %.2f se encuentra en la posición %d del array.", numero, posicion);
         } else {
             System.out.printf("El numero %.2f no se encuentra en el array.", numero);
         }
