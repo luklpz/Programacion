@@ -1,6 +1,8 @@
 package com.lukalopez.lib;
 
 public class Texto {
+
+//******************************** VERIFICAR ********************************\\
     /**
      * Verifica si el caracter entregado es una vocal.
      *
@@ -21,6 +23,54 @@ public class Texto {
     public static boolean esConsonante(char c) {
         return Character.isLetter(c)&&!esVocal(c);
     }
+
+    /**
+     * Valida que un texto tenga un número de caracteres determinado.
+     *
+     * @param texto Texto que se desea validar.
+     * @param maximo Número máximo de caracteres que puede tener el texto.
+     * @param minimo Número mínimo de caracteres que puede tener el texto.
+     * @param mensajeError Mensaje de error que se imprime al introducir un texto con una longitud no válida.
+     * @return Devuelve el true si el número de caracteres es correcto.
+     */
+    public static boolean validarLongitud(String texto, int maximo, int minimo, String mensajeError) {
+        //Declaramos variables
+        boolean validado = false;
+
+        if (texto.length() <= maximo || texto.length() >= minimo) {
+            return validado = true;
+        }
+        System.err.print(mensajeError);
+        return validado;
+    }
+
+//******************************** SUSTITUIR ********************************\\
+    /**
+     * Sustituye una secuencia de caracteres de un texto por la secuencia de caracteres indicada.
+     *
+     * @param texto Es el texto del cual se desea sustituir la secuencia.
+     * @param secuenciaOcurrencia 'String' que se desea sustituir.
+     * @param secuenciaSustituta 'String' que se desea añadir.
+     * @return Devuelve el texto con la secuencia intercambiada.
+     */
+    public static String sustituirOcurrencias(String texto, String secuenciaOcurrencia, String secuenciaSustituta){
+        return texto.replace(secuenciaOcurrencia,secuenciaSustituta);
+    }
+
+    /**
+     * Sustituye un 'String' por otro 'String' en un texto.
+     *
+     * @param texto Es el texto del cual se desea sustituir la secuencia.
+     * @param secuenciaOcurrencia 'String' que se desea sustituir.
+     * @param secuenciaSustituta 'String' que se desea añadir.
+     * @return Devuelve el texto con la secuencia intercambiada.
+     */
+    public static String sustituirOcurrenciasConCondiciones(String texto, String secuenciaOcurrencia, String secuenciaSustituta){
+        return texto.replaceAll(secuenciaOcurrencia,secuenciaSustituta);
+    }
+
+
+//******************************** OPERACIONES VARIAS ********************************\\
 
     /**
      * Cuenta el número de vocales que contiene un texto.
@@ -65,29 +115,6 @@ public class Texto {
         return texto.split("\\s+");
     }
 
-    /**
-     * Sustituye una secuencia de caracteres de un texto por la secuencia de caracteres indicada.
-     *
-     * @param texto Es el texto del cual se desea sustituir la secuencia.
-     * @param secuenciaOcurrencia 'String' que se desea sustituir.
-     * @param secuenciaSustituta 'String' que se desea añadir.
-     * @return Devuelve el texto con la secuencia intercambiada.
-     */
-    public static String sustituirOcurrencias(String texto, String secuenciaOcurrencia, String secuenciaSustituta){
-        return texto.replace(secuenciaOcurrencia,secuenciaSustituta);
-    }
-
-    /**
-     * Sustituye un 'String' por otro 'String' en un texto.
-     *
-     * @param texto Es el texto del cual se desea sustituir la secuencia.
-     * @param secuenciaOcurrencia 'String' que se desea sustituir.
-     * @param secuenciaSustituta 'String' que se desea añadir.
-     * @return Devuelve el texto con la secuencia intercambiada.
-     */
-    public static String sustituirOcurrenciasConCondiciones(String texto, String secuenciaOcurrencia, String secuenciaSustituta){
-        return texto.replaceAll(secuenciaOcurrencia,secuenciaSustituta);
-    }
 
     /**
      * Detectar la palabra de mayor longitud presente en un texto.
@@ -120,24 +147,5 @@ public class Texto {
             }
         }
         return palabra;
-    }
-
-    /**
-     * SVvalida que un texto tenga un número de caracteres determinado.
-     * @param texto Texto que se desea validar.
-     * @param maximo Número máximo de caracteres que puede tener el texto.
-     * @param minimo Número mínimo de caracteres que puede tener el texto.
-     * @param mensajeError Mensaje de error que se imprime al introducir un texto con una longitud no válida.
-     * @return Devuelve el true si el número de caracteres es correcto.
-     */
-    public static boolean validarLongitud(String texto, int maximo, int minimo, String mensajeError) {
-        //Declaramos variables
-        boolean validado = false;
-
-        if (texto.length() <= maximo || texto.length() >= minimo) {
-            return validado = true;
-        }
-        System.err.print(mensajeError);
-        return validado;
     }
 }

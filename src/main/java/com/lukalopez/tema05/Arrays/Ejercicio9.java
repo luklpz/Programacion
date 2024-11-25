@@ -10,7 +10,7 @@ public class Ejercicio9 {
     //rellena el array con números aleatorios del 0 al 50.
     public static void crearArray(int[] array) {
         for (int i = 0; i < array.length; i++) {
-            array[i] = Random.aleatorio(0, 50);
+            array[i] = Random.randomInt(0, 50);
         }
     }
 

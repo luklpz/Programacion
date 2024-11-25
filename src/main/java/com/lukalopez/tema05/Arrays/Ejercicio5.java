@@ -31,7 +31,7 @@ public class Ejercicio5 {
         final double VALORMAXIMO = 2.5;
         final int VALORMINIMOPERSONAS = 1;
 
-        indices = IO.solicitarInt("\nIntroduzca el número total de personas: ",VALORMINIMOPERSONAS,"No se puede evaluar a menos de una persona.");
+        indices = IO.solicitarInt("\nIntroduzca el número total de personas: ",VALORMINIMOPERSONAS, IO.Condicion.MINIMO,"No se puede evaluar a menos de una persona.");
         array = new double[indices];
         System.out.println("A continuación introduzca las estaturas en metros:");
         Array.solicitarDatosArray(array,VALORMINIMO,VALORMAXIMO);

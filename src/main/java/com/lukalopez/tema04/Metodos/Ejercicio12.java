@@ -1,6 +1,7 @@
 package com.lukalopez.tema04.Metodos;
 
 import com.lukalopez.lib.Calc;
+import com.lukalopez.lib.Random;
 
 public class Ejercicio12 {
     /**
@@ -36,7 +37,7 @@ public class Ejercicio12 {
 
     public static void main(String args[]){
         for (int i=1;i!=51;i++){
-            System.out.printf("Alumno %d: %s\n",i,calificar(Calc.randomInt(0,10)));
+            System.out.printf("Alumno %d: %s\n",i,calificar(Random.randomInt(0,10)));
         }
     }
 }

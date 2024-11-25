@@ -1,6 +1,7 @@
 package com.lukalopez.tema04.Metodos;
 
 import com.lukalopez.lib.Calc;
+import com.lukalopez.lib.Random;
 
 import java.util.Scanner;
 
@@ -81,7 +82,7 @@ public class Ejercicio15 {
      * @author luklpz
      */
     private static int tirarDado(){
-        return Calc.randomInt(1,6);
+        return Random.randomInt(1,6);
     }
 
     /**

@@ -1,12 +1,12 @@
 package com.lukalopez.lib;
 
 public class Random {
-    public static double aleatorio(double minimo, double maximo){
+    public static double randomDouble(double minimo, double maximo){
         java.util.Random random = new java.util.Random();
         return random.nextDouble()*(maximo-minimo)+minimo;
     }
 
-    public static int aleatorio(int minimo, int maximo) {
+    public static int randomInt(int minimo, int maximo) {
         java.util.Random random = new java.util.Random();
         return random.nextInt(maximo - minimo + 1) + minimo;
     }

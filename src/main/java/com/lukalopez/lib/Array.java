@@ -2,6 +2,10 @@ package com.lukalopez.lib;
 
 public class Array {
 
+    public enum Paridad{
+        PAR, IMPAR
+    }
+
 //******************************** SOLICITAR DATOS ********************************\\
 
     /**
@@ -60,6 +64,35 @@ public class Array {
     }
 
 //******************************** ARRAY TO STRING ********************************\\
+
+    //----------INT----------\\
+    /**
+     * Convierte a un array 'int[]' a un 'String'.
+     *
+     * @param array Array que se desea convertir.
+     * @return Devuelve un 'String' que contiene el array.
+     */
+    public static String arrayToString(int[] array) {
+        if (array == null) {
+            return null;
+        }
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        String espacio = "";
+        String coma = ",";
+        for (int i = 0; i < array.length; i++) {
+            if (i == array.length -1) { // último elemento
+                coma = "";
+            }
+            sb.append(espacio).append(String.format("%d", array[i])).append(coma);
+            if (i == 0) {
+                espacio = " ";
+            }
+        }
+        sb.append("]");
+        return sb.toString();
+    }
+
     //----------DOUBLE----------\\
     /**
      * Convierte a un array 'double[]' a un 'String'.
@@ -131,9 +164,6 @@ public class Array {
     }
 
     //----------CHAR----------\\
-    public enum Paridad{
-        PAR, IMPAR
-    }
     /**
      * Convierte a un array las posiciones pares o impares de un array 'char[]' a un 'String'
      *
@@ -161,7 +191,21 @@ public class Array {
      */
     public static void rellenarArray(double[] array, double valorMinimo, double valorMaximo) {
         for (int i = 0; i < array.length; i++) {
-            array[i] = Random.aleatorio(valorMinimo,valorMaximo);
+            array[i] = Random.randomDouble(valorMinimo,valorMaximo);
+        }
+    }
+
+
+    /**
+     * Rellena aleatoriamente un array 'int[]' con valores dentro de un rango
+     *
+     * @param array Array que se desea rellenar.
+     * @param valorMinimo Valor mínimo que pueden tener los valores aleatorios.
+     * @param valorMaximo Valor máximo que pueden tener los valores aleatorios.
+     */
+    public static void rellenarArray(int[] array, int valorMinimo, int valorMaximo) {
+        for (int i = 0; i < array.length; i++) {
+            array[i] = Random.randomInt(valorMinimo,valorMaximo);
         }
     }
 
@@ -175,7 +219,7 @@ public class Array {
     public static void rellenarArray(char[] array, char caracterMinimo, char caracterMaximo) {
         java.util.Random random = new java.util.Random();
         for (int i = 0; i < array.length; i++) {
-            array[i] = (char)Random.aleatorio(caracterMinimo, caracterMaximo);
+            array[i] = (char)Random.randomInt(caracterMinimo, caracterMaximo);
         }
     }
 
@@ -250,5 +294,19 @@ public class Array {
             }
         }
         return false;
+    }
+
+    public static int contarParesOImpares(int[] array, Paridad paridad){
+        if (array==null){
+            System.err.println("ERROR: Array vacio.");
+            return -1;
+        }
+        int contador=0;
+        for (int i= paridad == Paridad.PAR ? 0 : 1;i<array.length;i++){
+            if (array[i] % 2==0){
+                contador++;
+            }
+        }
+        return contador;
     }
 }
