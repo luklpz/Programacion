@@ -17,6 +17,16 @@ public class IO {
     }
 
     /**
+     * Solicita un 'int' sin condiciones.
+     * @param solicitud Mensaje que se imprime para solicitar el 'int'.
+     * @param mensajeError Mensaje de error que se muestra al introducir un valor inválido.
+     * @return Devuelve el 'int' una vez validado.
+     */
+    public static int solicitarInt(String solicitud, String mensajeError) {
+        return solicitarInt(solicitud, Integer.MIN_VALUE, Integer.MAX_VALUE, mensajeError);
+    }
+
+    /**
      * Solicita un 'int' mediante un mensaje, validando que sea un valor superior a un mínimo.
      *
      * @param solicitud Mensaje que se imprime para solicitar el 'int'.
