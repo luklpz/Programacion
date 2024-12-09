@@ -26,9 +26,9 @@ public class Ejercicio3 {
         do {
             //Solicitamos la fila
             if (turnoActual==Jugador.PLAYER1){
-                System.out.println("PLAYER 1 [X]");
+                System.out.println("\nPLAYER 1 [X]");
             } else {
-                System.out.println("PLAYER 2 [O]");
+                System.out.println("\nPLAYER 2 [O]");
             }
             fila= IO.solicitarInt("Ingrese la fila: ",1,3,"Entrada no válida. Filas: 1-2-3")-1;
             columna = IO.solicitarInt("Ingrese la columna: ",1,3,"Entrada no válida. Filas: 1-2-3")-1;
@@ -137,6 +137,5 @@ public class Ejercicio3 {
                 cerrar=false;
             }
         } while (!cerrar);
-
     }
 }
