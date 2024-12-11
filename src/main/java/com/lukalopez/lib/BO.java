@@ -49,8 +49,8 @@ public class BO {
         }
         int[] arrayConteo = new int[max + 1];
 
-        for (int i = 0; i < array.length; i++) {
-            arrayConteo[array[i]]++;
+        for (int k : array) {
+            arrayConteo[k]++;
         }
         System.out.println("Conteo: ");
 
@@ -61,12 +61,5 @@ public class BO {
                 array[contador++] = i;
             }
         }
-    }
-
-    public static void main(String[] args) {
-        int[] array = new int[100];
-        Array.rellenarArray(array, 1,100);
-        ordenaContando(array);
-        System.out.println(Array.arrayToString(array));
     }
 }

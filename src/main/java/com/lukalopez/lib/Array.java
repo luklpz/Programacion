@@ -262,6 +262,27 @@ public class Array {
 //******************************** CALCULOS VARIOS SOBRE EL ARRAY ********************************\\
 
     /**
+     * Determina la longitud mayor de los indices de un array 'int[]'.
+     *
+     * @param array Array sobre el que se desea trabajar.
+     * @return Devuelve la máxima longitud del array como un 'int'.
+     */
+    public static int determinarLongitudMaxima(int[] array) {
+        StringBuilder sb = new StringBuilder();
+        int longitudMaxima = 0;
+        for (int numero : array) {
+            sb.setLength(0);
+            sb.append(numero);
+            int longitudActual = sb.length();
+            if (longitudMaxima < longitudActual) {
+                longitudMaxima = longitudActual;
+            }
+        }
+        return longitudMaxima;
+    }
+
+
+    /**
      * Determina la longitud mayor de los indices de un array 'double[]'.
      *
      * @param array Array sobre el que se desea trabajar.
@@ -296,6 +317,14 @@ public class Array {
         return false;
     }
 
+
+    /**
+     * Cuenta los carácteres pares o impares que contiene un array.
+     *
+     * @param array Array sobre el que se desea trabajar.
+     * @param paridad Propiedad que determina si se desean contar los pares o los impares.
+     * @return Devuelve el número entero de pares o impares que contiene el array.
+     */
     public static int contarParesOImpares(int[] array, Paridad paridad){
         if (array==null){
             System.err.println("ERROR: Array vacio.");

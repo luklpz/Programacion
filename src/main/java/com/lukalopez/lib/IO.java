@@ -9,6 +9,7 @@ public class IO {
 
     /**
      * Solicita un 'int' sin condiciones.
+     *
      * @param solicitud Mensaje que se imprime para solicitar el 'int'.
      * @return Devuelve el 'int' una vez validado.
      */
@@ -18,6 +19,7 @@ public class IO {
 
     /**
      * Solicita un 'int' sin condiciones.
+     *
      * @param solicitud Mensaje que se imprime para solicitar el 'int'.
      * @param mensajeError Mensaje de error que se muestra al introducir un valor inválido.
      * @return Devuelve el 'int' una vez validado.
@@ -44,7 +46,7 @@ public class IO {
     }
 
     /**
-     * Solicita un int mediante un mensaje, validando que sea un valor superior a un mínimo.
+     * Solicita un int mediante un mensaje, validando que esté comprendido dentro de un rango.
      *
      * @param solicitud Mensaje que se imprime para solicitar el 'int'.
      * @param valor Valor que máximo o mínimo, según la condición, que puede valer el 'int'.
@@ -107,7 +109,7 @@ public class IO {
      * @return Devuelve el 'double' una vez validado.
      */
     public static double solicitarDouble(String solicitud) {
-        return solicitarDouble(solicitud, Integer.MIN_VALUE, Integer.MAX_VALUE, "ERROR: Valor fuera del rango comprendido entre el máximo posible y el mínimo posible.");
+        return solicitarDouble(solicitud, "ERROR: Valor fuera del rango comprendido entre el máximo posible y el mínimo posible.");
     }
 
     /**
@@ -204,6 +206,8 @@ public class IO {
         return (texto.trim()).replaceAll("\\D+","");
     }
 
+    //----------STRING----------\\
+
     /**
      * Solicita un 'String' y valida que su longitud esté comprendida entre una longitud mínima 'lngMin' y una longitud máxima 'lngMax'.
      *
@@ -227,9 +231,7 @@ public class IO {
         return respuesta;
     }
 
-
-
-
+    //----------FLOAT----------\\
 
     /**
      * Solicita un 'float' y valida que se encuentre en el rango comprendido entre un mínimo 'min' y un máximo 'max'.

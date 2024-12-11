@@ -34,14 +34,11 @@ public class Texto {
      * @return Devuelve el true si el número de caracteres es correcto.
      */
     public static boolean validarLongitud(String texto, int maximo, int minimo, String mensajeError) {
-        //Declaramos variables
-        boolean validado = false;
-
-        if (texto.length() <= maximo || texto.length() >= minimo) {
-            return validado = true;
+        if (texto.length() <= maximo && texto.length() >= minimo) {
+            return true;
         }
         System.err.print(mensajeError);
-        return validado;
+        return false;
     }
 
 //******************************** SUSTITUIR ********************************\\
