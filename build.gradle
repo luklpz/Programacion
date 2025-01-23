@@ -11,7 +11,7 @@ repositories {
 }
 
 application {
-    mainClassName = "com.lukalopez.tema04.Fechas.Ejercicio7"
+    mainClassName = "com.lukalopez.tema05.Matrices.Ejercicio4"
 }
 
 dependencies {
