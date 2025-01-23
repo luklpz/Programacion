@@ -256,9 +256,38 @@ public class IO {
         return respuesta;
     }
 
+    //----------CHAR----------\\
 
+    /**
+     * Solicita un 'char' y valida que se haya introducido un único caracter.
+     *
+     * @param mensaje Mensaje que se le muestra al usuario.
+     * @return Devuelve un 'char' validado.
+     */
+    public static char solicitarChar(String mensaje){
+        return solicitarChar(mensaje,"El número de carácteres introducidos es inválido.");
+    }
 
-
-
-
+    /**
+     * Solicita un 'char' y valida que se haya introducido un único caracter.
+     *
+     * @param mensaje Mensaje que se le muestra al usuario.
+     * @param mensajeError Mensaje de error que se muestra al introducir un número de carácteres inválido.
+     * @return Devuelve un 'char' validado.
+     */
+    public static char solicitarChar(String mensaje, String mensajeError){
+        boolean valido=false;
+        String respuesta;
+        do {
+            //Solicitarmos el 'char'
+            System.out.print(mensaje);
+            respuesta = Escaner.lector.nextLine();
+            if (respuesta.length()!=1){
+                System.out.println(mensajeError);
+            } else {
+                valido=true;
+            }
+        } while (!valido);
+        return respuesta.charAt(0);
+    }
 }
