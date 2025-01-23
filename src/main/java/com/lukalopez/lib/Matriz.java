@@ -69,14 +69,46 @@ public class Matriz {
      * @return Devuelve un 'String' que contiene la matriz.
      */
     public static String matrizToString(int[][] matriz, int padding){
-        int anchoColumna = determinarLongitudMaxima(matriz);
-        String formatoPadding = "%"+(anchoColumna+padding)+"s";
+        return matrizToString(matriz, padding, false, false);
+    }
+
+    /**
+     * Convierte a una matriz 'int[][]' a un 'String'.
+     *
+     * @param matriz Matriz que se desea convertir.
+     * @param padding Espacios en blanco que se dejan como margen.
+     * @return Devuelve un 'String' que contiene la matriz.
+     */
+    public static String matrizToString(int[][] matriz, int padding, boolean imprimirSumaFilas, boolean imprimirSumaColumnas){
+        final int ANCHO_COLUMNA = determinarLongitudMaxima(matriz);
+        String formatoPadding = "%"+(ANCHO_COLUMNA+padding)+"s";
         StringBuilder sb = new StringBuilder();
+        int sumatorioFila;
+        int sumatorioColumna;
+
         for (int[] fila : matriz){
+            sumatorioFila=0;
             for (double valor : fila){
+                sumatorioFila+=(int) valor;
                 sb.append(String.format(formatoPadding, String.format("%.0f",valor)));
             }
+            if (imprimirSumaFilas) {
+                sb.append(" = ").append(sumatorioFila);
+            }
             sb.append("\n");
+        }
+        if (imprimirSumaColumnas){
+
+            sb.append(String.format(formatoPadding, "\"").repeat(matriz[1].length));
+            sb.append("\n");
+            matriz = transpuesta(matriz);
+            for (int[] fila : matriz){
+                sumatorioColumna=0;
+                for (double valor : fila){
+                    sumatorioColumna+=(int) valor;
+                }
+                sb.append(String.format(formatoPadding, String.format("%d",sumatorioColumna)));
+            }
         }
         return sb.toString();
     }
@@ -103,6 +135,74 @@ public class Matriz {
             sb.append("\n");
         }
         return sb.toString();
+    }
+
+
+//******************************** ELEMENTO TO STRING ********************************\\
+
+    /**
+     * Extraer un elemento de la fila y columna seleccionada de una matriz.
+     *
+     * @param matriz Matriz sobre la que extraer.
+     * @param fila Fila donde se encuentra el elemento.
+     * @param columna Columna donde se encuentra el elemento.
+     * @return Devuelve el 'int' que se encuentra en matriz[fila][columna].
+     */
+    public static String elementoToString(int[][] matriz, int fila, int columna){
+        return String.valueOf(matriz[fila][columna]);
+    }
+
+
+//******************************** EXTRAER DE MATRIZ ********************************\\
+    /**
+     * Extraer una fila seleccionada de una matriz.
+     *
+     * @param matriz Matriz sobre la que extraer.
+     * @param fila Fila que extraer.
+     * @return Devuelve la fila 'int[]' seleccionada de la matriz.
+     */
+    public static int[] extraerFila(int[][] matriz, int fila){
+        final int COLUMNAS = matriz[fila].length;
+        int[] solicitud = new int[COLUMNAS];
+        System.arraycopy(matriz[fila], 0, solicitud, 0, COLUMNAS);
+        return solicitud;
+    }
+
+    /**
+     * Extraer una columna seleccionada de una matriz.
+     *
+     * @param matriz Matriz sobre la que extraer.
+     * @param columna Columna que extraer.
+     * @return Devuelve la columna 'int[]' seleccionada de la matriz.
+     */
+    public static int[] extraerColumna(int[][] matriz, int columna){
+        return extraerFila(transpuesta(matriz),columna);
+    }
+
+
+    /**
+     * Extraer una fila seleccionada de una matriz.
+     *
+     * @param matriz Matriz sobre la que extraer.
+     * @param fila Fila que extraer.
+     * @return Devuelve la fila 'double[]' seleccionada de la matriz.
+     */
+    public static String[] extraerFila(String[][] matriz, int fila){
+        final int COLUMNAS = matriz[fila].length;
+        String[] solicitud = new String[COLUMNAS];
+        System.arraycopy(matriz[fila], 0, solicitud, 0, COLUMNAS);
+        return solicitud;
+    }
+
+    /**
+     * Extraer una columna seleccionada de una matriz.
+     *
+     * @param matriz Matriz sobre la que extraer.
+     * @param columna Columna que extraer.
+     * @return Devuelve la columna 'double[]' seleccionada de la matriz.
+     */
+    public static String[] extraerColumna(String[][] matriz, int columna){
+        return extraerFila(transpuesta(matriz),columna);
     }
 
 //******************************** DETERMINAR LONGITUD MÁXIMA ********************************\\
@@ -143,4 +243,96 @@ public class Matriz {
         }
         return longitudMaxima;
     }
+
+
+//******************************** INVERTIR MATRIZ ********************************\\
+
+    /**
+     * Calcular la transpuesta de una matriz.
+     *
+     * @param matriz Matriz sobre la cual calcular.
+     * @return Devuelve la matriz 'int[][]' transpuesta.
+     */
+    public static int[][] transpuesta(int[][] matriz) {
+        final int FILAS = matriz.length;
+        final int COLUMNAS = matriz[1].length;
+        int[][] matrizInversa = new int[COLUMNAS][FILAS];
+
+        for (int i = 0; i < FILAS; i++) {
+            for (int j = 0; j < COLUMNAS; j++) {
+                matrizInversa[j][i] = matriz[i][j];
+            }
+        }
+        return matrizInversa;
+    }
+
+
+    /**
+     * Calcular la transpuesta de una matriz.
+     *
+     * @param matriz Matriz sobre la cual calcular.
+     * @return Devuelve la matriz 'double[][]' transpuesta.
+     */
+    public static String[][] transpuesta(String[][] matriz) {
+        final int FILAS = matriz.length;
+        final int COLUMNAS = matriz[1].length;
+        String[][] matrizInversa = new String[COLUMNAS][FILAS];
+
+        for (int i = 0; i < FILAS; i++) {
+            for (int j = 0; j < COLUMNAS; j++) {
+                matrizInversa[j][i] = matriz[i][j];
+            }
+        }
+        return matrizInversa;
+    }
+
+
+//******************************** MÁXIMO Y MÍNIMO ********************************\\
+
+    /**
+     * Calcular el valor máximo/mínimo que contiene una matriz.
+     *
+     * @param matriz Matriz sobre la que realizar los calculos.
+     * @param condicion Condición que indica si se desea extraer el valor máximo o mínimo.
+     * @return Devuelve el valor 'int' deseado.
+     */
+    public static int calcularExtremo(int[][] matriz, IO.Condicion condicion){
+        int contentedor=matriz[0][0];
+        for (int[] fila : matriz){
+            for (int valor : fila){
+                if (condicion== IO.Condicion.MAXIMO){
+                    if (valor>contentedor){
+                        contentedor=valor;
+                    }
+                } else {
+                    if (valor<contentedor){
+                        contentedor=valor;
+                    }
+                }
+            }
+        }
+        return contentedor;
+    }
+
+//******************************** MEDIA DE LA MATRIZ ********************************\\
+
+    /**
+     * Calcular la media de los valores que contiene una matriz.
+     *
+     * @param matriz Matriz sobre la que realizar los calculos.
+     * @return Devuelve la media 'int' de la matriz.
+     */
+    public static double calcularMedia(int[][] matriz){
+        int sumatorio=0;
+        int contador=0;
+        for (int[] fila : matriz){
+            for (int valor : fila){
+                sumatorio+=valor;
+                contador++;
+            }
+        }
+        return (double) sumatorio/contador;
+    }
 }
+
+
