@@ -94,7 +94,7 @@ public class IO {
             respuesta = Integer.parseInt(retirarCaracteresNoNumericos(Escaner.lector.nextLine().trim()));
             //Validamos la respuesta
             if (respuesta<minimo||respuesta>maximo) {
-                System.err.println(mensajeError);
+                System.err.print(mensajeError);
             }
         } while (respuesta<minimo||respuesta>maximo);
         return respuesta;
@@ -209,23 +209,70 @@ public class IO {
     //----------STRING----------\\
 
     /**
+     * Solicita un 'String'
+     *
+     * @param mensaje Mensaje que se le muestra al usuario.
+     * @return String que ingresa el usuario.
+     */
+    public static String solicitarString(String mensaje, Boolean numerico){
+        String respuesta;
+        System.out.print(mensaje);
+        respuesta=Escaner.lector.nextLine();
+        if (numerico){
+            respuesta.replaceAll("\\D+","");
+        }
+        return respuesta;
+    }
+
+    /**
      * Solicita un 'String' y valida que su longitud esté comprendida entre una longitud mínima 'lngMin' y una longitud máxima 'lngMax'.
      *
      * @param mensaje Mensaje que se le muestra al usuario.
      * @param lngMin  Número mínimo de caracteres que debe tener el 'String'.
      * @param lngMax  Número máximo de caracteres que puede tener el 'String'.
      * @return Devuelve el 'String' validado.
+     */
+    public static String solicitarString(String mensaje, int lngMin, int lngMax){
+        return solicitarString(mensaje,lngMin,lngMax,String.format("La respuesta proporcionada no puede tener una longitud inferior a %s, ni superior a %s caracteres.\n\n", lngMin, lngMax));
+    }
+
+    /**
+     * Solicita un 'String' y valida que su longitud esté comprendida entre una longitud mínima 'lngMin' y una longitud máxima 'lngMax'.
+     *
+     * @param mensaje Mensaje que se le muestra al usuario.
+     * @param lngMin  Número mínimo de caracteres que debe tener el 'String'.
+     * @param lngMax  Número máximo de caracteres que puede tener el 'String'.
+     * @param mensajeError Mensaje que se muestra si la validación falla.
+     * @return Devuelve el 'String' validado.
      * @author luklpz
      */
-    public static String solicitarString(String mensaje, int lngMin, int lngMax) {
+    public static String solicitarString(String mensaje, int lngMin, int lngMax, String mensajeError) {
+        return solicitarString(mensaje, lngMin, lngMax, mensajeError, false);
+    }
+
+        /**
+         * Solicita un 'String' y valida que su longitud esté comprendida entre una longitud mínima 'lngMin' y una longitud máxima 'lngMax'.
+         *
+         * @param mensaje Mensaje que se le muestra al usuario.
+         * @param lngMin  Número mínimo de caracteres que debe tener el 'String'.
+         * @param lngMax  Número máximo de caracteres que puede tener el 'String'.
+         * @param mensajeError Mensaje que se muestra si la validación falla.
+         * @param soloNumeros Si se marca como 'true' eliminará todos los caracteres no numericos antes de validar.
+         * @return Devuelve el 'String' validado.
+         * @author luklpz
+         */
+    public static String solicitarString(String mensaje, int lngMin, int lngMax, String mensajeError, boolean soloNumeros) {
         String respuesta;
         do {
             //Solicitamos el 'String'
-            System.out.println(mensaje);
+            System.out.print(mensaje);
             respuesta = Escaner.lector.nextLine();
             //Validamos la respuesta
+            if (soloNumeros){
+                respuesta=retirarCaracteresNoNumericos(respuesta);
+            }
             if (respuesta.length() < lngMin || respuesta.length() > lngMax) {
-                System.err.printf("La respuesta proporcionada no puede tener una longitud inferior a %s, ni superior a %s caracteres.\n\n", lngMin, lngMax);
+                System.err.print(mensajeError);
             }
         } while (respuesta.length() < lngMin || respuesta.length() > lngMax);
         return respuesta;
@@ -283,11 +330,46 @@ public class IO {
             System.out.print(mensaje);
             respuesta = Escaner.lector.nextLine();
             if (respuesta.length()!=1){
-                System.out.println(mensajeError);
+                System.err.println(mensajeError);
             } else {
                 valido=true;
             }
         } while (!valido);
         return respuesta.charAt(0);
+    }
+
+    //----------BOOLEAN----------\\
+
+
+    /**
+     * Solicita un 'boolean' y valida que se haya introducido una respuesta válida.
+     *
+     * @param mensaje Mensaje que se le muestra al usuario.
+     * @param textoTrue Texto que ha de introducir el usuario para devolver 'True'.
+     * @param textoFalse Texto que ha de introducir el usuario para devolver 'False'.
+     * @param mensajeError Mensaje que se muestra si la validación falla.
+     * @return Devuelve true o false según la entrada del usuario.
+     */
+    public static boolean solicitarBoolean(String mensaje,String textoTrue, String textoFalse, String mensajeError){
+        boolean valido=false;
+        boolean devuelve=false;
+        String respuesta;
+        do{
+            //Solicitamos el boolean
+            System.out.print(mensaje);
+            respuesta = (Escaner.lector.nextLine()).trim().replaceAll("\\s+","").toLowerCase();
+
+            //Verificamos si la respuesta corresponde exactamente
+            if (respuesta.equals(textoTrue.toLowerCase())){
+                devuelve = true;
+                valido = true;
+            }
+            else if (respuesta.equals(textoFalse.toLowerCase())) {
+                valido = true;
+            } else {
+                System.err.print(mensajeError);
+            }
+        } while (!valido);
+        return devuelve;
     }
 }
