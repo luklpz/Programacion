@@ -65,7 +65,7 @@ public class Pila {
         if (isEmpty()){
             return ERROR;
         }
-        return data[size];
+        return data[size-1];
     }
 
     /**
