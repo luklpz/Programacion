@@ -1,4 +1,4 @@
-package com.lukalopez.tema06;
+package com.lukalopez.tema06.POO;
 
 public class EjemplosClase {
     public static class Jugador {
@@ -10,7 +10,7 @@ public class EjemplosClase {
         private float tiro;
         private float estadoForma;
 
-        public Jugador(String nombre, float portero, float defensa, float pase, float regate, float tiro, float estadoForma) {
+        private Jugador(String nombre, float portero, float defensa, float pase, float regate, float tiro, float estadoForma) {
             this.nombre = nombre;
             this.portero = portero;
             this.defensa = defensa;
@@ -20,7 +20,7 @@ public class EjemplosClase {
             this.estadoForma = estadoForma;
         }
 
-        public Jugador(String nombre){
+        private Jugador(String nombre){
             this(nombre, 50,50,50,50,50,50);
         }
 
@@ -36,7 +36,25 @@ public class EjemplosClase {
         public static void chutar(Jugador idJugador) {
             idJugador.tiro++;
         }
+
+        @Override
+        public String toString() {
+            return "Jugador{" +
+                    "nombre='" + nombre + '\'' +
+                    ", portero=" + portero +
+                    ", defensa=" + defensa +
+                    ", pase=" + pase +
+                    ", regate=" + regate +
+                    ", tiro=" + tiro +
+                    ", estadoForma=" + estadoForma +
+                    '}';
+        }
+
+
     }
+
+
+
     Jugador futbolista1 = new Jugador("nombre", 32,82,87,80,82,95);
     Jugador futbolista2 = new Jugador("nombre");
 

@@ -1,4 +1,4 @@
-package com.lukalopez.tema06;
+package com.lukalopez.tema06.POO;
 
 public class Ejercicio1 {
     private enum Tipo{
@@ -49,8 +49,71 @@ public class Ejercicio1 {
                     ", aTodoRiesgo=" + aTodoRiesgo +
                     '}';
         }
+
+        public String getModelo() {
+            return modelo;
+        }
+
+        public void setModelo(String modelo) {
+            this.modelo = modelo;
+        }
+
+        public String getColor() {
+            return color;
+        }
+
+        public void setColor(String color) {
+            this.color = color;
+        }
+
+        public boolean isMetalizado() {
+            return metalizado;
+        }
+
+        public void setMetalizado(boolean metalizado) {
+            this.metalizado = metalizado;
+        }
+
+        public String getMatricula() {
+            return matricula;
+        }
+
+        public void setMatricula(String matricula) {
+            this.matricula = matricula;
+        }
+
+        public Tipo getTipo() {
+            return tipo;
+        }
+
+        public void setTipo(Tipo tipo) {
+            this.tipo = tipo;
+        }
+
+        public int getAnyoDeFabricacion() {
+            return anyoDeFabricacion;
+        }
+
+        public void setAnyoDeFabricacion(int anyoDeFabricacion) {
+            this.anyoDeFabricacion = anyoDeFabricacion;
+        }
+
+        public boolean isaTodoRiesgo() {
+            return aTodoRiesgo;
+        }
+
+        public void setaTodoRiesgo(boolean aTodoRiesgo) {
+            this.aTodoRiesgo = aTodoRiesgo;
+        }
     }
 
-    Coche coche1 = new Coche("verde","1234567A",2005);
+    static Coche coche1 = new Coche("verde","123456A",2005);
+    static Coche coche2 = new Coche("amarillo","974917H",2001);
+
+    public static void main(String[] args) {
+        System.out.println(coche1.toString());
+        coche1.setAnyoDeFabricacion(1999);
+        System.out.println(coche1.toString());
+    }
 }
 

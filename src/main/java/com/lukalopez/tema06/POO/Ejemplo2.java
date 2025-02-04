@@ -1,4 +1,4 @@
-package com.lukalopez.tema06;
+package com.lukalopez.tema06.POO;
 
 public class Ejemplo2 {
     private enum Curso{
