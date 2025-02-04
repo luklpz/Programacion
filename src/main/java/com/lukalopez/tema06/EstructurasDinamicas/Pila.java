@@ -88,7 +88,7 @@ public class Pila {
      * Duplicar la capacidad de la pila.
      * @return Devuelve 'true' si se ha completado el proceso.
      */
-    public boolean expandir(){
+    private boolean expandir(){
         double[] arrayCopia = new double[data.length*2];
         System.arraycopy(data, 0, arrayCopia, 0, size);
         data=arrayCopia;
