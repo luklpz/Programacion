@@ -219,7 +219,7 @@ public class IO {
         System.out.print(mensaje);
         respuesta=Escaner.lector.nextLine();
         if (numerico){
-            respuesta.replaceAll("\\D+","");
+            respuesta=respuesta.replaceAll("\\D+","");
         }
         return respuesta;
     }
