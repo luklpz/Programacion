@@ -1,5 +1,7 @@
 package com.lukalopez.tema06.EstructurasDinamicas;
 
+import java.util.Arrays;
+
 public class Pila {
     //Declaración de las variables.
     private static final double ERROR = Double.NEGATIVE_INFINITY;
@@ -89,9 +91,24 @@ public class Pila {
      * @return Devuelve 'true' si se ha completado el proceso.
      */
     private boolean expandir(){
+        System.out.println("[La pila se ha llenado] -> Expandiendo capacidad de la pila . . .");
         double[] arrayCopia = new double[data.length*2];
         System.arraycopy(data, 0, arrayCopia, 0, size);
         data=arrayCopia;
         return true;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Pila[");
+        for (int i = 0; i < size; i++) {
+            sb.append(String.format("%.2f",data[i]));
+            if (i!=size-1){
+                sb.append("; ");
+            }
+        }
+        sb.append("]");
+        return sb.toString();
     }
 }
