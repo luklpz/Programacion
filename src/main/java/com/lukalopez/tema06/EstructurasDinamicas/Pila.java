@@ -1,7 +1,5 @@
 package com.lukalopez.tema06.EstructurasDinamicas;
 
-import java.util.Arrays;
-
 public class Pila {
     //Declaración de las variables.
     private static final double ERROR = Double.NEGATIVE_INFINITY;
