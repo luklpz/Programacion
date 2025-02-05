@@ -41,6 +41,17 @@ public class Texto {
         return false;
     }
 
+    /**
+     * Verifica si el caracter se encuentra en el 'String'.
+     *
+     * @param caracter Es el caracter a validar.
+     * @param texto Es el 'String' donde se busca al 'char'.
+     * @return Devuelve 'true' si el caracter se encuentra en el 'String'.
+     */
+    public static boolean validarPresencia(char caracter, String texto){
+        return (texto.indexOf(caracter)>=0);
+    }
+
 //******************************** SUSTITUIR ********************************\\
     /**
      * Sustituye una secuencia de caracteres de un texto por la secuencia de caracteres indicada.
