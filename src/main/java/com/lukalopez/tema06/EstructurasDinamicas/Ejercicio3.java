@@ -67,6 +67,7 @@ public class Ejercicio3 {
 
         //Validamos el texto
         resultado= validarCorchetes(TEXTO);
+        System.out.printf("\nValidando el texto:\n\u001b[36m%s\u001b[0m\n",TEXTO);
 
         if (resultado){
             System.out.println("\u001b[1;32mEl texto está libre de errores.\u001b[0m");
