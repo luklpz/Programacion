@@ -1,5 +1,6 @@
 package com.lukalopez.tema06.EstructurasDinamicas;
 
+import com.lukalopez.lib.EstructurasDinamicas.Cola;
 import com.lukalopez.lib.Random;
 
 public class Ejercicio6 {

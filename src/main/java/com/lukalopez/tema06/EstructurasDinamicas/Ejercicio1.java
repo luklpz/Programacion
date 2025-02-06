@@ -1,5 +1,6 @@
 package com.lukalopez.tema06.EstructurasDinamicas;
 
+import com.lukalopez.lib.EstructurasDinamicas.DynamicArray;
 import com.lukalopez.lib.Random;
 
 public class Ejercicio1 {

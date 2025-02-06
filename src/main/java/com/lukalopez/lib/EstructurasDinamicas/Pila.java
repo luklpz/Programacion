@@ -1,4 +1,4 @@
-package com.lukalopez.tema06.EstructurasDinamicas;
+package com.lukalopez.lib.EstructurasDinamicas;
 
 public class Pila {
     //Declaración de las variables.
