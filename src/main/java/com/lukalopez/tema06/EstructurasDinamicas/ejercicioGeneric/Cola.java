@@ -1,23 +1,23 @@
-package com.lukalopez.lib.EstructurasDinamicas;
+package com.lukalopez.tema06.EstructurasDinamicas.ejercicioGeneric;
 
-public class Pila<T> {
+public class Cola<T> {
     //Declaración de las variables.
     private final static int CAPACIDAD_INICIAL = 10;
     private T[] data;
     private int size;
 
     /**
-     * Constructor para una pila vacía con una capacidad inicial de 10 datos.
+     * Constructor para una cola vacía con una capacidad inicial de 10 datos.
      */
-    public Pila(){
+    public Cola(){
         this(CAPACIDAD_INICIAL);
     }
 
     /**
-     * Constructor para una pila vacía.
-     * @param capacidad Cantidad de datos que soporta la pila inicialmente.
+     * Constructor para una cola vacía.
+     * @param capacidad Cantidad de datos que soporta la cola inicialmente.
      */
-    public Pila(int capacidad){
+    public Cola(int capacidad){
         @SuppressWarnings("unchecked")
         T[] aux = (T[]) new Object[capacidad];
         data = aux;
@@ -25,11 +25,11 @@ public class Pila<T> {
     }
 
     /**
-     * Añadir un dato a la pila.
-     * @param valor Valor a añadir a la pila.
+     * Añadir un dato a la cola.
+     * @param valor Valor a añadir a la cola.
      * @return Devuelve 'true' si el proceso se ha completado.
      */
-    public boolean push(T valor){
+    public boolean add(T valor){
         if (isFull()){
             expandir();
         }
@@ -39,54 +39,56 @@ public class Pila<T> {
     }
 
     /**
-     * Retira el elemento superior de la pila y lo lee.
-     * @return Devuelve el elemento retirado de la pila.
+     * Retira el elemento superior de la cola y lo lee.
+     * @return Devuelve el elemento retirado de la cola.
      */
     public T pop(){
+        final T aux;
         if (isEmpty()){
             return null;
         }
-        size--;
-        return data[size];
+        aux = data[0];
+        moveToLeft();
+        return aux;
     }
 
     /**
-     * Lee el número de elementos que contiene la pila.
-     * @return Devuelve el número de elementos que contiene la pila.
+     * Lee el número de elementos que contiene la cola.
+     * @return Devuelve el número de elementos que contiene la cola.
      */
     public int size(){
         return size;
     }
 
     /**
-     * Lee el último elemento de la pila sin retirarlo.
-     * @return Devuelve el último elemento de la pila.
+     * Lee el primer elemento de la cola sin retirarlo.
+     * @return Devuelve el primer elemento de la cola.
      */
-    public T top(){
+    public T peek(){
         if (isEmpty()){
             return null;
         }
-        return data[size-1];
+        return data[0];
     }
 
     /**
-     * Comprobación de si la pila no tiene datos.
-     * @return Devuelve 'true' si la pila se encuentra vacía.
+     * Comprobación de si la cola no tiene datos.
+     * @return Devuelve 'true' si la cola se encuentra vacía.
      */
     public boolean isEmpty(){
         return size == 0;
     }
 
     /**
-     * Comprobación de si la pila ha llegado a su tope.
-     * @return Devuelve true si la pila no acepta más datos.
+     * Comprobación de si la cola ha llegado a su tope.
+     * @return Devuelve true si la cola no acepta más datos.
      */
     public boolean isFull(){
         return size == data.length;
     }
 
     /**
-     * Duplicar la capacidad de la pila.
+     * Duplicar la capacidad de la cola.
      * @return Devuelve 'true' si se ha completado el proceso.
      */
     private boolean expandir(){
@@ -97,11 +99,14 @@ public class Pila<T> {
         return true;
     }
 
-    private boolean clear(){
-        @SuppressWarnings("unchecked")
-        T[] aux = (T[]) new Object[CAPACIDAD_INICIAL];
-        data = aux;
-        return true;
+    /**
+     * Mét0do para mover a la izquierda una fila de datos, eliminando el que hubiera antes
+     */
+    private void moveToLeft() {
+        for (int i = 0; i < size - 1; i++) {
+            data[i] = data[i + 1];
+        }
+        size--;
     }
 
     @Override

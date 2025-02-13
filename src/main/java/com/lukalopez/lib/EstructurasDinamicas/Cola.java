@@ -1,10 +1,10 @@
 package com.lukalopez.lib.EstructurasDinamicas;
 
-public class Cola {
+public class Cola<T> {
     //Declaración de las variables.
     private static final double ERROR = Double.NEGATIVE_INFINITY;
     private final static int CAPACIDAD_INICIAL = 10;
-    private double[] data;
+    private T[] data;
     private int size;
 
     /**
@@ -19,7 +19,9 @@ public class Cola {
      * @param capacidad Cantidad de datos que soporta la cola inicialmente.
      */
     public Cola(int capacidad){
-        data = new double[capacidad];
+        @SuppressWarnings("unchecked")
+        T[] aux = (T[]) new Object[capacidad];
+        data = aux;
         size = 0;
     }
 
@@ -28,7 +30,7 @@ public class Cola {
      * @param valor Valor a añadir a la cola.
      * @return Devuelve 'true' si el proceso se ha completado.
      */
-    public boolean add(double valor){
+    public boolean add(T valor){
         if (isFull()){
             expandir();
         }
@@ -41,10 +43,10 @@ public class Cola {
      * Retira el elemento superior de la cola y lo lee.
      * @return Devuelve el elemento retirado de la cola.
      */
-    public double pop(){
-        final double aux;
+    public T pop(){
+        final T aux;
         if (isEmpty()){
-            return ERROR;
+            return null;
         }
         aux = data[0];
         moveToLeft();
@@ -63,9 +65,9 @@ public class Cola {
      * Lee el primer elemento de la cola sin retirarlo.
      * @return Devuelve el primer elemento de la cola.
      */
-    public double peek(){
+    public T peek(){
         if (isEmpty()){
-            return ERROR;
+            return null;
         }
         return data[0];
     }
@@ -91,10 +93,10 @@ public class Cola {
      * @return Devuelve 'true' si se ha completado el proceso.
      */
     private boolean expandir(){
-        System.out.println("[La cola se ha llenado] -> Expandiendo capacidad de la cola . . .");
-        double[] arrayCopia = new double[data.length*2];
-        System.arraycopy(data, 0, arrayCopia, 0, size);
-        data=arrayCopia;
+        @SuppressWarnings("unchecked")
+        T[] aux = (T[]) new Object[data.length * 2];
+        if (size >= 0) System.arraycopy(data, 0, aux, 0, size);
+        data = aux;
         return true;
     }
 
@@ -111,18 +113,14 @@ public class Cola {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Cola[");
+        sb.append("[");
         for (int i = 0; i < size; i++) {
-            sb.append(String.format("%.2f",data[i]));
+            sb.append(data[i]);
             if (i!=size-1){
                 sb.append("; ");
             }
         }
         sb.append("]");
         return sb.toString();
-    }
-
-    public static void main(String[] args) {
-
     }
 }

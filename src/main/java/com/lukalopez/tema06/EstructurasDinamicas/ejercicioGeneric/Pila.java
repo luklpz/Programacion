@@ -1,7 +1,8 @@
-package com.lukalopez.lib.EstructurasDinamicas;
+package com.lukalopez.tema06.EstructurasDinamicas.ejercicioGeneric;
 
 public class Pila<T> {
     //Declaración de las variables.
+    private static final double ERROR = Double.NEGATIVE_INFINITY;
     private final static int CAPACIDAD_INICIAL = 10;
     private T[] data;
     private int size;
@@ -97,19 +98,12 @@ public class Pila<T> {
         return true;
     }
 
-    private boolean clear(){
-        @SuppressWarnings("unchecked")
-        T[] aux = (T[]) new Object[CAPACIDAD_INICIAL];
-        data = aux;
-        return true;
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("[");
         for (int i = 0; i < size; i++) {
-            sb.append(data[i]);
+            sb.append(String.format("%.2f",data[i]));
             if (i!=size-1){
                 sb.append("; ");
             }

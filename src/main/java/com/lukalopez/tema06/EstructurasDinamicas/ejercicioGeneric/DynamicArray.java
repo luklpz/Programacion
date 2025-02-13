@@ -1,4 +1,4 @@
-package com.lukalopez.lib.EstructurasDinamicas;
+package com.lukalopez.tema06.EstructurasDinamicas.ejercicioGeneric;
 
 import java.util.Arrays;
 
