@@ -126,7 +126,10 @@ public class Pila {
 
     public Pila peek(int n){
         if (n>size+1){
-            System.err.printf("ERROR: No se pueden devolver más números de los que hay en la pila\nNúmeros en la pila: %d\n",size+1);
+            System.err.printf("ERROR: No se pueden devolver más números de los que hay en la pila\nNúmeros en la pila: %d\n",size);
+            return null;
+        }
+        if (size==0){
             return null;
         }
         Pila aux = new Pila();
