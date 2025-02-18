@@ -124,7 +124,9 @@ public class Cola {
     //******************************** ADDON ********************************\\
 
     public boolean clear(){
-        data = new Object[CAPACIDAD_INICIAL];
+        for (int i = 0; i < size; i++) {
+            data[i]=null;
+        }
         size=0;
         return true;
     }

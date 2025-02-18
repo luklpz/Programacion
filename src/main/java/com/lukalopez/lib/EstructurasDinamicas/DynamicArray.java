@@ -208,7 +208,9 @@ public class DynamicArray {
     //******************************** ADDON ********************************\\
 
     public boolean clear(){
-        data = new Object[DEFAULT_CAPACITY];
+        for (int i = 0; i < size; i++) {
+            data[i]=null;
+        }
         size=0;
         return true;
     }
