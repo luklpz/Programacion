@@ -37,7 +37,7 @@ public class ColaConsulta {
     private final static int CAPACIDAD_INICIAL = 10;
     private Medico medico;
     private SeccionesConsulta seccion;
-    private Cola<Paciente> pacientes;
+    private Cola pacientes;
     private int size;
 
     public ColaConsulta(SeccionesConsulta seccion, Medico medico) {
@@ -46,7 +46,7 @@ public class ColaConsulta {
 
     public ColaConsulta(SeccionesConsulta seccion, Medico medico, int capacidad){
         @SuppressWarnings("unchecked")
-        Cola<Paciente> aux= new Cola<>(capacidad);
+        Cola aux= new Cola(capacidad);
         this.seccion = seccion;
         this.medico = medico;
         size = 0;
@@ -69,11 +69,11 @@ public class ColaConsulta {
         this.seccion = seccion;
     }
 
-    public Cola<Paciente> getPacientes() {
+    public Cola getPacientes() {
         return pacientes;
     }
 
-    public void setPacientes(Cola<Paciente> pacientes) {
+    public void setPacientes(Cola pacientes) {
         this.pacientes = pacientes;
     }
 

@@ -1,10 +1,10 @@
 package com.lukalopez.lib.EstructurasDinamicas;
 
-public class Cola<T> {
+public class Cola {
     //Declaración de las variables.
     private static final double ERROR = Double.NEGATIVE_INFINITY;
     private final static int CAPACIDAD_INICIAL = 10;
-    private T[] data;
+    private Object[] data;
     private int size;
 
     /**
@@ -19,9 +19,7 @@ public class Cola<T> {
      * @param capacidad Cantidad de datos que soporta la cola inicialmente.
      */
     public Cola(int capacidad){
-        @SuppressWarnings("unchecked")
-        T[] aux = (T[]) new Object[capacidad];
-        data = aux;
+        data = new Object[capacidad];
         size = 0;
     }
 
@@ -30,7 +28,7 @@ public class Cola<T> {
      * @param valor Valor a añadir a la cola.
      * @return Devuelve 'true' si el proceso se ha completado.
      */
-    public boolean add(T valor){
+    public boolean add(Object valor){
         if (isFull()){
             expandir();
         }
@@ -43,8 +41,8 @@ public class Cola<T> {
      * Retira el elemento superior de la cola y lo lee.
      * @return Devuelve el elemento retirado de la cola.
      */
-    public T pop(){
-        final T aux;
+    public Object pop(){
+        final Object aux;
         if (isEmpty()){
             return null;
         }
@@ -65,7 +63,7 @@ public class Cola<T> {
      * Lee el primer elemento de la cola sin retirarlo.
      * @return Devuelve el primer elemento de la cola.
      */
-    public T peek(){
+    public Object peek(){
         if (isEmpty()){
             return null;
         }
@@ -93,8 +91,7 @@ public class Cola<T> {
      * @return Devuelve 'true' si se ha completado el proceso.
      */
     private boolean expandir(){
-        @SuppressWarnings("unchecked")
-        T[] aux = (T[]) new Object[data.length * 2];
+        Object[] aux = new Object[data.length * 2];
         if (size >= 0) System.arraycopy(data, 0, aux, 0, size);
         data = aux;
         return true;
@@ -122,5 +119,42 @@ public class Cola<T> {
         }
         sb.append("]");
         return sb.toString();
+    }
+
+    //******************************** ADDON ********************************\\
+
+    public boolean clear(){
+        data = new Object[CAPACIDAD_INICIAL];
+        size=0;
+        return true;
+    }
+
+    public Cola clone(){
+        Cola aux = new Cola();
+        System.arraycopy(data, 0, aux.data, 0, size);
+        aux.size=size;
+        return aux;
+    }
+
+    public Object peekLast(){
+        return data[0];
+    }
+
+    public int search(Object elemento){
+        int contador=-1;
+        for (int i = 0; i < size; i++) {
+            contador++;
+            if (data[i].equals(elemento)) return contador;
+        }
+        return -1;
+    }
+
+    public Cola reverse(){
+        Cola aux = new Cola(data.length);
+        for (int i = 0; i < size; i++) {
+            aux.data[i]=data[size-i-1];
+        }
+        aux.size = size;
+        return aux;
     }
 }

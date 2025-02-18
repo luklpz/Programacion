@@ -10,13 +10,13 @@ import java.util.Arrays;
  * @version 0.1, 2020-01-30
  * @since 0.1, 2020-01-30
  **/
-public class DynamicArray<T> {
+public class DynamicArray {
     /* Capacidad inicial por defecto del array */
     private final static int DEFAULT_CAPACITY = 10;
     /* Factor de crecimiento */
     private final static float GROW_FACTOR = 2f;
     /* Los datos del array */
-    private T[] data;
+    private Object[] data;
     /* Número de elementos del array */
     private int size;
 
@@ -32,8 +32,7 @@ public class DynamicArray<T> {
      * @param capacity Capacidad inicial
      */
     public DynamicArray(int capacity) {
-        @SuppressWarnings("unchecked")
-        T[] aux = (T[]) new Object[capacity];
+        Object[] aux = new Object[capacity];
         data = aux;
         size = 0;
     }
@@ -43,7 +42,7 @@ public class DynamicArray<T> {
      * @param index Índice del elemento a obtener
      * @return el valor obtenido o ERROR
      */
-    public T get(int index) {
+    public Object get(int index) {
         if (index >= size || index < 0)
             return null;
         return data[index];
@@ -54,7 +53,7 @@ public class DynamicArray<T> {
      * @param value Elemento a añadir
      * @return true
      */
-    public boolean add(T value) {
+    public boolean add(Object value) {
         if (isFull())
             expand();
         data[size] = value;
@@ -81,7 +80,7 @@ public class DynamicArray<T> {
      * @param value Elemento a añadir
      * @return true
      */
-    public boolean add(int index, T value) {
+    public boolean add(int index, Object value) {
         if (index >= size || index < 0)
             return false;
         if (isFull())
@@ -108,10 +107,10 @@ public class DynamicArray<T> {
      * @param index posición a eliminar
      * @return El valor eliminado
      */
-    public T remove(int index) {
+    public Object remove(int index) {
         if (index >= size || index < 0)
             return null;
-        T valor = data[index];
+        Object valor = data[index];
         moveToLeft(index);
         return valor;
     }
@@ -122,7 +121,7 @@ public class DynamicArray<T> {
      * @param value valor a eliminar
      * @return true si se ha borrado el elemento, false en caso contrario
      */
-    public boolean remove(T value) {
+    public boolean remove(Object value) {
         for (int i = 0; i < size; i++) {
             if (data[i] == value) {
                 moveToLeft(i);
@@ -138,7 +137,7 @@ public class DynamicArray<T> {
      * @param value Valor que toma el elemento
      * @return true
      */
-    public boolean set(int index, T value) {
+    public boolean set(int index, Object value) {
         if (index >= size || index < 0)
             return false;
         data[index] = value;
@@ -149,8 +148,7 @@ public class DynamicArray<T> {
      * Método de uso interno para ampliar la capacidad del array según el factor de crecimiento
      */
     private void expand() {
-        @SuppressWarnings("unchecked")
-        T[] aux = (T[]) new Object[Math.round(data.length * GROW_FACTOR)];
+        Object[] aux = new Object[Math.round(data.length * GROW_FACTOR)];
         for (int i = 0; i < size; i++) {
             aux[i] = data[i];
         }
@@ -205,5 +203,51 @@ public class DynamicArray<T> {
             sb.append(data[i]).append(" ");
         sb.append("]");
         return sb.toString();
+    }
+
+    //******************************** ADDON ********************************\\
+
+    public boolean clear(){
+        data = new Object[DEFAULT_CAPACITY];
+        size=0;
+        return true;
+    }
+
+    public DynamicArray clone(){
+        DynamicArray aux = new DynamicArray();
+        System.arraycopy(data, 0, aux.data, 0, size);
+        aux.size=size;
+        return aux;
+    }
+
+    public int indexOf(Object elemento){
+        int contador=-1;
+        for (int i = 0; i < size; i++) {
+            contador++;
+            if (data[i].equals(elemento)) return contador;
+        }
+        return -1;
+    }
+
+    public void trimToSize(){
+        DynamicArray aux = new DynamicArray(size);
+        System.arraycopy(data, 0, aux.data, 0, size);
+        data=aux.data;
+    }
+
+    public boolean swap(int index1, int index2){
+        if (index1<0||index2<0||index1>size-1||index2>size-1){
+            return false;
+        }
+
+        Object aux;
+        aux=data[index1];
+        data[index1]=data[index2];
+        data[index2]=aux;
+        return true;
+    }
+
+    public int getLenght(){
+        return data.length;
     }
 }
