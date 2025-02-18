@@ -150,12 +150,12 @@ public class Pila {
         return -1;
     }
 
-    public Pila reverse(){
+    public void reverse(){
         Pila aux = new Pila(data.length);
         for (int i = 0; i < size; i++) {
             aux.data[i]=data[size-i-1];
         }
-        aux.size = size;
-        return aux;
+
+        data= aux.data;
     }
 }

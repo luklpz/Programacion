@@ -69,7 +69,7 @@ public class EjercicioGenerics {
                     System.out.printf("Push(5): %s\n", pila);
                     System.out.printf("Search(4): %d\n\n", pila.search(4));
 
-                    pila= pila.reverse();
+                    pila.reverse();
                     System.out.printf("Reverse: %s\n\n",pila.toString());
 
                 }
@@ -109,7 +109,7 @@ public class EjercicioGenerics {
                     System.out.printf("Add(5): %s\n", cola);
                     System.out.printf("Search(4): %d\n\n", cola.search(4));
 
-                    cola = cola.reverse();
+                    cola.reverse();
                     System.out.printf("Reverse: %s\n\n",cola.toString());
 
 

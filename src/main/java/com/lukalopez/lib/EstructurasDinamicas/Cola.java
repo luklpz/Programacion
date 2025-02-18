@@ -151,12 +151,11 @@ public class Cola {
         return -1;
     }
 
-    public Cola reverse(){
+    public void reverse(){
         Cola aux = new Cola(data.length);
         for (int i = 0; i < size; i++) {
             aux.data[i]=data[size-i-1];
         }
-        aux.size = size;
-        return aux;
+        data= aux.data;
     }
 }
