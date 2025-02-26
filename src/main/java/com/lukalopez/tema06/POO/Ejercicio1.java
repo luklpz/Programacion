@@ -15,7 +15,7 @@ public class Ejercicio1 {
      * @param metalizado 'Boolean' El coche es metalizado.
      * @param tipo 'Tipo' Tipo de coche.
      * @param anyoDeFabricacion 'int' Año de fabricación.
-     * @param aTodoRiesgo 'Boolean' Seguro a t0do riesgo.
+     * @param aTodoRiesgo 'boolean' Seguro a t0do riesgo.
      * @return Devuelve un objeto coche.
      */
     public static Coche crearCoche(String modelo, String color, boolean metalizado,  Tipo tipo, int anyoDeFabricacion, boolean aTodoRiesgo){

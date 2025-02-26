@@ -1,98 +1,19 @@
-package com.lukalopez.tema06.POO;
+package com.lukalopez.tema06.POO.Ejercicio3;
 
 import com.lukalopez.lib.FH;
 import com.lukalopez.lib.IO;
 
 import java.time.LocalDate;
 
-public class Ejercicio3 {
-    private enum Grupo {
+public class Centro {
+    enum Grupo {
         DAM, DAW, ASIR
     }
 
-    public static class Alumno {
-        private String nia;
-        private String nombre;
-        private String apellidos;
-        private LocalDate fechaNacimiento;
-        private Grupo grupo;
-        private String telefono;
+    static Alumno[] arrayAlumnos = new Alumno[100];
+    private static int size = 0;
 
-        public Alumno(String nia, String nombre, String apellidos, LocalDate fechaNacimiento, Grupo grupo, String telefono) {
-            this.nia = nia;
-            this.nombre = nombre;
-            this.apellidos = apellidos;
-            this.fechaNacimiento = fechaNacimiento;
-            this.grupo = grupo;
-            this.telefono = telefono;
-        }
-
-        public String getNia() {
-            return nia;
-        }
-
-        public void setNia(String nia) {
-            this.nia = nia;
-        }
-
-        public String getNombre() {
-            return nombre;
-        }
-
-        public void setNombre(String nombre) {
-            this.nombre = nombre;
-        }
-
-        public String getApellidos() {
-            return apellidos;
-        }
-
-        public void setApellidos(String apellidos) {
-            this.apellidos = apellidos;
-        }
-
-        public LocalDate getFechaNacimiento() {
-            return fechaNacimiento;
-        }
-
-        public void setFechaNacimiento(LocalDate fechaNacimiento) {
-            this.fechaNacimiento = fechaNacimiento;
-        }
-
-        public Grupo getGrupo() {
-            return grupo;
-        }
-
-        public void setGrupo(Grupo grupo) {
-            this.grupo = grupo;
-        }
-
-        public String getTelefono() {
-            return telefono;
-        }
-
-        public void setTelefono(String telefono) {
-            this.telefono = telefono;
-        }
-
-        @Override
-        public String toString() {
-            return "Alumno:" +
-                    "\n  NIA = " + nia +
-                    "\n  Nombre = " + nombre +
-                    "\n  Apellidos = " + apellidos +
-                    "\n  Fecha de nacimiento = " + fechaNacimiento +
-                    "\n  Grupo = " + grupo +
-                    "\n  Telefono = " + telefono +
-                    '\n';
-        }
-    }
-
-    protected static Alumno[] arrayAlumnos = new Alumno[100];
-
-    /********************************************************************************************************************************\
-
-     /**
+    /**
      * Mét0do que genera el menú de gestión.
      * @return Devuelve el menú de gestión listo para imprimir.
      */
@@ -100,49 +21,52 @@ public class Ejercicio3 {
         return "\n*********************\n** GESTIÓN ALUMNOS **\n*********************\n1. Nuevo alumno...\n2. Baja de alumno...\n3. Consultas...\n------------------------------\n0. Salir\n";
     }
 
-    /**
-     * Mét0do que genera el menú de consultas.
-     *
-     * @return Devuelve el menú de consultas listo para imprimir.
-     */
-    private static String menuConsultas() {
-        return "\n***************\n** CONSULTAS **\n***************\n1. Por grupo...\n2. Por edad...\n3. Por nia...\n4. Por apellidos ...\n--------------------\n0. Volver al menú principal\n\n";
-    }
 
-    private static void gestion(int opcionMenu) {
-        switch (opcionMenu) {
-            case 1 -> {
-                int ultimaPosicion = ultimaPosicion();
-                if (ultimaPosicion != -1) {
-                    arrayAlumnos[ultimaPosicion] = nuevoAlumno();
-                } else {
-                    System.err.println("ERROR: La lista de alumnos está llena");
+
+    private static void gestion() {
+        System.out.println(menuGestion());
+        int opcionMenu = IO.solicitarInt(menuGestion(), 0,3,"ERROR: Entrada invalida.\n");
+
+        do {
+            switch (opcionMenu) {
+                case 1 -> {
+                    int ultimaPosicion = ultimaPosicion();
+                    if (ultimaPosicion != -1) {
+                        arrayAlumnos[ultimaPosicion] = nuevoAlumno();
+                    } else {
+                        System.err.println("ERROR: La lista de alumnos está llena");
+                    }
                 }
+                case 2 -> bajaDeAlumno();
+                default -> System.out.println("ERROR: Entrada inesperada.");
             }
-            case 2 ->bajaDeAlumno();
-            //case 3
-            default -> System.out.println("ERROR: Entrada inesperada.");
-        }
+        } while (true);
     }
 
+    /**
+     * Mét0do que devuelve la siguiente posición del array.
+     * @return Devuelve el index de la siguiente posicion del array por llenar, en caso de que se haya llenado devuelve -1.
+     */
     private static int ultimaPosicion() {
-        for (int i = 0; i < arrayAlumnos.length; i++) {
-            if (arrayAlumnos[i] == null) {
-                return i;
-            }
+        if (size< arrayAlumnos.length) {
+            return size++;
         }
         return -1;
     }
 
     /********************************************************************************************************************************/
 
+    /**
+     * Mét0do para realizar las diferentes solicitudes que se realizan a la hora de crear un alumno.
+     * @return Retorna al 'Alumno' inicializado.
+     */
     private static Alumno nuevoAlumno() {
         //Solicitamos las variables
         String nia;
         String nombre;
         String apellidos;
         LocalDate fechaDeNacimiento;
-        Grupo grupo;
+        Centro.Grupo grupo;
         String telefonoDeContacto;
 
         //Solicitamos el NIA
@@ -165,6 +89,10 @@ public class Ejercicio3 {
         return new Alumno(nia, nombre, apellidos, fechaDeNacimiento, grupo, telefonoDeContacto);
     }
 
+    /**
+     * Mét0do para solicitar el NIA del alumno.
+     * @return Devuelve el nia validado.
+     */
     private static String solicitudNia(){
         boolean validado;
         String nia;
@@ -175,6 +103,10 @@ public class Ejercicio3 {
         return nia;
     }
 
+    /**
+     * Mét0do para solicitar el nombre del alumno.
+     * @return Devuelve el nombre validado.
+     */
     private static String solititudNombre(){
         boolean validado;
         String nombre;
@@ -185,6 +117,10 @@ public class Ejercicio3 {
         return nombre;
     }
 
+    /**
+     * Mét0do para solicitar los apellidos del alumno.
+     * @return Devuelve los apellidos validados.
+     */
     private static String solicitudApellidos(){
         boolean validado;
         StringBuilder apellidos = new StringBuilder();
@@ -202,6 +138,10 @@ public class Ejercicio3 {
         return apellidos.toString();
     }
 
+    /**
+     * Mét0do para solicitar la fecha de nacimiento del alumno.
+     * @return Devuelve la fecha de nacimiento validado.
+     */
     private static LocalDate solicitudFechaDeNacimiento(){
         boolean validado;
         LocalDate fechaDeNacimiento;
@@ -212,20 +152,24 @@ public class Ejercicio3 {
         return fechaDeNacimiento;
     }
 
-    private static Grupo solicitudGrupo(){
+    /**
+     * Mét0do para solicitar el grupo del alumno.
+     * @return Devuelve el grupo validado.
+     */
+    private static Centro.Grupo solicitudGrupo(){
         boolean validado;
-        Grupo grupo;
+        Centro.Grupo grupo;
         int seleccion;
         do {
-            System.out.printf("******\n 1 - %s\n 2 - %s\n 3 - %s\n******\n",Grupo.DAM,Grupo.DAW,Grupo.ASIR);
+            System.out.printf("******\n 1 - %s\n 2 - %s\n 3 - %s\n******\n", Centro.Grupo.DAM, Centro.Grupo.DAW, Centro.Grupo.ASIR);
             seleccion = IO.solicitarInt("\nIngrese el número del grupo al que pertenece el alumno: ");
             switch (seleccion){
-                case 1 -> grupo = Grupo.DAM;
-                case 2 -> grupo = Grupo.DAW;
-                case 3 -> grupo = Grupo.ASIR;
+                case 1 -> grupo = Centro.Grupo.DAM;
+                case 2 -> grupo = Centro.Grupo.DAW;
+                case 3 -> grupo = Centro.Grupo.ASIR;
                 default -> {
                     System.err.print("ERROR: Entrada inesperarda.");
-                    grupo = Grupo.DAM;
+                    grupo = Centro.Grupo.DAM;
                 }
             }
             validado = IO.solicitarBoolean(String.format("El grupo es \"%s\" ¿Es correcto? (Si/No)\n",grupo),"Si","No","ERROR: Respuesta inválida.\n\n");
@@ -233,6 +177,10 @@ public class Ejercicio3 {
         return grupo;
     }
 
+    /**
+     * Mét0do para solicitar el telefono del alumno.
+     * @return Devuelve el telefono validado.
+     */
     private static String solicitarTelefono(){
         boolean validado;
         String telefono;
@@ -244,19 +192,53 @@ public class Ejercicio3 {
     }
 
     //********************************************************************************************************************************/
+
+    /**
+     * Mét0do que sirve para dar de baja a un alumno.
+     */
     public static void bajaDeAlumno(){
         String nia = solicitudNia();
         for (int i = 0; i < arrayAlumnos.length; i++) {
-            if (arrayAlumnos[i].nia.equals(nia)) {
+            if (arrayAlumnos[i].getNia().equals(nia)) {
                 arrayAlumnos[i]=null;
                 return;
             }
         }
         System.out.println();
     }
-    //********************************************************************************************************************************/
 
     /********************************************************************************************************************************/
+
+    /**
+     * Mét0do que genera el menú de consultas.
+     * @return Devuelve el menú de consultas listo para imprimir.
+     */
+    private static String menuConsultas() {
+        return "\n***************\n** CONSULTAS **\n***************\n1. Por grupo...\n2. Por edad...\n3. Por nia...\n4. Por apellidos ...\n--------------------\n0. Volver al menú principal\n\n";
+    }
+
+
+    /**
+     * Mét0do para gestionar la entrada del usuario
+     * @param opcionMenu Es la entrada que previamente ha introducido el usuario.
+     */
+    private static void consulta(int opcionMenu) {
+        switch (opcionMenu) {
+            case 1 -> {
+                int ultimaPosicion = ultimaPosicion();
+                if (ultimaPosicion != -1) {
+                    arrayAlumnos[ultimaPosicion] = nuevoAlumno();
+                } else {
+                    System.err.println("ERROR: La lista de alumnos está llena");
+                }
+            }
+            case 2 -> bajaDeAlumno();
+            default -> System.out.println("ERROR: Entrada inesperada.");
+        }
+
+    /********************************************************************************************************************************/
+    }
+
     public static void main(String[] args) {
         //Definimos las variables
         int opcionMenu;
@@ -268,7 +250,6 @@ public class Ejercicio3 {
 
             //Procesamos la entrada
             if (opcionMenu!=0) {
-                gestion(opcionMenu);
             } else {
                 System.out.println("Cerrando programa . . .");
             }

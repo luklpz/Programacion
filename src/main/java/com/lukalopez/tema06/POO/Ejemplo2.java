@@ -1,25 +1,52 @@
 package com.lukalopez.tema06.POO;
 
 public class Ejemplo2 {
-    private enum Curso{
+    public enum Curso{
         PRIMERO,SEGUNDO
     }
+    public enum Clase{
+        PROGRAMACION, BASEDEDATOS, INGLES
+    }
+
     public static class Asignatura{
-        private String nombre;
-        private String codigo;
+        private Clase nombre;
+        private final int codigo;
         private Curso curso;
 
-        public Asignatura(String nombre, String codigo, Curso curso){
+        public Asignatura(Clase nombre, int codigo, Curso curso){
             this.nombre = nombre;
             this.codigo = codigo;
             this.curso = curso;
         }
 
-    }
+        public Clase getNombre() {
+            return nombre;
+        }
 
-    static Asignatura A1  = new Asignatura("Programacion","1017", Curso.PRIMERO);
+        public int getCodigo() {
+            return codigo;
+        }
 
-    public static void main(String[] args) {
-        System.out.printf("Asignatura: %s \nCodigo: %s \nCurso: %s",A1.nombre,A1.codigo,A1.curso);
+        public Curso getCurso() {
+            return curso;
+        }
+
+        @Override
+        public String toString() {
+            StringBuilder sb = new StringBuilder();
+            sb.append("nombre \"");
+            switch (nombre){
+                case PROGRAMACION -> sb.append("Programación\", ");
+                case BASEDEDATOS -> sb.append("Base de Datos\", ");
+                case INGLES -> sb.append("Inglés\", ");
+                default -> System.err.println("ERROR: Asinganatura inesperada.");
+            }
+            sb.append("código ").append(codigo).append(", curso ");
+            switch (curso){
+                case PRIMERO -> sb.append("1. ");
+                case SEGUNDO -> sb.append("2. ");
+            }
+            return sb.toString();
+        }
     }
 }
