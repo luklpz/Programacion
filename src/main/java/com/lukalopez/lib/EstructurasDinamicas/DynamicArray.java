@@ -252,4 +252,8 @@ public class DynamicArray {
     public int getLenght(){
         return data.length;
     }
+
+    public boolean isEmpty(){
+        return size == 0;
+    }
 }

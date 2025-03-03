@@ -3,7 +3,7 @@ package com.lukalopez.tema06.EstructurasDinamicas.Ejercicio7;
 public class Hospital {
     private static final int CONSULTAS_INICIALES = 5;
     private final String nombreHospital;
-    private ColaConsulta[] consultas;
+    private SalaDeEspera[] consultas;
     private int size=1;
 
     /**
@@ -21,18 +21,18 @@ public class Hospital {
      */
     public Hospital(String nombre,int numeroConsultas){
         nombreHospital=nombre;
-        consultas = new ColaConsulta[numeroConsultas];
+        consultas = new SalaDeEspera[numeroConsultas];
     }
 
     public String getNombreHospital() {
         return nombreHospital;
     }
 
-    public ColaConsulta getConsultas(int index) {
+    public SalaDeEspera getConsultas(int index) {
         return consultas[index];
     }
 
-    public void setConsultas(ColaConsulta consulta, int posicion) {
+    public void setConsultas(SalaDeEspera consulta, int posicion) {
         size++;
         this.consultas[posicion] = consulta;
     }

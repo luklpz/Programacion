@@ -54,10 +54,8 @@ public class Main {
                 nombre = IO.solicitarString("Introduzca el nombre del usuario: ",false);
                 apellidos = IO.solicitarString("Introduzca los apellidos del usuario: ",false);
                 horaFechaCita = FH.solicitarFechaHora("Ingrese la fecha y la hora de la cita: (dd/MM/YYYY hh:mm:ss)","dd/MM/yyyy HH:mm:ss");
-                paciente = new Paciente(sip,nombre, apellidos,horaFechaCita);
 
                 //Procesamos las respuestas
-                hospital.getConsultas(respuesta-1).getPacientes().add(paciente);
                 return false;
             }
             case 2 -> {

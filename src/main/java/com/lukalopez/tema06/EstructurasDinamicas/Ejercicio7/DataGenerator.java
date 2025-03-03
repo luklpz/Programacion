@@ -18,8 +18,8 @@ public class DataGenerator {
         return hospital;
     }
 
-    private static ColaConsulta crearConsulta(){
-        ColaConsulta consulta = new ColaConsulta(ColaConsulta.seccionesConsulta(Random.randomInt(0,4)),crearMedico());
+    private static SalaDeEspera crearConsulta(){
+        SalaDeEspera consulta = new SalaDeEspera(crearMedico());
         for (int i = 0; i < 10; i++) {
             consulta.getPacientes().add(crearPaciente());
         }
@@ -31,7 +31,7 @@ public class DataGenerator {
     }
 
     public static Paciente crearPaciente(){
-        Paciente paciente = new Paciente(String.valueOf(Random.randomInt(10000000,99999999)),nombres[Random.randomInt(0,nombres.length-1)], String.format("%s %s",apellidos[Random.randomInt(0,apellidos.length-1)],apellidos[Random.randomInt(0,apellidos.length-1)]), LocalDateTime.now());
+        Paciente paciente = new Paciente(String.valueOf(Random.randomInt(10000000,99999999)),nombres[Random.randomInt(0,nombres.length-1)], String.format("%s %s",apellidos[Random.randomInt(0,apellidos.length-1)],apellidos[Random.randomInt(0,apellidos.length-1)]), Paciente.Sexo.HOMBRE,LocalDateTime.now(),"");
         return paciente;
     }
 }

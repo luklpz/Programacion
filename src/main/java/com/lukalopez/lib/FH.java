@@ -17,7 +17,7 @@ public class FH {
      * @return Es el 'LocalDate' que contiene la fecha en el formato indicado.
      */
     public static LocalDate solicitarFecha(String mensaje,String formato) {
-        System.out.println(mensaje);
+        System.out.print(mensaje);
         String fechaString = Escaner.lector.nextLine();
         return LocalDate.parse(fechaString, DateTimeFormatter.ofPattern(formato));
     }
@@ -30,7 +30,7 @@ public class FH {
      * @return Es el 'LocalTime' que contiene la hora en el formato indicado.
      */
     public static LocalTime solicitarHora(String mensaje, String formato) {
-        System.out.println(mensaje);
+        System.out.print(mensaje);
         String horaString = Escaner.lector.nextLine();
         return LocalTime.parse(horaString, DateTimeFormatter.ofPattern(formato));
     }
@@ -43,7 +43,7 @@ public class FH {
      * @return Es el 'LocalDateTime' que contiene la fecha y la hora en el formato indicado.
      */
     public static LocalDateTime solicitarFechaHora(String mensaje, String formato) {
-        System.out.println(mensaje);
+        System.out.print(mensaje);
         String fechaHoraString = Escaner.lector.nextLine();
         return LocalDateTime.parse(fechaHoraString, DateTimeFormatter.ofPattern(formato));
     }
