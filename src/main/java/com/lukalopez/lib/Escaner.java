@@ -20,7 +20,7 @@ public class Escaner {
      * @return Devuelve un 'Scanner' estático dentro de 'archivo'.
      * @throws FileNotFoundException Error que se lanza si no se encuentra archivo.
      */
-    public static Scanner lectorFile(File archivo) throws FileNotFoundException {
+    private static Scanner lectorFile(File archivo) throws FileNotFoundException {
         return new Scanner(archivo);
     }
 
