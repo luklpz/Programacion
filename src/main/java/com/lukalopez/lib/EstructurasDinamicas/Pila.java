@@ -1,9 +1,9 @@
 package com.lukalopez.lib.EstructurasDinamicas;
 
-public class Pila {
+public class Pila<T> {
     //Declaración de las variables.
     private final static int CAPACIDAD_INICIAL = 10;
-    private Object[] data;
+    private T[] data;
     private int size;
 
     /**
@@ -18,7 +18,8 @@ public class Pila {
      * @param capacidad Cantidad de datos que soporta la pila inicialmente.
      */
     public Pila(int capacidad){
-        Object[] aux = new Object[capacidad];
+        @SuppressWarnings("unchecked")
+        T[] aux = (T[]) new Object[capacidad];
         data = aux;
         size = 0;
     }
@@ -28,7 +29,7 @@ public class Pila {
      * @param valor Valor a añadir a la pila.
      * @return Devuelve 'true' si el proceso se ha completado.
      */
-    public boolean push(Object valor){
+    public boolean push(T valor){
         if (isFull()){
             expandir();
         }
@@ -41,7 +42,7 @@ public class Pila {
      * Retira el elemento superior de la pila y lo lee.
      * @return Devuelve el elemento retirado de la pila.
      */
-    public Object pop(){
+    public T pop(){
         if (isEmpty()){
             return null;
         }
@@ -61,7 +62,7 @@ public class Pila {
      * Lee el último elemento de la pila sin retirarlo.
      * @return Devuelve el último elemento de la pila.
      */
-    public Object top(){
+    public T top(){
         if (isEmpty()){
             return null;
         }
@@ -89,7 +90,8 @@ public class Pila {
      * @return Devuelve 'true' si se ha completado el proceso.
      */
     private boolean expandir(){
-        Object[] aux = new Object[data.length * 2];
+        @SuppressWarnings("unchecked")
+        T[] aux = (T[]) new Object[data.length * 2];
         if (size >= 0) System.arraycopy(data, 0, aux, 0, size);
         data = aux;
         return true;
@@ -119,13 +121,15 @@ public class Pila {
         return true;
     }
 
+    @SuppressWarnings("rawtypes")
     public Pila clone(){
-        Pila aux = new Pila();
+        Pila<T> aux = new Pila<T>();
         System.arraycopy(data, 0, aux.data, 0, size);
         aux.size=size;
         return aux;
     }
 
+    @SuppressWarnings("rawtypes")
     public Pila peek(int n){
         if (n>size+1){
             System.err.printf("ERROR: No se pueden devolver más números de los que hay en la pila\nNúmeros en la pila: %d\n",size);
@@ -134,14 +138,14 @@ public class Pila {
         if (size==0){
             return null;
         }
-        Pila aux = new Pila();
+        Pila<T> aux = new Pila<T>();
         for (int i = size-n; i < size; i++) {
             aux.push(data[i]);
         }
         return aux;
     }
 
-    public int search(Object elemento){
+    public int search(T elemento){
         int contador=-1;
         for (int i = size-1; i > -1; i--) {
             contador++;
@@ -151,11 +155,10 @@ public class Pila {
     }
 
     public void reverse(){
-        Pila aux = new Pila(data.length);
+        Pila<T> aux = new Pila<T>(data.length);
         for (int i = 0; i < size; i++) {
             aux.data[i]=data[size-i-1];
         }
-
-        data= aux.data;
+        data = aux.data;
     }
 }
