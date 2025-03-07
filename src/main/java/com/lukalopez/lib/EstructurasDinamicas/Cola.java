@@ -1,10 +1,10 @@
 package com.lukalopez.lib.EstructurasDinamicas;
 
-public class Cola {
+public class Cola<T> {
+
     //Declaración de las variables.
-    private static final double ERROR = Double.NEGATIVE_INFINITY;
     private final static int CAPACIDAD_INICIAL = 10;
-    private Object[] data;
+    private T[] data;
     private int size;
 
     /**
@@ -18,9 +18,15 @@ public class Cola {
      * Constructor para una cola vacía.
      * @param capacidad Cantidad de datos que soporta la cola inicialmente.
      */
-    public Cola(int capacidad){
-        data = new Object[capacidad];
+    public Cola(final int capacidad){
+        data = crearData(capacidad);
         size = 0;
+    }
+
+    private T[] crearData(final int CAPACIDAD){
+        @SuppressWarnings("unchecked")
+        T[] aux = (T[]) new Object[CAPACIDAD];
+        return aux;
     }
 
     /**
@@ -28,7 +34,7 @@ public class Cola {
      * @param valor Valor a añadir a la cola.
      * @return Devuelve 'true' si el proceso se ha completado.
      */
-    public boolean add(Object valor){
+    public boolean add(T valor){
         if (isFull()){
             expandir();
         }
@@ -41,8 +47,8 @@ public class Cola {
      * Retira el elemento superior de la cola y lo lee.
      * @return Devuelve el elemento retirado de la cola.
      */
-    public Object pop(){
-        final Object aux;
+    public T pop(){
+        final T aux;
         if (isEmpty()){
             return null;
         }
@@ -63,7 +69,7 @@ public class Cola {
      * Lee el primer elemento de la cola sin retirarlo.
      * @return Devuelve el primer elemento de la cola.
      */
-    public Object peek(){
+    public T peek(){
         if (isEmpty()){
             return null;
         }
@@ -91,7 +97,8 @@ public class Cola {
      * @return Devuelve 'true' si se ha completado el proceso.
      */
     private boolean expandir(){
-        Object[] aux = new Object[data.length * 2];
+        @SuppressWarnings("unchecked")
+        T[] aux = (T[]) new Object[data.length * 2];
         if (size >= 0) System.arraycopy(data, 0, aux, 0, size);
         data = aux;
         return true;
@@ -131,6 +138,7 @@ public class Cola {
         return true;
     }
 
+    @SuppressWarnings("rawtypes")
     public Cola clone(){
         Cola aux = new Cola();
         System.arraycopy(data, 0, aux.data, 0, size);
@@ -138,11 +146,11 @@ public class Cola {
         return aux;
     }
 
-    public Object peekLast(){
+    public T peekLast(){
         return data[0];
     }
 
-    public int search(Object elemento){
+    public int search(T elemento){
         int contador=-1;
         for (int i = 0; i < size; i++) {
             contador++;
@@ -152,10 +160,11 @@ public class Cola {
     }
 
     public void reverse(){
-        Cola aux = new Cola(data.length);
+        @SuppressWarnings("unchecked")
+        T[] aux = (T[]) new Object[data.length];
         for (int i = 0; i < size; i++) {
-            aux.data[i]=data[size-i-1];
+            aux[i]=data[size-i-1];
         }
-        data= aux.data;
+        data = aux;
     }
 }
