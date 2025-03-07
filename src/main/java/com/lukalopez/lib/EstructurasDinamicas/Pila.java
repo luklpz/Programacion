@@ -155,10 +155,11 @@ public class Pila<T> {
     }
 
     public void reverse(){
-        Pila<T> aux = new Pila<T>(data.length);
+        @SuppressWarnings("unchecked")
+        T[] aux = (T[]) new Object[data.length];
         for (int i = 0; i < size; i++) {
-            aux.data[i]=data[size-i-1];
+            aux[i]=data[size-i-1];
         }
-        data = aux.data;
+        data = aux;
     }
 }
