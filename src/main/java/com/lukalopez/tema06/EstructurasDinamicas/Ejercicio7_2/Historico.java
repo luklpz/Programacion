@@ -41,7 +41,7 @@ public class Historico {
     public boolean atenderPaciente(final int sip){
         Paciente paciente = Main.buscarPorSip(sip);
 
-        if (paciente==null){
+        if (paciente.getNombre().equals(null)){
             System.err.printf("ERROR: El paciente con sip \'%d\' todavía no existe.\n",sip);
             return false;
         } else {
