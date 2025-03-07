@@ -174,6 +174,7 @@ public class DynamicArray<T> {
     }
 
     @Override
+    @SuppressWarnings("rawtypes")
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -217,6 +218,7 @@ public class DynamicArray<T> {
         return true;
     }
 
+    @SuppressWarnings("rawtypes")
     public DynamicArray clone(){
         DynamicArray aux = new DynamicArray();
         System.arraycopy(data, 0, aux.data, 0, size);
