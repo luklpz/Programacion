@@ -10,15 +10,17 @@ import java.util.Arrays;
  * @version 0.1, 2020-01-30
  * @since 0.1, 2020-01-30
  **/
-public class DynamicArray {
+public class DynamicArray<T> {
+
     /* Capacidad inicial por defecto del array */
     private final static int DEFAULT_CAPACITY = 10;
     /* Factor de crecimiento */
     private final static float GROW_FACTOR = 2f;
     /* Los datos del array */
-    private Object[] data;
+    private T[] data;
     /* Número de elementos del array */
     private int size;
+
 
     /**
      * Crear un array dinámico con la capacidad inicial por defecto
@@ -32,7 +34,8 @@ public class DynamicArray {
      * @param capacity Capacidad inicial
      */
     public DynamicArray(int capacity) {
-        Object[] aux = new Object[capacity];
+        @SuppressWarnings("unchecked")
+        T[] aux = (T[]) new Object[capacity];
         data = aux;
         size = 0;
     }
@@ -42,7 +45,7 @@ public class DynamicArray {
      * @param index Índice del elemento a obtener
      * @return el valor obtenido o ERROR
      */
-    public Object get(int index) {
+    public T get(int index) {
         if (index >= size || index < 0)
             return null;
         return data[index];
@@ -53,7 +56,7 @@ public class DynamicArray {
      * @param value Elemento a añadir
      * @return true
      */
-    public boolean add(Object value) {
+    public boolean add(T value) {
         if (isFull())
             expand();
         data[size] = value;
@@ -63,7 +66,7 @@ public class DynamicArray {
 
 
     /**
-     * Método de uso interno para desplazar los elementos a la derecha a partir del índice indicado
+     * Mét0do de uso interno para desplazar los elementos a la derecha a partir del índice indicado
      * @param index Índice a partir del cual se desplazarán los elementos
      */
     private void moveToRight(int index) {
@@ -80,7 +83,7 @@ public class DynamicArray {
      * @param value Elemento a añadir
      * @return true
      */
-    public boolean add(int index, Object value) {
+    public boolean add(int index, T value) {
         if (index >= size || index < 0)
             return false;
         if (isFull())
@@ -91,7 +94,7 @@ public class DynamicArray {
     }
 
     /**
-     * Método de uso interno para desplazar los elementos a la izquierda a partir del índice indicado
+     * Mét0do de uso interno para desplazar los elementos a la izquierda a partir del índice indicado
      * @param index Índice a partir del cual se desplazarán los elementos
      */
     private void moveToLeft(int index) {
@@ -107,10 +110,10 @@ public class DynamicArray {
      * @param index posición a eliminar
      * @return El valor eliminado
      */
-    public Object remove(int index) {
+    public T remove(int index) {
         if (index >= size || index < 0)
             return null;
-        Object valor = data[index];
+        T valor = data[index];
         moveToLeft(index);
         return valor;
     }
@@ -121,7 +124,7 @@ public class DynamicArray {
      * @param value valor a eliminar
      * @return true si se ha borrado el elemento, false en caso contrario
      */
-    public boolean remove(Object value) {
+    public boolean remove(T value) {
         for (int i = 0; i < size; i++) {
             if (data[i] == value) {
                 moveToLeft(i);
@@ -137,7 +140,7 @@ public class DynamicArray {
      * @param value Valor que toma el elemento
      * @return true
      */
-    public boolean set(int index, Object value) {
+    public boolean set(int index, T value) {
         if (index >= size || index < 0)
             return false;
         data[index] = value;
@@ -145,13 +148,12 @@ public class DynamicArray {
     }
 
     /**
-     * Método de uso interno para ampliar la capacidad del array según el factor de crecimiento
+     * Mét0do de uso interno para ampliar la capacidad del array según el factor de crecimiento
      */
     private void expand() {
-        Object[] aux = new Object[Math.round(data.length * GROW_FACTOR)];
-        for (int i = 0; i < size; i++) {
-            aux[i] = data[i];
-        }
+        @SuppressWarnings("unchecked")
+        T[] aux = (T[]) new Object[Math.round(data.length * GROW_FACTOR)];
+        if (size >= 0) System.arraycopy(data, 0, aux, 0, size);
         data = aux;
     }
 
@@ -164,7 +166,7 @@ public class DynamicArray {
     }
 
     /**
-     * Método de uso interno para determinar si el array está lleno
+     * Mét0do de uso interno para determinar si el array está lleno
      * @return true si está lleno, false si no lo está
      */
     private boolean isFull() {
@@ -232,9 +234,10 @@ public class DynamicArray {
     }
 
     public void trimToSize(){
-        DynamicArray aux = new DynamicArray(size);
-        System.arraycopy(data, 0, aux.data, 0, size);
-        data=aux.data;
+        @SuppressWarnings("unchecked")
+        T[] aux = (T[]) new Object[data.length];
+        System.arraycopy(data, 0, aux, 0, size);
+        data=aux;
     }
 
     public boolean swap(int index1, int index2){
@@ -242,7 +245,7 @@ public class DynamicArray {
             return false;
         }
 
-        Object aux;
+        T aux;
         aux=data[index1];
         data[index1]=data[index2];
         data[index2]=aux;
