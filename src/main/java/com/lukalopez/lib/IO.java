@@ -1,11 +1,17 @@
 package com.lukalopez.lib;
 
 public class IO {
-//******************************** SOLICITAR ********************************\\
+
+    //===========================================================================\\
+    //                                 SOLICITAR                                 \\
+    //===========================================================================\\
+
     public enum Condicion{
     MAXIMO, MINIMO
     }
-    //----------INT----------\\
+
+
+    //********************************* INT *********************************\\
 
     /**
      * Solicita un 'int' sin condiciones.
@@ -14,8 +20,9 @@ public class IO {
      * @return Devuelve el 'int' una vez validado.
      */
     public static int solicitarInt(String solicitud) {
-        return solicitarInt(solicitud, Integer.MIN_VALUE, Integer.MAX_VALUE, "ERROR: Valor fuera del rango comprendido entre el máximo posible y el mínimo posible.");
+        return solicitarInt(solicitud, Integer.MIN_VALUE, Integer.MAX_VALUE,Error.toString(Error.VALOR_INMANEJABLE));
     }
+
 
     /**
      * Solicita un 'int' sin condiciones.
@@ -28,6 +35,7 @@ public class IO {
         return solicitarInt(solicitud, Integer.MIN_VALUE, Integer.MAX_VALUE, mensajeError);
     }
 
+
     /**
      * Solicita un 'int' mediante un mensaje, validando que sea un valor superior a un mínimo.
      *
@@ -38,12 +46,13 @@ public class IO {
      */
     public static int solicitarInt(String solicitud, int valor, Condicion condicion) {
         if (condicion == Condicion.MAXIMO){
-            return solicitarInt(solicitud, Integer.MIN_VALUE, valor, "ERROR: Valor fuera del rango comprendido entre el máximo posible y el mínimo posible.");
+            return solicitarInt(solicitud, Integer.MIN_VALUE, valor, String.format(Error.toString(Error.FUERA_POR_ABAJO),valor));
         } else {
-            return solicitarInt(solicitud, valor, Integer.MAX_VALUE, "ERROR: Valor fuera del rango comprendido entre el máximo posible y el mínimo posible.");
+            return solicitarInt(solicitud, valor, Integer.MAX_VALUE, String.format(Error.toString(Error.FUERA_POR_ARRIBA),valor));
         }
 
     }
+
 
     /**
      * Solicita un int mediante un mensaje, validando que esté comprendido dentro de un rango.
@@ -63,6 +72,7 @@ public class IO {
 
     }
 
+
     /**
      * Solicita un 'int' y valida que se encuentre en el rango comprendido entre un mínimo y un máximo.
      *
@@ -73,8 +83,9 @@ public class IO {
      * @author luklpz
      */
     public static int solicitarInt(String mensajeSolicitud, int minimo, int maximo) {
-        return solicitarInt(mensajeSolicitud,minimo,maximo,"ERROR: Valor fuera del rango comprendido entre el máximo posible y el mínimo posible.");
+        return solicitarInt(mensajeSolicitud,minimo,maximo,String.format(Error.toString(Error.FUERA_DE_RANGO),minimo,maximo));
     }
+
 
     /**
      * Solicita un 'int' y valida que se encuentre en el rango comprendido entre un mínimo y un máximo.
@@ -91,7 +102,7 @@ public class IO {
         do {
             //Solicitamos el 'int'
             System.out.print(mensajeSolicitud);
-            respuesta = Integer.parseInt(retirarCaracteresNoNumericos(Escaner.lector.nextLine().trim()));
+            respuesta = Integer.parseInt(Texto.retirarCaracteresNoNumericos(Escaner.lector.nextLine().trim()));
             //Validamos la respuesta
             if (respuesta<minimo||respuesta>maximo) {
                 System.err.print(mensajeError);
@@ -101,7 +112,9 @@ public class IO {
     }
 
 
-    //----------DOUBLE----------\\
+
+
+    //********************************* DOUBLE *********************************\\
 
     /**
      * Solicita un 'double' sin condiciones.
@@ -109,8 +122,9 @@ public class IO {
      * @return Devuelve el 'double' una vez validado.
      */
     public static double solicitarDouble(String solicitud) {
-        return solicitarDouble(solicitud, "ERROR: Valor fuera del rango comprendido entre el máximo posible y el mínimo posible.");
+        return solicitarDouble(solicitud, Double.MIN_VALUE, Double.MAX_VALUE, Error.toString(Error.VALOR_INMANEJABLE));
     }
+
 
     /**
      * Solicita un 'double' sin condiciones.
@@ -122,6 +136,7 @@ public class IO {
         return solicitarDouble(solicitud, Integer.MIN_VALUE, Integer.MAX_VALUE, mensajeError);
     }
 
+
     /**
      * Solicita un 'double' mediante un mensaje, validando que sea un valor superior a un mínimo.
      *
@@ -132,12 +147,13 @@ public class IO {
      */
     public static double solicitarDouble(String solicitud, double valor, Condicion condicion) {
         if (condicion == Condicion.MAXIMO){
-            return solicitarDouble(solicitud, Double.MIN_VALUE, valor, "ERROR: Valor fuera del rango comprendido entre el máximo posible y el mínimo posible.");
+            return solicitarDouble(solicitud, Double.MIN_VALUE, valor, String.format(Error.toString(Error.FUERA_POR_ABAJO),valor));
         } else {
-            return solicitarDouble(solicitud, valor, Double.MAX_VALUE, "ERROR: Valor fuera del rango comprendido entre el máximo posible y el mínimo posible.");
+            return solicitarDouble(solicitud, valor, Double.MAX_VALUE, String.format(Error.toString(Error.FUERA_POR_ARRIBA),valor));
         }
 
     }
+
 
     /**
      * Solicita un 'double' mediante un mensaje, validando que sea un valor superior a un mínimo.
@@ -157,6 +173,7 @@ public class IO {
 
     }
 
+
     /**
      * Solicita un 'double' y valida que se encuentre en el rango comprendido entre un mínimo y un máximo.
      *
@@ -166,8 +183,9 @@ public class IO {
      * @return Devuelve un 'Double' validado en un rango.
      */
     public static double solicitarDouble(String mensajeSolicitud, double minimo, double maximo) {
-        return solicitarDouble(mensajeSolicitud,minimo,maximo,"ERROR: Valor fuera del rango comprendido entre el máximo posible y el mínimo posible.");
+        return solicitarDouble(mensajeSolicitud,minimo,maximo,String.format(Error.toString(Error.FUERA_DE_RANGO),minimo,maximo));
     }
+
 
     /**
      * Solicita un 'double' y valida que se encuentre en el rango comprendido entre un mínimo y un máximo.
@@ -192,21 +210,10 @@ public class IO {
         return respuesta;
     }
 
-    //----------------------------------------------------
-    /**
-     * Retorna un 'int' proveniente de retirar todos los caracteres no numericos de un 'String'.
-     *
-     * @param texto Texto sobre el cual trabajar.
-     * @return Devuelve un "String" de los caracteres numericos de un 'String'.
-     */
-    public static String retirarCaracteresNoNumericos(String texto){
-        if (texto.isEmpty()){
-            return "";
-        }
-        return (texto.trim()).replaceAll("\\D+","");
-    }
 
-    //----------STRING----------\\
+
+
+    //********************************* STRING *********************************\\
 
     /**
      * Solicita un 'String'
@@ -224,6 +231,7 @@ public class IO {
         return respuesta;
     }
 
+
     /**
      * Solicita un 'String' y valida que su longitud esté comprendida entre una longitud mínima 'lngMin' y una longitud máxima 'lngMax'.
      *
@@ -233,8 +241,9 @@ public class IO {
      * @return Devuelve el 'String' validado.
      */
     public static String solicitarString(String mensaje, int lngMin, int lngMax){
-        return solicitarString(mensaje,lngMin,lngMax,String.format("La respuesta proporcionada no puede tener una longitud inferior a %s, ni superior a %s caracteres.\n\n", lngMin, lngMax));
+        return solicitarString(mensaje,lngMin,lngMax,String.format(Error.toString(Error.FUERA_DE_RANGO), lngMin, lngMax));
     }
+
 
     /**
      * Solicita un 'String' y valida que su longitud esté comprendida entre una longitud mínima 'lngMin' y una longitud máxima 'lngMax'.
@@ -250,17 +259,18 @@ public class IO {
         return solicitarString(mensaje, lngMin, lngMax, mensajeError, false);
     }
 
-        /**
-         * Solicita un 'String' y valida que su longitud esté comprendida entre una longitud mínima 'lngMin' y una longitud máxima 'lngMax'.
-         *
-         * @param mensaje Mensaje que se le muestra al usuario.
-         * @param lngMin  Número mínimo de caracteres que debe tener el 'String'.
-         * @param lngMax  Número máximo de caracteres que puede tener el 'String'.
-         * @param mensajeError Mensaje que se muestra si la validación falla.
-         * @param soloNumeros Si se marca como 'true' eliminará todos los caracteres no numericos antes de validar.
-         * @return Devuelve el 'String' validado.
-         * @author luklpz
-         */
+
+    /**
+     * Solicita un 'String' y valida que su longitud esté comprendida entre una longitud mínima 'lngMin' y una longitud máxima 'lngMax'.
+     *
+     * @param mensaje Mensaje que se le muestra al usuario.
+     * @param lngMin  Número mínimo de caracteres que debe tener el 'String'.
+     * @param lngMax  Número máximo de caracteres que puede tener el 'String'.
+     * @param mensajeError Mensaje que se muestra si la validación falla.
+     * @param soloNumeros Si se marca como 'true' eliminará todos los caracteres no numericos antes de validar.
+     * @return Devuelve el 'String' validado.
+     * @author luklpz
+     * */
     public static String solicitarString(String mensaje, int lngMin, int lngMax, String mensajeError, boolean soloNumeros) {
         String respuesta;
         do {
@@ -269,7 +279,7 @@ public class IO {
             respuesta = Escaner.lector.nextLine();
             //Validamos la respuesta
             if (soloNumeros){
-                respuesta=retirarCaracteresNoNumericos(respuesta);
+                respuesta=Texto.retirarCaracteresNoNumericos(respuesta);
             }
             if (respuesta.length() < lngMin || respuesta.length() > lngMax) {
                 System.err.print(mensajeError);
@@ -278,7 +288,10 @@ public class IO {
         return respuesta;
     }
 
-    //----------FLOAT----------\\
+
+
+
+    //********************************* FLOAT *********************************\\
 
     /**
      * Solicita un 'float' y valida que se encuentre en el rango comprendido entre un mínimo 'min' y un máximo 'max'.
@@ -297,13 +310,14 @@ public class IO {
             respuesta = Float.parseFloat(Escaner.lector.nextLine());
             //Validamos la respuesta
             if (respuesta<min||respuesta>max) {
-                System.err.printf("El número introducido no puede ser inferior a %f, ni superior a %f.\n\n", min, max);
+                System.err.printf(Error.toString(Error.FUERA_DE_RANGO), min, max);
             }
         } while (respuesta<min||respuesta>max);
         return respuesta;
     }
 
-    //----------CHAR----------\\
+
+    //********************************* CHAR *********************************\\
 
     /**
      * Solicita un 'char' y valida que se haya introducido un único caracter.
@@ -314,6 +328,7 @@ public class IO {
     public static char solicitarChar(String mensaje){
         return solicitarChar(mensaje,"El número de carácteres introducidos es inválido.");
     }
+
 
     /**
      * Solicita un 'char' y valida que se haya introducido un único caracter.
@@ -338,8 +353,10 @@ public class IO {
         return respuesta.charAt(0);
     }
 
-    //----------BOOLEAN----------\\
 
+
+
+    //********************************* BOOLEAN *********************************\\
 
     /**
      * Solicita un 'boolean' y valida que se haya introducido una respuesta válida.
