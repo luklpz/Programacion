@@ -156,4 +156,17 @@ public class Texto {
         }
         return palabra;
     }
+
+    /**
+     * Retorna un 'int' proveniente de retirar todos los caracteres no numericos de un 'String'.
+     *
+     * @param texto Texto sobre el cual trabajar.
+     * @return Devuelve un "String" de los caracteres numericos de un 'String'.
+     */
+    public static String retirarCaracteresNoNumericos(String texto){
+        if (texto.isEmpty()){
+            return "";
+        }
+        return (texto.trim()).replaceAll("\\D+","");
+    }
 }
