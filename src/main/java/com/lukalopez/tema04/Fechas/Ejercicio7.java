@@ -112,7 +112,7 @@ public class Ejercicio7 {
             seleccion = llamarMenuPrincipal("", fecha);
             switch (seleccion){
                 case 1-> {
-                    fecha = FH.solicitarFecha("Establece la fecha a partir de la cual se realizarán los cálculos: (dd/mm/yyyy)", "dd/MM/yyyy");
+                    fecha = FH.solicitarFecha("Establece la fecha a partir de la cual se realizarán los cálculos:");
                 }
                 case 2-> {
                     fechaModificada = fecha;

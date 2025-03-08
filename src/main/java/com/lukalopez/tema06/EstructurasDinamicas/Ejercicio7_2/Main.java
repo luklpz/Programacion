@@ -148,7 +148,7 @@ public class Main {
 
     private static LocalDate solicitarFechaNacimiento(){
         LocalDate fechaNacimiento;
-        fechaNacimiento = FH.solicitarFecha("Introduzca la fecha de nacimiento del paciente (dd/MM/YYYY): ","dd/MM/yyyy");
+        fechaNacimiento = FH.solicitarFecha("Introduzca la fecha de nacimiento del paciente:");
         return fechaNacimiento;
 
     }

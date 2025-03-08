@@ -146,7 +146,7 @@ public class Centro {
         boolean validado;
         LocalDate fechaDeNacimiento;
         do {
-            fechaDeNacimiento = FH.solicitarFecha("\nFecha de nacimiento del alumno: (DD/MM/YYYY)","dd/MM/yyyy");
+            fechaDeNacimiento = FH.solicitarFecha("\nFecha de nacimiento del alumno:");
             validado = IO.solicitarBoolean(String.format("La fecha de nacimiento es \"%s\" ¿Es correcto? (Si/No)\n",FH.formatearFecha(fechaDeNacimiento,"dd/MM/yyyy")),"Si","No","ERROR: Respuesta inválida.\n\n");
         } while (!validado);
         return fechaDeNacimiento;

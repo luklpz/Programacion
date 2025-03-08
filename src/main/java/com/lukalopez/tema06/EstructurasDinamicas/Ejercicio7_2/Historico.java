@@ -70,8 +70,8 @@ public class Historico {
 
         System.out.println("Creando registro para el paciente . . .");
         data[size][0] = paciente;
-        data[size][1] = FH.solicitarFecha("Ingrese la fecha de entrada (dd/mm/yyyy): ","dd/MM/yyyy");
-        data[size][2] = FH.solicitarHora("\nIngrese la hora de entrada (hh:mm:ss): ","HH:mm:ss");
+        data[size][1] = FH.solicitarFecha("Ingrese la fecha de entrada (dd/mm/yyyy):");
+        data[size][2] = FH.solicitarHora("\nIngrese la hora de entrada (hh:mm:ss):");
         data[size][3] = IO.solicitarString("\nIntroduzca la sintomatología:",false);
 
         size++;
@@ -104,8 +104,8 @@ public class Historico {
             System.err.println("ERROR: No se han tomado aún los datos del paciente.\n");
             return false;
         }
-        data[size][5] = FH.solicitarFecha("Ingrese la fecha de alta (dd/mm/yyyy): ","dd/MM/yyyy");
-        data[size][6] = FH.solicitarHora("\nIngrese la hora de alta (hh:mm:ss): ","HH:mm:ss");
+        data[size][5] = FH.solicitarFecha("Ingrese la fecha de alta (dd/mm/yyyy):");
+        data[size][6] = FH.solicitarHora("\nIngrese la hora de alta (hh:mm:ss):");
 
         //Solicitamos el motivo del alta
         int motivoAlta = IO.solicitarInt("Ingrese el motivo del alta:\n   1. Tratamiento\n   2. Mejora\n   3. Derivación hospital\n   4. Defunción\n",1,4,"ERROR: Se ha introducudo una entrada invalida.\n");

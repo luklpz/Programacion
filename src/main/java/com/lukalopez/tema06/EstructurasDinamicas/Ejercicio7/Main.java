@@ -53,7 +53,7 @@ public class Main {
                 sip = String.valueOf(IO.solicitarInt("Intruduzca el número SIP (número de 8 caracteres): ",10000000,99999999,mensajeError));
                 nombre = IO.solicitarString("Introduzca el nombre del usuario: ",false);
                 apellidos = IO.solicitarString("Introduzca los apellidos del usuario: ",false);
-                horaFechaCita = FH.solicitarFechaHora("Ingrese la fecha y la hora de la cita: (dd/MM/YYYY hh:mm:ss)","dd/MM/yyyy HH:mm:ss");
+                horaFechaCita = FH.solicitarFechaHora("Ingrese la fecha y la hora de la cita:");
 
                 //Procesamos las respuestas
                 return false;

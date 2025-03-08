@@ -50,7 +50,7 @@ public class Ejercicio4 {
 
     public static void main(String args[]){
         LocalDate fechaNacimiento;
-        fechaNacimiento = FH.solicitarFecha("¿Cuál es tu fecha de nacimiento? (dd/mm/yyyy)","dd/MM/yyyy");
+        fechaNacimiento = FH.solicitarFecha("¿Cuál es tu fecha de nacimiento?");
         Signos signo = calcZodiaco(fechaNacimiento);
         System.out.printf("Tu signo del zodiaco es %s.",signo);
         Escaner.dispose();
