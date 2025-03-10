@@ -12,4 +12,9 @@ public enum Error {
     Error(String codigo){
         this.codigo = codigo;
     }
+
+    @Override
+    public String toString() {
+        return codigo;
+    }
 }
