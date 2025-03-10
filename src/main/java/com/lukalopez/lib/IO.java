@@ -7,7 +7,7 @@ public class IO {
     //===========================================================================\\
 
     public enum Condicion{
-    MAXIMO, MINIMO
+        MAXIMO, MINIMO
     }
 
 
@@ -20,7 +20,7 @@ public class IO {
      * @return Devuelve el 'int' una vez validado.
      */
     public static int solicitarInt(String solicitud) {
-        return solicitarInt(solicitud, Integer.MIN_VALUE, Integer.MAX_VALUE,Error.toString(Error.VALOR_INMANEJABLE));
+        return solicitarInt(solicitud, Integer.MIN_VALUE, Integer.MAX_VALUE,Error.VALOR_INMANEJABLE.toString());
     }
 
 
@@ -46,9 +46,9 @@ public class IO {
      */
     public static int solicitarInt(String solicitud, int valor, Condicion condicion) {
         if (condicion == Condicion.MAXIMO){
-            return solicitarInt(solicitud, Integer.MIN_VALUE, valor, String.format(Error.toString(Error.FUERA_POR_ABAJO),valor));
+            return solicitarInt(solicitud, Integer.MIN_VALUE, valor, String.format(Error.FUERA_POR_ABAJO.toString(),valor));
         } else {
-            return solicitarInt(solicitud, valor, Integer.MAX_VALUE, String.format(Error.toString(Error.FUERA_POR_ARRIBA),valor));
+            return solicitarInt(solicitud, valor, Integer.MAX_VALUE, String.format(Error.FUERA_POR_ARRIBA.toString(),valor));
         }
 
     }
@@ -83,7 +83,7 @@ public class IO {
      * @author luklpz
      */
     public static int solicitarInt(String mensajeSolicitud, int minimo, int maximo) {
-        return solicitarInt(mensajeSolicitud,minimo,maximo,String.format(Error.toString(Error.FUERA_DE_RANGO),minimo,maximo));
+        return solicitarInt(mensajeSolicitud,minimo,maximo,String.format(Error.FUERA_DE_RANGO.toString(),minimo,maximo));
     }
 
 
@@ -122,7 +122,7 @@ public class IO {
      * @return Devuelve el 'double' una vez validado.
      */
     public static double solicitarDouble(String solicitud) {
-        return solicitarDouble(solicitud, Double.MIN_VALUE, Double.MAX_VALUE, Error.toString(Error.VALOR_INMANEJABLE));
+        return solicitarDouble(solicitud, Double.MIN_VALUE, Double.MAX_VALUE, Error.VALOR_INMANEJABLE.toString());
     }
 
 
@@ -147,9 +147,9 @@ public class IO {
      */
     public static double solicitarDouble(String solicitud, double valor, Condicion condicion) {
         if (condicion == Condicion.MAXIMO){
-            return solicitarDouble(solicitud, Double.MIN_VALUE, valor, String.format(Error.toString(Error.FUERA_POR_ABAJO),valor));
+            return solicitarDouble(solicitud, Double.MIN_VALUE, valor, String.format(Error.FUERA_POR_ABAJO.toString(),valor));
         } else {
-            return solicitarDouble(solicitud, valor, Double.MAX_VALUE, String.format(Error.toString(Error.FUERA_POR_ARRIBA),valor));
+            return solicitarDouble(solicitud, valor, Double.MAX_VALUE, String.format(Error.FUERA_POR_ARRIBA.toString(),valor));
         }
 
     }
@@ -183,7 +183,7 @@ public class IO {
      * @return Devuelve un 'Double' validado en un rango.
      */
     public static double solicitarDouble(String mensajeSolicitud, double minimo, double maximo) {
-        return solicitarDouble(mensajeSolicitud,minimo,maximo,String.format(Error.toString(Error.FUERA_DE_RANGO),minimo,maximo));
+        return solicitarDouble(mensajeSolicitud,minimo,maximo,String.format(Error.FUERA_DE_RANGO.toString(),minimo,maximo));
     }
 
 
@@ -241,7 +241,7 @@ public class IO {
      * @return Devuelve el 'String' validado.
      */
     public static String solicitarString(String mensaje, int lngMin, int lngMax){
-        return solicitarString(mensaje,lngMin,lngMax,String.format(Error.toString(Error.FUERA_DE_RANGO), lngMin, lngMax));
+        return solicitarString(mensaje,lngMin,lngMax,String.format(Error.FUERA_DE_RANGO.toString(), lngMin, lngMax));
     }
 
 
@@ -310,7 +310,7 @@ public class IO {
             respuesta = Float.parseFloat(Escaner.lector.nextLine());
             //Validamos la respuesta
             if (respuesta<min||respuesta>max) {
-                System.err.printf(Error.toString(Error.FUERA_DE_RANGO), min, max);
+                System.err.printf(Error.FUERA_DE_RANGO.toString(), min, max);
             }
         } while (respuesta<min||respuesta>max);
         return respuesta;

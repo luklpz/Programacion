@@ -1,8 +1,5 @@
 package com.lukalopez.tema06.EstructurasDinamicas.Ejercicio7_2;
 
-import com.lukalopez.lib.FH;
-import com.lukalopez.lib.IO;
-
 import java.time.LocalDate;
 
 public class Paciente {
