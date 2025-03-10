@@ -12,6 +12,8 @@ public class Random {
     private final static String[] correos = new String[]{"usuario1@gmail.com", "test123@yahoo.com", "ejemplo@outlook.com", "random_user@hotmail.com", "persona01@mail.com", "juan.perez@gmail.com", "maria.lopez@yahoo.es", "carlos123@outlook.com", "sofia.garcia@live.com", "test.email@example.com", "developer.dev@gmail.com", "admin@company.com", "contacto@empresa.com", "soporte@techsupport.com", "info@website.org", "marketing@business.net", "ventas@store.com", "empleado001@corporate.com", "freelancer@workplace.com", "personal.mail@webmail.com", "notificaciones@service.com", "alerts@security.net", "noreply@system.org", "reservas@hotel.com", "pedidos@shop.com", "cliente01@ecommerce.com", "envios@logistics.net", "estudiante2024@university.edu", "profesor@faculty.edu", "admin@school.edu", "usuario.demo@test.com", "project.manager@startup.com", "ceo@company.co", "developer@opensource.org", "techlead@innovation.net", "anonymous@anonymous.com", "beta.tester@testing.org", "robot@ai.net", "support.agent@helpdesk.com", "it.admin@network.net", "analyst@data.com", "research@science.org", "finance@banking.com", "hr@humanresources.net", "jobs@careers.org", "music.lover@streaming.com", "gamer@esports.net", "travel@explorer.com", "movie.fan@cinema.org", "reader@library.net"};
     private final static String[] telefonos = new String[]{"612345678", "698765432", "654321987", "689123456", "677889900", "634567890", "622334455", "699112233", "678999111", "645556677", "663344556", "612223344", "657890123", "676543210", "644123789", "633222111", "655678999", "611987654", "690123456", "688777666", "644555888", "677666555", "699444333", "655222999", "622555111", "633666888", "611444777", "688999555", "644123987", "678333222", "622999888", "677555444", "655123456", "690987654", "699777111", "633999222", "644666555", "622888999", "655333111", "677123789", "688456123", "611678999", "690222333", "633111444", "699987321", "655789456", "644321654", "622567890", "677654321", "688321987"};
 
+    private static final java.util.Random random = new java.util.Random();
+
     /**
      * Generar un 'double' de forma aleatoria.
      * @param minimo Valor mínimo que puede valer.
@@ -19,7 +21,6 @@ public class Random {
      * @return Devuelve el 'double' randomizado dentro del rango.
      */
     public static double randomDouble(double minimo, double maximo){
-        java.util.Random random = new java.util.Random();
         return random.nextDouble()*(maximo-minimo)+minimo;
     }
 
@@ -30,7 +31,6 @@ public class Random {
      * @return Devuelve el 'int' randomizado dentro del rango.
      */
     public static int randomInt(int minimo, int maximo) {
-        java.util.Random random = new java.util.Random();
         return random.nextInt(maximo - minimo + 1) + minimo;
     }
 
