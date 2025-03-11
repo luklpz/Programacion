@@ -43,7 +43,7 @@ public class FH {
      */
     public static LocalDateTime solicitarFechaHora(String mensajeIncial) {
         System.out.print(mensajeIncial);
-        String fecha = String.format("%02d/%02d/%02d %02d:%02d:%02d",solicitarDia(),solicitarMes(),solicitarAnyo(),solicitarSegundos(), solicitarMinutos(), solicitarHoras());
+        String fecha = String.format("%02d/%02d/%d %02d:%02d:%02d",solicitarDia(),solicitarMes(),solicitarAnyo(),solicitarSegundos(), solicitarMinutos(), solicitarHoras());
         System.out.println();
         return LocalDateTime.parse(fecha, DateTimeFormatter.ofPattern("ss:mm:hh"));
     }
