@@ -40,12 +40,13 @@ public class FH {
      *
      * @param mensajeIncial Mensaje que se imprime para solicitar la fecha y la hora.
      * @return Es el 'LocalDateTime' que contiene la fecha y la hora en el formato indicado.
+     * @author luklpz
      */
     public static LocalDateTime solicitarFechaHora(String mensajeIncial) {
         System.out.print(mensajeIncial);
         String fecha = String.format("%02d/%02d/%d %02d:%02d:%02d",solicitarDia(),solicitarMes(),solicitarAnyo(),solicitarSegundos(), solicitarMinutos(), solicitarHoras());
         System.out.println();
-        return LocalDateTime.parse(fecha, DateTimeFormatter.ofPattern("ss:mm:hh"));
+        return LocalDateTime.parse(fecha, DateTimeFormatter.ofPattern("%02d/%02d/%d %02d:%02d:%02d"));
     }
 
 
@@ -118,6 +119,7 @@ public class FH {
     /**
      * Mét0do para solicitar dias.
      * @return Número de dias validados.
+     * @author luklpz
      */
     private static int solicitarDia(){
         return IO.solicitarInt("Introduzca el dia: ",1,30,Error.FUERA_DE_RANGO.toString());
