@@ -2,6 +2,7 @@ package com.lukalopez.tema05.Strings;
 
 import com.lukalopez.lib.Escaner;
 import com.lukalopez.lib.IO;
+import com.lukalopez.lib.Texto;
 
 public class Ejercicio17 {
 
@@ -13,7 +14,7 @@ public class Ejercicio17 {
      */
     private static boolean comprobarNIF(String nif){
         char letra = nif.charAt(nif.length()-1);
-        int dni = Integer.parseInt(IO.retirarCaracteresNoNumericos(nif));
+        int dni = Integer.parseInt(Texto.retirarCaracteresNoNumericos(nif));
         if (letra==Ejercicio16.letraSegunDNI(dni)){
             return true;
         }
@@ -39,7 +40,7 @@ public class Ejercicio17 {
                 System.err.println("ERROR: No se han introducido valores.");
             } else if (nif.length()!=9) {
                 System.err.println("ERROR: El NIF ha de tener 9 caracteres");
-            } else if (IO.retirarCaracteresNoNumericos(nif.substring(0,nif.length()-1)).length()!=8) {
+            } else if (Texto.retirarCaracteresNoNumericos(nif.substring(0,nif.length()-1)).length()!=8) {
                 System.err.println("ERROR: El NIF ha de contener 8 números y una letra al final.");
             } else {
                 validado=true;

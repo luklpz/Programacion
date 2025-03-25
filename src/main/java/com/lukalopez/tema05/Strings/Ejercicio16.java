@@ -22,10 +22,9 @@ public class Ejercicio16 {
         boolean validado;
         String texto;
         do {
-            texto = IO.retirarCaracteresNoNumericos(Escaner.lector.nextLine().trim().replaceAll("\\s+"," "));
-            validado = Texto.validarLongitud(texto, 8, 8, "El DNI ha de tener 8 digitos sin letras. Pruebe otra vez: ");
+            validado = Texto.validarLongitud("texto", 8, 8, "El DNI ha de tener 8 digitos sin letras. Pruebe otra vez: ");
         } while (!validado);
-        return Integer.parseInt(texto);
+        return 1;
     }
 
     public static void main(String args[]) {

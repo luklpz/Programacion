@@ -1,4 +1,4 @@
-package com.lukalopez.tema07;
+package com.lukalopez.tema07.EjemploClase;
 
 import com.lukalopez.lib.Escaner;
 
@@ -42,29 +42,43 @@ public class EjemploClase {
      * @param matricula 'String' que se desea validar.
      * @return Devuelve 'true' en caso de que el 'String' cumpla el formato.
      */
-    public static boolean validarMatricula(String matricula) {
+    public static boolean validarMatricula(String matricula) throws InvalidPlateLengthException, InvalidPlateException, InvalidPlateLettersException, InvalidPlateNumberException{
         int i;
         if (matricula.length() != 8) {
-            return false;
+            throw new InvalidPlateLengthException("La matricula debe tener 8 caracteres de longitud.");
         }
         for (i = 0; i < 4; i++) {
             if (!Character.isDigit(matricula.charAt(i))) {
-                return false;
+                throw new InvalidPlateNumberException("Los cuatro primeros digitos han de ser números.");
             }
         }
         if (!Character.isWhitespace(matricula.charAt(i++))) {
-            return false;
+            throw new InvalidPlateException("Tras los números ha de haber un espacio en blanco.");
         }
         for (int j = i; j < matricula.length(); j++) {
             if (!Character.isLetter(matricula.charAt(j))) {
-                return false;
+                throw new InvalidPlateLettersException("Los tres últimos dígitos han de ser letra.");
             }
         }
         return true;
     }
 
     public static void main(String[] args) {
-        String matricula = leerString("Mete una matricula anda (NNNN LLL):",8,8);
-        System.out.println(validarMatricula(matricula));
+        boolean matriculaValida=false;
+        do {
+            String matricula = leerString("Mete una matricula anda (NNNN LLL):", 8, 8);
+            try {
+                System.out.println(validarMatricula(matricula));
+                matriculaValida=true;
+            } catch (InvalidPlateLengthException iplhe) {
+                System.out.println(iplhe.getMessage());
+            }catch (InvalidPlateLettersException iplte) {
+                System.out.println(iplte.getMessage());
+            } catch (InvalidPlateNumberException ipne){
+                System.out.println(ipne.getMessage());
+            } catch (InvalidPlateException ipe) {
+                System.out.println(ipe.getMessage());
+            }
+        } while (!matriculaValida);
     }
 }

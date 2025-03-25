@@ -2,6 +2,7 @@ package com.lukalopez.tema05.Strings;
 
 import com.lukalopez.lib.Escaner;
 import com.lukalopez.lib.IO;
+import com.lukalopez.lib.Texto;
 
 public class Ejercicio18 {
 
@@ -25,7 +26,7 @@ public class Ejercicio18 {
 
     //Hacerlo funcionar con un SB
     private static boolean validarFecha(StringBuilder fecha){
-        if (fecha.charAt(2)=='-'&&fecha.charAt(5)=='-'&&IO.retirarCaracteresNoNumericos(fecha.toString()).length()==8){
+        if (fecha.charAt(2)=='-'&&fecha.charAt(5)=='-'&& Texto.retirarCaracteresNoNumericos(fecha.toString()).length()==8){
             return true;
         }
         System.err.println("La fecha introducida no es válida o está en un formato inválido.");
@@ -47,7 +48,7 @@ public class Ejercicio18 {
         } while (!validacion);
 
         //Calculamos el número de la suerte
-        numero = Integer.parseInt(IO.retirarCaracteresNoNumericos(fecha.toString()));
+        numero = Integer.parseInt(Texto.retirarCaracteresNoNumericos(fecha.toString()));
         while (String.valueOf(numero).length()!=1){
             numero = sumatorioDeDigitos(numero);
         }
