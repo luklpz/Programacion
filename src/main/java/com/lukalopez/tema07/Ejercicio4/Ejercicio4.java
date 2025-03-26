@@ -33,14 +33,16 @@ public class Ejercicio4 {
                     }
                 } while (!valido);
             } while (true);
-        } catch (ArrayIndexOutOfBoundsException aobe) {
+        } catch (NullPointerException npe) {
+            System.out.println("ERROR: El array no ha sido creado.");
+        }catch (ArrayIndexOutOfBoundsException aobe) {
             System.out.printf("Se han llenado todas las posiciones del array. Número de posiciones: %d\n", contador);
         }
         return array;
     }
 
     public static void main(String[] args) {
-        int[] array = new int[5];
+        int[] array = null;
         System.out.println(Array.arrayToString(rellenarArray(array)));
     }
 }
