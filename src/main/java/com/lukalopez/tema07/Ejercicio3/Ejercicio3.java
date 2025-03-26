@@ -9,7 +9,13 @@ import java.util.Objects;
 
 public class Ejercicio3 {
 
-    public static double solicitarDoubleHastaLetra(String mensaje) throws NumberLetterException{
+    /**
+     * Mét0do auxiliar para el mét0do solicitarDoubleArrayHastaLetra
+     * @param mensaje Mensaje que se le imprime al usuario.
+     * @return Devuelve el double que ingresa el usuario.
+     * @throws NumberLetterException Excepción que sucede cuando el usuario desea detener la ejecución.
+     */
+    private static double solicitarDoubleHastaLetra(String mensaje) throws NumberLetterException{
         //Definimos las variables
         String entrada=null;
         boolean esLetra=false;
@@ -53,7 +59,12 @@ public class Ejercicio3 {
         return numero;
     }
 
-    public static double[] solicitarDoubles(String mensaje) {
+    /**
+     * Mét0do para solicitar el contenido de un array de double[] hasta que se ingrese una letra.
+     * @param mensaje Mensaje que se le muestra al usuario.
+     * @return Devuelve el array double[] que contiene los datos introducidos por el usuario.
+     */
+    public static double[] solicitarDoubleArrayHastaLetra(String mensaje) {
         //Declaramos las variables
         double[] respuesta;
         int tamanoArrayList;
@@ -92,6 +103,6 @@ public class Ejercicio3 {
     }
 
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(solicitarDoubles("Ingresa los números: ")));
+        System.out.println(Arrays.toString(solicitarDoubleArrayHastaLetra("Ingresa los números: ")));
     }
 }
