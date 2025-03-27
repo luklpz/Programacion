@@ -2,6 +2,14 @@ package com.lukalopez.tema07.Ejercicio8;
 
 public class Ejercicio8 {
 
+    /**
+     * Mét0do para realizar las pruebas de las excepciones "ArithmeticException", "NullPointerException" y "IndexOutOfBoundsException".
+     * @param arrayVacio Array vacío para que suceda el error NullPointerException.
+     * @param dividendo Dividendo de la división para el error "ArithmeticException".
+     * @param divisor Divisor de la división para el error "ArithmeticException", ha de ser 0.
+     * @param capacidadArray 'int' que determinará la capacidad falsa del array para el error "IndexOutOfBoundsException", ha de ser mayor que la capacidad real.
+     * @param arrayInicializado Array inicializado con números, su capacidad ha de ser menor que el campo "capacidadArray".
+     */
     public static void pruebaErrores(int[] arrayVacio, int dividendo, int divisor, int capacidadArray, int[] arrayInicializado){
         boolean arithmeticException = false;
         boolean nullPointerException = false;
