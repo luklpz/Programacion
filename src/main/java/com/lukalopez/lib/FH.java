@@ -97,7 +97,7 @@ public class FH {
      * @return Número de segundos validados.
      */
     private static int solicitarSegundos(){
-        return IO.solicitarInt("Introduzca los segundos: ",0,60,Error.FUERA_DE_RANGO.toString());
+        return IO.solicitarInt("Introduzca los segundos: ",0,60);
     }
 
     /**
@@ -105,7 +105,7 @@ public class FH {
      * @return Número de minutos validados.
      */
     private static int solicitarMinutos(){
-        return IO.solicitarInt("Introduzca los minutos: ",0,60,Error.FUERA_DE_RANGO.toString());
+        return IO.solicitarInt("Introduzca los minutos: ",0,60);
     }
 
     /**
@@ -113,7 +113,7 @@ public class FH {
      * @return Número de horas validados.
      */
     private static int solicitarHoras(){
-        return IO.solicitarInt("Introduzca las horas: ",0,24,Error.FUERA_DE_RANGO.toString());
+        return IO.solicitarInt("Introduzca las horas: ",0,24);
     }
 
     /**
@@ -122,7 +122,7 @@ public class FH {
      * @author luklpz
      */
     private static int solicitarDia(){
-        return IO.solicitarInt("Introduzca el dia: ",1,30,Error.FUERA_DE_RANGO.toString());
+        return IO.solicitarInt("Introduzca el dia: ",1,30);
     }
 
     /**
@@ -130,7 +130,7 @@ public class FH {
      * @return Número de meses validados.
      */
     private static int solicitarMes(){
-        return IO.solicitarInt("Introduzca el mes: ",1,12,Error.FUERA_DE_RANGO.toString());
+        return IO.solicitarInt("Introduzca el mes: ",1,12);
     }
 
     /**
@@ -138,6 +138,6 @@ public class FH {
      * @return Numero del año validado.
      */
     private static int solicitarAnyo(){
-        return IO.solicitarInt("Introduzca el año: ",Error.VALOR_INMANEJABLE.toString());
+        return IO.solicitarInt("Introduzca el año: ");
     }
 }

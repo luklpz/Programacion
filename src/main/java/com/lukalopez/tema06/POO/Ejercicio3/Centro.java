@@ -25,7 +25,7 @@ public class Centro {
 
     private static void gestion() {
         System.out.println(menuGestion());
-        int opcionMenu = IO.solicitarInt(menuGestion(), 0,3,"ERROR: Entrada invalida.\n");
+        int opcionMenu = IO.solicitarInt(menuGestion(), 0,3);
 
         do {
             switch (opcionMenu) {
@@ -97,7 +97,7 @@ public class Centro {
         boolean validado;
         String nia;
         do {
-            nia = IO.solicitarString("\nNIA del alumno: ",8,8,"El NIA tiene una longitud de 8 caracteres.");
+            nia = IO.solicitarString("\nNIA del alumno: ",8,8);
             validado = IO.solicitarBoolean(String.format("El NIA es \"%s\" ¿Es correcto? (Si/No)\n",nia),"Si","No","ERROR: Respuesta inválida.\n\n");
         } while (!validado);
         return nia;
@@ -111,7 +111,7 @@ public class Centro {
         boolean validado;
         String nombre;
         do {
-            nombre = IO.solicitarString("\nNombre del alumno: ",false);
+            nombre = IO.solicitarString("\nNombre del alumno: ");
             validado = IO.solicitarBoolean(String.format("El nombre es \"%s\" ¿Es correcto? (Si/No)\n",nombre),"Si","No","ERROR: Respuesta inválida.\n\n");
         } while (!validado);
         return nombre;
@@ -128,7 +128,7 @@ public class Centro {
             System.out.println();
             apellidos.setLength(0);
             for (int i = 1; i < 3; i++) {
-                apellidos.append(IO.solicitarString(String.format("Apellido nº%d del alumno: ", i),false));
+                apellidos.append(IO.solicitarString(String.format("Apellido nº%d del alumno: ", i)));
                 if (i==1){
                     apellidos.append(" ");
                 }
@@ -185,7 +185,7 @@ public class Centro {
         boolean validado;
         String telefono;
         do {
-            telefono = IO.solicitarString("\nIngrese el telefono de contacto del alumno: ",9,9,"El teléfono introducido no es válido.", true);
+            telefono = IO.solicitarString("\nIngrese el telefono de contacto del alumno: ",9,9);
             validado = IO.solicitarBoolean(String.format("El telefono de contacto es \"%s\" ¿Es correcto? (Si/No)\n",telefono),"Si","No","ERROR: Respuesta inválida.\n\n");
         } while (!validado);
         return telefono;
@@ -246,7 +246,7 @@ public class Centro {
             //Mostramos el menú de gestión
             System.out.println(menuGestion());
             //Recibimos y validamos la elección del usuario
-            opcionMenu= IO.solicitarInt("",0,3,"ERROR: Se ha introducido una opción no válida.");
+            opcionMenu= IO.solicitarInt("",0,3);
 
             //Procesamos la entrada
             if (opcionMenu!=0) {

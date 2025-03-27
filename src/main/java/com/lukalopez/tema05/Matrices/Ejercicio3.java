@@ -30,8 +30,8 @@ public class Ejercicio3 {
             } else {
                 System.out.println("\nPLAYER 2 [O]");
             }
-            fila= IO.solicitarInt("Ingrese la fila: ",1,3,"Entrada no válida. Filas: 1-2-3")-1;
-            columna = IO.solicitarInt("Ingrese la columna: ",1,3,"Entrada no válida. Filas: 1-2-3")-1;
+            fila= IO.solicitarInt("Ingrese la fila: ",1,3)-1;
+            columna = IO.solicitarInt("Ingrese la columna: ",1,3)-1;
             esJugadaValida=esJugadaValida(tablero,fila,columna);
             if (!esJugadaValida){
                 System.err.println("La posición indicada ya está ocupada. Seleccione otra posición.");
@@ -132,7 +132,7 @@ public class Ejercicio3 {
                 case O -> System.out.println("\n***PLAYER2 GANA***\n");
             }
 
-            jugarOtraVez = IO.solicitarInt("¿Quieres jugar otra vez? (Si=1)","Has de introducir un número.");
+            jugarOtraVez = IO.solicitarInt("¿Quieres jugar otra vez? (Si=1)");
             if (jugarOtraVez==1){
                 cerrar=false;
             }

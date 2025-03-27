@@ -1,5 +1,9 @@
 package com.lukalopez.lib;
 
+import com.lukalopez.lib.Excepciones.InvalidLowerLimitException;
+import com.lukalopez.lib.Excepciones.InvalidUpperLimitException;
+import com.lukalopez.lib.Excepciones.InvalidEmptyException;
+
 public class IO {
 
     //===========================================================================\\
@@ -14,101 +18,74 @@ public class IO {
     //********************************* INT *********************************\\
 
     /**
-     * Solicita un 'int' sin condiciones.
+     * Mét0do para solicitar un 'int' sin condiciones.
      *
-     * @param solicitud Mensaje que se imprime para solicitar el 'int'.
-     * @return Devuelve el 'int' una vez validado.
+     * @param mensaje Mensaje que se imprime para solicitar el 'int'.
+     * @return Devuelve el 'int'.
      */
-    public static int solicitarInt(String solicitud) {
-        return solicitarInt(solicitud, Integer.MIN_VALUE, Integer.MAX_VALUE,Error.VALOR_INMANEJABLE.toString());
+    public static int solicitarInt(String mensaje) {
+        return solicitarInt(mensaje, Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
 
-
     /**
-     * Solicita un 'int' sin condiciones.
+     * Mét0do para solicitar un 'int' dentro de un máximo o un mínimo.
      *
-     * @param solicitud Mensaje que se imprime para solicitar el 'int'.
-     * @param mensajeError Mensaje de error que se muestra al introducir un valor inválido.
-     * @return Devuelve el 'int' una vez validado.
-     */
-    public static int solicitarInt(String solicitud, String mensajeError) {
-        return solicitarInt(solicitud, Integer.MIN_VALUE, Integer.MAX_VALUE, mensajeError);
-    }
-
-
-    /**
-     * Solicita un 'int' mediante un mensaje, validando que sea un valor superior a un mínimo.
-     *
-     * @param solicitud Mensaje que se imprime para solicitar el 'int'.
+     * @param mensaje Mensaje que se imprime para solicitar el 'int'.
      * @param valor Valor que máximo o mínimo, según la condición, que puede valer el 'int'.
      * @param condicion Condición que indica si el valor indicado es un máximo o un mínimo.
-     * @return Devuelve el 'int' una vez validado.
+     * @return Devuelve el 'int' una vez validado dentro del rango.
      */
-    public static int solicitarInt(String solicitud, int valor, Condicion condicion) {
+    public static int solicitarInt(String mensaje, int valor, Condicion condicion) {
         if (condicion == Condicion.MAXIMO){
-            return solicitarInt(solicitud, Integer.MIN_VALUE, valor, String.format(Error.FUERA_POR_ABAJO.toString(),valor));
+            return solicitarInt(mensaje, Integer.MIN_VALUE, valor);
         } else {
-            return solicitarInt(solicitud, valor, Integer.MAX_VALUE, String.format(Error.FUERA_POR_ARRIBA.toString(),valor));
+            return solicitarInt(mensaje, valor, Integer.MAX_VALUE);
         }
 
     }
 
-
     /**
-     * Solicita un int mediante un mensaje, validando que esté comprendido dentro de un rango.
-     *
-     * @param solicitud Mensaje que se imprime para solicitar el 'int'.
-     * @param valor Valor que máximo o mínimo, según la condición, que puede valer el 'int'.
-     * @param condicion Condición que indica si el valor indicado es un máximo o un mínimo.
-     * @param mensajeError Mensaje de error que se muestra al introducir un valor inválido.
-     * @return Devuelve el 'int' una vez validado.
-     */
-    public static int solicitarInt(String solicitud, int valor, Condicion condicion, String mensajeError) {
-        if (condicion == Condicion.MAXIMO){
-            return solicitarInt(solicitud, Integer.MIN_VALUE, valor, mensajeError);
-        } else {
-            return solicitarInt(solicitud, valor, Integer.MAX_VALUE, mensajeError);
-        }
-
-    }
-
-
-    /**
-     * Solicita un 'int' y valida que se encuentre en el rango comprendido entre un mínimo y un máximo.
-     *
-     * @param mensajeSolicitud Mensaje que se le muestra al usuario.
-     * @param minimo Número mínimo valido que puede valer el 'int'.
+     * Mét0do para solicitar un 'int' dentro de un rango.
+     * @param mensaje Mensaje que se imprime para solicitar el 'int'.
+     * @param minimo Número mínimo válido que puede valer el 'int'.
      * @param maximo Número máximo válido que puede valer el 'int'.
-     * @return Devuelve un 'int' validado.
-     * @author luklpz
+     * @return Devuelve el 'int' una vez validado dentro del rango.
      */
-    public static int solicitarInt(String mensajeSolicitud, int minimo, int maximo) {
-        return solicitarInt(mensajeSolicitud,minimo,maximo,String.format(Error.FUERA_DE_RANGO.toString(),minimo,maximo));
-    }
-
-
-    /**
-     * Solicita un 'int' y valida que se encuentre en el rango comprendido entre un mínimo y un máximo.
-     *
-     * @param mensajeSolicitud Mensaje que se le muestra al usuario.
-     * @param minimo Número mínimo valido que puede valer el 'int'.
-     * @param maximo Número máximo válido que puede valer el 'int'.
-     * @param mensajeError Mensaje de error que se muestra al introducir un valor inválido.
-     * @return Devuelve un 'int' validado.
-     * @author luklpz
-     */
-    public static int solicitarInt(String mensajeSolicitud, int minimo, int maximo, String mensajeError) {
-        int respuesta;
+    public static int solicitarInt(String mensaje, int minimo, int maximo){
+        //Definimos las variables
+        String entrada;
+        boolean valido=false;
+        int numero=0;
         do {
-            //Solicitamos el 'int'
-            System.out.print(mensajeSolicitud);
-            respuesta = Integer.parseInt(Texto.retirarCaracteresNoNumericos(Escaner.lector.nextLine().trim()));
-            //Validamos la respuesta
-            if (respuesta<minimo||respuesta>maximo) {
-                System.err.print(mensajeError);
+            try {
+                //Solicitamos el número
+                System.out.print(mensaje);
+                entrada = Escaner.lector.nextLine().trim();
+
+                //Verificamos que la entrada no sea nula
+                isEmptyCheck(entrada);
+
+                numero = Integer.parseInt(entrada);
+
+                //Verificamos que no supere el máximo ni el mínimo
+                if (numero>maximo){
+                    throw new InvalidUpperLimitException(String.format("El número %d sobrepasa el máximo %d",numero, maximo));
+                } else if (numero<minimo){
+                    throw new InvalidLowerLimitException(String.format("El número %d sobrepasa el máximo %d",numero, minimo));
+                } else {
+                    valido = true;
+                }
+            } catch (InvalidEmptyException nee){
+                System.out.println(nee.getMessage());
+            } catch(InvalidUpperLimitException iple){
+                System.out.println(iple.getMessage());
+            } catch(InvalidLowerLimitException ille){
+                System.out.println(ille.getMessage());
+            } catch (NumberFormatException nfe) {
+                System.out.println("Solo se aceptan números sin decimales.");
             }
-        } while (respuesta<minimo||respuesta>maximo);
-        return respuesta;
+        } while (!valido);
+        return numero;
     }
 
 
@@ -117,203 +94,213 @@ public class IO {
     //********************************* DOUBLE *********************************\\
 
     /**
-     * Solicita un 'double' sin condiciones.
-     * @param solicitud Mensaje que se imprime para solicitar el 'double'.
-     * @return Devuelve el 'double' una vez validado.
+     * Mét0do para solicitar un 'double' sin condiciones.
+     * @param mensaje Mensaje que se imprime para solicitar el 'double'.
+     * @return Devuelve el 'double'.
      */
-    public static double solicitarDouble(String solicitud) {
-        return solicitarDouble(solicitud, Double.MIN_VALUE, Double.MAX_VALUE, Error.VALOR_INMANEJABLE.toString());
+    public static double solicitarDouble(String mensaje) {
+        return solicitarDouble(mensaje, Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
 
-
     /**
-     * Solicita un 'double' sin condiciones.
-     * @param solicitud Mensaje que se imprime para solicitar el 'double'.
-     * @param mensajeError Mensaje de error que se muestra al introducir un valor inválido.
-     * @return Devuelve el 'double' una vez validado.
-     */
-    public static double solicitarDouble(String solicitud, String mensajeError) {
-        return solicitarDouble(solicitud, Integer.MIN_VALUE, Integer.MAX_VALUE, mensajeError);
-    }
-
-
-    /**
-     * Solicita un 'double' mediante un mensaje, validando que sea un valor superior a un mínimo.
+     * Mét0do para solicitar un 'double' dentro de un máximo o un mínimo.
      *
-     * @param solicitud Mensaje que se imprime para solicitar el 'double'.
+     * @param mensaje Mensaje que se imprime para solicitar el 'double'.
      * @param valor Valor que máximo o mínimo, según la condición, que puede valer el 'double'.
      * @param condicion Condición que indica si el valor indicado es un máximo o un mínimo.
-     * @return Devuelve el 'double' una vez validado.
+     * @return Devuelve el 'double' una vez validado dentro del rango.
      */
-    public static double solicitarDouble(String solicitud, double valor, Condicion condicion) {
+    public static double solicitarDouble(String mensaje, double valor, Condicion condicion) {
         if (condicion == Condicion.MAXIMO){
-            return solicitarDouble(solicitud, Double.MIN_VALUE, valor, String.format(Error.FUERA_POR_ABAJO.toString(),valor));
+            return solicitarDouble(mensaje, Double.MIN_VALUE, valor);
         } else {
-            return solicitarDouble(solicitud, valor, Double.MAX_VALUE, String.format(Error.FUERA_POR_ARRIBA.toString(),valor));
+            return solicitarDouble(mensaje, valor, Double.MAX_VALUE);
         }
-
     }
 
-
     /**
-     * Solicita un 'double' mediante un mensaje, validando que sea un valor superior a un mínimo.
-     *
-     * @param solicitud Mensaje que se imprime para solicitar el 'double'.
-     * @param valor Valor que máximo o mínimo, según la condición, que puede valer el 'double'.
-     * @param condicion Condición que indica si el valor indicado es un máximo o un mínimo.
-     * @param mensajeError Mensaje de error que se muestra al introducir un valor inválido.
-     * @return Devuelve el 'double' una vez validado.
-     */
-    public static double solicitarDouble(String solicitud, double valor, Condicion condicion, String mensajeError) {
-        if (condicion == Condicion.MAXIMO){
-            return solicitarDouble(solicitud, Double.MIN_VALUE, valor, mensajeError);
-        } else {
-            return solicitarDouble(solicitud, valor, Double.MAX_VALUE, mensajeError);
-        }
-
-    }
-
-
-    /**
-     * Solicita un 'double' y valida que se encuentre en el rango comprendido entre un mínimo y un máximo.
-     *
-     * @param mensajeSolicitud Mensaje que se le muestra al usuario.
+     * Mét0do para solicitar un 'double' dentro de un rango.
+     * @param mensaje Mensaje que se imprime para solicitar el 'double'.
      * @param minimo Número mínimo válido que puede valer el 'double'.
      * @param maximo Número máximo válido que puede valer el 'double'.
-     * @return Devuelve un 'Double' validado en un rango.
+     * @return Devuelve el 'double' una vez validado dentro del rango.
      */
-    public static double solicitarDouble(String mensajeSolicitud, double minimo, double maximo) {
-        return solicitarDouble(mensajeSolicitud,minimo,maximo,String.format(Error.FUERA_DE_RANGO.toString(),minimo,maximo));
-    }
-
-
-    /**
-     * Solicita un 'double' y valida que se encuentre en el rango comprendido entre un mínimo y un máximo.
-     *
-     * @param mensaje Mensaje que se le muestra al usuario.
-     * @param minimo Número mínimo válido que puede valer el 'double'.
-     * @param maximo Número máximo válido que puede valer el 'double'.
-     * @param mensajeError Mensaje de error que se muestra al introducir un valor inválido.
-     * @return Devuelve un 'Double' validado en un rango.
-     */
-    public static double solicitarDouble(String mensaje, double minimo, double maximo, String mensajeError) {
-        double respuesta;
+    public static double solicitarDouble(String mensaje, double minimo, double maximo){
+        //Definimos las variables
+        String entrada;
+        boolean valido=false;
+        double numero=0;
         do {
-            //Solicitamos el 'double'
-            System.out.println(mensaje);
-            respuesta = Double.parseDouble(Escaner.lector.nextLine().trim().replaceAll("\\s+",""));
-            //Validamos la respuesta
-            if (respuesta<minimo||respuesta>maximo) {
-                System.err.println(mensajeError);
+            try {
+                //Solicitamos el número
+                System.out.print(mensaje);
+                entrada = Escaner.lector.nextLine().trim();
+
+                //Verificamos que la entrada no sea nula
+                isEmptyCheck(entrada);
+
+                numero = Double.parseDouble(entrada);
+
+                //Verificamos que no supere el máximo ni el mínimo
+                if (numero>maximo){
+                    throw new InvalidUpperLimitException(String.format("El número %f sobrepasa el máximo %f",numero, maximo));
+                } else if (numero<minimo){
+                    throw new InvalidLowerLimitException(String.format("El número %f sobrepasa el máximo %f",numero, minimo));
+                } else {
+                    valido = true;
+                }
+            } catch (InvalidEmptyException nee){
+                System.out.println(nee.getMessage());
+            } catch(InvalidUpperLimitException iple){
+                System.out.println(iple.getMessage());
+            } catch(InvalidLowerLimitException ille){
+                System.out.println(ille.getMessage());
+            } catch (NumberFormatException nfe) {
+                System.out.println("Solo se aceptan números.");
             }
-        } while (respuesta<minimo||respuesta>maximo);
-        return respuesta;
+        } while (!valido);
+        return numero;
     }
-
-
-
-
-    //********************************* STRING *********************************\\
-
-    /**
-     * Solicita un 'String'
-     *
-     * @param mensaje Mensaje que se le muestra al usuario.
-     * @return String que ingresa el usuario.
-     */
-    public static String solicitarString(String mensaje, Boolean numerico){
-        String respuesta;
-        System.out.print(mensaje);
-        respuesta=Escaner.lector.nextLine();
-        if (numerico){
-            respuesta=respuesta.replaceAll("\\D+","");
-        }
-        return respuesta;
-    }
-
-
-    /**
-     * Solicita un 'String' y valida que su longitud esté comprendida entre una longitud mínima 'lngMin' y una longitud máxima 'lngMax'.
-     *
-     * @param mensaje Mensaje que se le muestra al usuario.
-     * @param lngMin  Número mínimo de caracteres que debe tener el 'String'.
-     * @param lngMax  Número máximo de caracteres que puede tener el 'String'.
-     * @return Devuelve el 'String' validado.
-     */
-    public static String solicitarString(String mensaje, int lngMin, int lngMax){
-        return solicitarString(mensaje,lngMin,lngMax,String.format(Error.FUERA_DE_RANGO.toString(), lngMin, lngMax));
-    }
-
-
-    /**
-     * Solicita un 'String' y valida que su longitud esté comprendida entre una longitud mínima 'lngMin' y una longitud máxima 'lngMax'.
-     *
-     * @param mensaje Mensaje que se le muestra al usuario.
-     * @param lngMin  Número mínimo de caracteres que debe tener el 'String'.
-     * @param lngMax  Número máximo de caracteres que puede tener el 'String'.
-     * @param mensajeError Mensaje que se muestra si la validación falla.
-     * @return Devuelve el 'String' validado.
-     * @author luklpz
-     */
-    public static String solicitarString(String mensaje, int lngMin, int lngMax, String mensajeError) {
-        return solicitarString(mensaje, lngMin, lngMax, mensajeError, false);
-    }
-
-
-    /**
-     * Solicita un 'String' y valida que su longitud esté comprendida entre una longitud mínima 'lngMin' y una longitud máxima 'lngMax'.
-     *
-     * @param mensaje Mensaje que se le muestra al usuario.
-     * @param lngMin  Número mínimo de caracteres que debe tener el 'String'.
-     * @param lngMax  Número máximo de caracteres que puede tener el 'String'.
-     * @param mensajeError Mensaje que se muestra si la validación falla.
-     * @param soloNumeros Si se marca como 'true' eliminará todos los caracteres no numericos antes de validar.
-     * @return Devuelve el 'String' validado.
-     * @author luklpz
-     * */
-    public static String solicitarString(String mensaje, int lngMin, int lngMax, String mensajeError, boolean soloNumeros) {
-        String respuesta;
-        do {
-            //Solicitamos el 'String'
-            System.out.print(mensaje);
-            respuesta = Escaner.lector.nextLine();
-            //Validamos la respuesta
-            if (soloNumeros){
-                respuesta=Texto.retirarCaracteresNoNumericos(respuesta);
-            }
-            if (respuesta.length() < lngMin || respuesta.length() > lngMax) {
-                System.err.print(mensajeError);
-            }
-        } while (respuesta.length() < lngMin || respuesta.length() > lngMax);
-        return respuesta;
-    }
-
-
 
 
     //********************************* FLOAT *********************************\\
 
     /**
-     * Solicita un 'float' y valida que se encuentre en el rango comprendido entre un mínimo 'min' y un máximo 'max'.
-     *
-     * @param mensaje Mensaje que se le muestra al usuario.
-     * @param min Número mínimo válido que puede valer el 'float'.
-     * @param max Número máximo válido que puede valer el 'float'.
-     * @return Devuelve un 'float' validado.
-     * @author luklpz
+     * Mét0do para solicitar un 'float' sin condiciones.
+     * @param mensaje Mensaje que se imprime para solicitar el 'float'.
+     * @return Devuelve el 'float'.
      */
-    public static float solicitarFloat(String mensaje, float min, float max) {
-        float respuesta;
+    public static double solicitarFloat(String mensaje) {
+        return solicitarFloat(mensaje, Float.MIN_VALUE, Float.MAX_VALUE);
+    }
+
+    /**
+     * Mét0do para solicitar un 'float' dentro de un máximo o un mínimo.
+     *
+     * @param mensaje Mensaje que se imprime para solicitar el 'float'.
+     * @param valor Valor que máximo o mínimo, según la condición, que puede valer el 'float'.
+     * @param condicion Condición que indica si el valor indicado es un máximo o un mínimo.
+     * @return Devuelve el 'float' una vez validado dentro del rango.
+     */
+    public static float solicitarFloat(String mensaje, float valor, Condicion condicion) {
+        if (condicion == Condicion.MAXIMO){
+            return solicitarFloat(mensaje, Float.MIN_VALUE, valor);
+        } else {
+            return solicitarFloat(mensaje, valor, Float.MAX_VALUE);
+        }
+    }
+
+    /**
+     * Mét0do para solicitar un 'float' dentro de un rango.
+     * @param mensaje Mensaje que se imprime para solicitar el 'float'.
+     * @param minimo Número mínimo válido que puede valer el 'float'.
+     * @param maximo Número máximo válido que puede valer el 'float'.
+     * @return Devuelve el 'float' una vez validado dentro del rango.
+     */
+    public static float solicitarFloat(String mensaje, float minimo, float maximo){
+        //Definimos las variables
+        String entrada;
+        boolean valido=false;
+        float numero=0;
         do {
-            //Solicitamos el 'float'
-            System.out.println(mensaje);
-            respuesta = Float.parseFloat(Escaner.lector.nextLine());
-            //Validamos la respuesta
-            if (respuesta<min||respuesta>max) {
-                System.err.printf(Error.FUERA_DE_RANGO.toString(), min, max);
+            try {
+                //Solicitamos el número
+                System.out.print(mensaje);
+                entrada = Escaner.lector.nextLine().trim();
+
+                //Verificamos que la entrada no sea nula
+                isEmptyCheck(entrada);
+
+                numero = Float.parseFloat(entrada);
+
+                //Verificamos que no supere el máximo ni el mínimo
+                if (numero>maximo){
+                    throw new InvalidUpperLimitException(String.format("El número %f sobrepasa el máximo %f",numero, maximo));
+                } else if (numero<minimo){
+                    throw new InvalidLowerLimitException(String.format("El número %f sobrepasa el máximo %f",numero, minimo));
+                } else {
+                    valido = true;
+                }
+            } catch (InvalidEmptyException nee){
+                System.out.println(nee.getMessage());
+            } catch(InvalidUpperLimitException iple){
+                System.out.println(iple.getMessage());
+            } catch(InvalidLowerLimitException ille){
+                System.out.println(ille.getMessage());
+            } catch (NumberFormatException nfe) {
+                System.out.println("Solo se aceptan números.");
             }
-        } while (respuesta<min||respuesta>max);
-        return respuesta;
+        } while (!valido);
+        return numero;
+    }
+
+    //********************************* STRING *********************************\\
+
+    /**
+     * Mét0do para solicitar un 'String' sin condiciones.
+     * @param mensaje Mensaje que se imprime para solicitar el 'String'.
+     * @return Devuelve el 'String'.
+     */
+    public static String solicitarString(String mensaje) {
+        return solicitarString(mensaje, Integer.MIN_VALUE, Integer.MAX_VALUE);
+    }
+
+    /**
+     * Mét0do para solicitar un 'double' dentro de un máximo o un mínimo.
+     *
+     * @param mensaje Mensaje que se imprime para solicitar el 'String'.
+     * @param valor Valor que máximo o mínimo, según la condición, que puede ser la longitud del 'String'.
+     * @param condicion Condición que indica si el valor indicado es un máximo o un mínimo.
+     * @return Devuelve el 'String' una vez validada su longitud dentro del rango.
+     */
+    public static String solicitarString(String mensaje, int valor, Condicion condicion) {
+        if (condicion == Condicion.MAXIMO){
+            return solicitarString(mensaje, Integer.MIN_VALUE, valor);
+        } else {
+            return solicitarString(mensaje, valor, Integer.MAX_VALUE);
+        }
+    }
+
+    /**
+     * Mét0do para solicitar un 'String' validando su longitud dentro de un rango.
+     *
+     * @param mensaje Mensaje que se imprime para solicitar el 'String'.
+     * @param lngMin  Número mínimo de caracteres que debe tener el 'String'.
+     * @param lngMax  Número máximo de caracteres que puede tener el 'String'.
+     * @return Devuelve el 'String' una vez validada su longitud dentro del rango.
+     * @author luklpz
+     * */
+    public static String solicitarString(String mensaje, int lngMin, int lngMax) {
+        String entrada=null;
+        int lngEntrada;
+        boolean valido;
+        do {
+            valido=false;
+            try {
+                //Solicitamos el número
+                System.out.print(mensaje);
+                entrada = Escaner.lector.nextLine().trim();
+
+                //Verificamos que la entrada no sea nula
+                isEmptyCheck(entrada);
+                lngEntrada=entrada.length();
+                //Verificamos que no supere el máximo ni el mínimo
+                if (lngEntrada>lngMax){
+                    throw new InvalidUpperLimitException(String.format("La entrada sobrepasa el máximo de carácteres aceptados '%d'. Número de carácteres actuales: %d",lngMax, lngEntrada));
+                } else if (lngEntrada<lngMin){
+                    throw new InvalidLowerLimitException(String.format("La entrada es menor al mínimo de carácteres aceptados '%d'. Número de carácteres actuales: %d",lngMin, lngEntrada));
+                } else {
+                    valido = true;
+                }
+            } catch (InvalidEmptyException nee){
+                System.out.println(nee.getMessage());
+            } catch(InvalidUpperLimitException iple){
+                System.out.println(iple.getMessage());
+            } catch(InvalidLowerLimitException ille){
+                System.out.println(ille.getMessage());
+            }
+        } while (!valido);
+        return entrada;
     }
 
 
@@ -388,5 +375,15 @@ public class IO {
             }
         } while (!valido);
         return devuelve;
+    }
+
+    //===========================================================================\\
+    //                             MÉTODOS AUXILIARES                            \\
+    //===========================================================================\\
+
+    private static void isEmptyCheck(String cadena) throws InvalidEmptyException{
+        if (cadena.isEmpty()) {
+            throw new InvalidEmptyException("No se puede introducir una entrada vacía.");
+        }
     }
 }

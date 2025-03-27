@@ -72,7 +72,7 @@ public class Historico {
         data[size][0] = paciente;
         data[size][1] = FH.solicitarFecha("Ingrese la fecha de entrada (dd/mm/yyyy):");
         data[size][2] = FH.solicitarHora("\nIngrese la hora de entrada (hh:mm:ss):");
-        data[size][3] = IO.solicitarString("\nIntroduzca la sintomatología:",false);
+        data[size][3] = IO.solicitarString("\nIntroduzca la sintomatología:");
 
         size++;
         return true;
@@ -81,14 +81,14 @@ public class Historico {
     private boolean tomarDatos(int indice){
         double[] datos= new double[4];
         //Solicitamos la temperatura
-        datos[0] = IO.solicitarDouble("Introduzca la temperatura: ",34,42,"ERROR: La entrada introducida no es válida (34-42).\n");
+        datos[0] = IO.solicitarDouble("Introduzca la temperatura: ",34,42);
 
         //Solicitamos las pulsaciones por minuto
-        datos[1] = IO.solicitarDouble("Introduzca las pulsaciones por minuto: ",40,130,"ERROR: La entrada introducida no es válida (40-130).\n");
+        datos[1] = IO.solicitarDouble("Introduzca las pulsaciones por minuto: ",40,130);
 
         //Solicitamos los dos valores de la tension arterial
-        datos[2] = IO.solicitarDouble("Introduzca la presión sistólica: ",80,200,"ERROR: La entrada introducida no es válida (80-200).\n");;
-        datos[3] = IO.solicitarDouble("Introduzca la temperatura del paciente: ",45,120,"ERROR: La entrada introducida no es válida (45-120).\n");
+        datos[2] = IO.solicitarDouble("Introduzca la presión sistólica: ",80,200);;
+        datos[3] = IO.solicitarDouble("Introduzca la temperatura del paciente: ",45,120);
         data[indice][4] = datos;
         return true;
     }
@@ -108,7 +108,7 @@ public class Historico {
         data[size][6] = FH.solicitarHora("\nIngrese la hora de alta (hh:mm:ss):");
 
         //Solicitamos el motivo del alta
-        int motivoAlta = IO.solicitarInt("Ingrese el motivo del alta:\n   1. Tratamiento\n   2. Mejora\n   3. Derivación hospital\n   4. Defunción\n",1,4,"ERROR: Se ha introducudo una entrada invalida.\n");
+        int motivoAlta = IO.solicitarInt("Ingrese el motivo del alta:\n   1. Tratamiento\n   2. Mejora\n   3. Derivación hospital\n   4. Defunción\n",1,4);
 
         MotivoDeAlta motivo;
         switch (motivoAlta){

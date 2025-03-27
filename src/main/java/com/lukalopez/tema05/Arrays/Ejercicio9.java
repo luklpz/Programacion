@@ -127,7 +127,7 @@ public class Ejercicio9 {
         do {
             //Imprimo el menú
             System.out.println(menu);
-            opcion = IO.solicitarInt("Selecciona una opción: \n",0,4,"Se ha introducido un valor invalido. Introduzca uno dentro del rango (0-4).");
+            opcion = IO.solicitarInt("Selecciona una opción: \n",0,4);
             switch (opcion){
                 case 0-> cerrar=true;
                 case 1-> crearArray(array);

@@ -30,7 +30,7 @@ public class EjercicioGenerics {
         int respuesta;
         do {
             System.out.println(menuGenerics());
-            respuesta = IO.solicitarInt("Seleccion: ",1,4,"ERROR: Se ha entrado una entrada invalida.\n");
+            respuesta = IO.solicitarInt("Seleccion: ",1,4);
 
             switch (respuesta){
                 case 1 -> {

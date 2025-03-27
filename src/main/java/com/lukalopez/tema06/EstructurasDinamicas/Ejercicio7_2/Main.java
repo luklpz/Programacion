@@ -24,7 +24,7 @@ public class Main {
         int respuesta;
 
         do {
-            respuesta = IO.solicitarInt(MENU,0,4,"ERROR: Entrada invalida, introduzca una opción válida.\n");
+            respuesta = IO.solicitarInt(MENU,0,4);
             System.out.println("\n");
             cerrar = gestionarRespuesta(respuesta);
         } while(!cerrar);
@@ -124,25 +124,25 @@ public class Main {
 
     public static int solicitarSip(){
         int sip;
-        sip = IO.solicitarInt("Intruduzca el número SIP: ",100000000,199999999,"ERROR: El SIP ha de tener una longitud de 9 caracteres numericos.\n\n");
+        sip = IO.solicitarInt("Intruduzca el número SIP: ",100000000,199999999);
         return sip;
     }
 
     private static String solicitarNombre(){
         String nombre;
-        nombre = IO.solicitarString("Introduzca el nombre del paciente: ",false);
+        nombre = IO.solicitarString("Introduzca el nombre del paciente: ");
         return nombre;
     }
 
     private static String solicitarPrimerApellido(){
         String primerApellido;
-        primerApellido = IO.solicitarString("Introduzca el primer apellido del paciente: ",false);
+        primerApellido = IO.solicitarString("Introduzca el primer apellido del paciente: ");
         return primerApellido;
     }
 
     private static String solicitarSegundoApellido(){
         String segundoApellido;
-        segundoApellido = IO.solicitarString("Introduzca el segundo apellido del paciente: ",false);
+        segundoApellido = IO.solicitarString("Introduzca el segundo apellido del paciente: ");
         return segundoApellido;
     }
 
@@ -156,7 +156,7 @@ public class Main {
     private static Sexo solicitarSexo(){
         int respuesta;
         Sexo sexo;
-        respuesta = IO.solicitarInt("Seleccione el sexo del paciente:\n   1.Masculino\n   2.Femenino\n   ",1,2,"ERROR: Se ha introducido una entrada invalida.\n\n");
+        respuesta = IO.solicitarInt("Seleccione el sexo del paciente:\n   1.Masculino\n   2.Femenino\n   ",1,2);
         switch (respuesta){
             case 1 -> sexo = Sexo.MASCULINO;
             case 2 -> sexo = Sexo.FEMENINO;

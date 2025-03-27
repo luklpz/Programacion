@@ -1,6 +1,7 @@
 package com.lukalopez.tema07.Ejercicio1;
 
 import com.lukalopez.lib.Escaner;
+import com.lukalopez.lib.Excepciones.InvalidEmptyException;
 
 import java.util.ArrayList;
 
@@ -24,12 +25,12 @@ public class Ejercicio1 {
                 entrada = Escaner.lector.nextLine().trim();
 
                 if (entrada.isEmpty()) {
-                    throw new NumberEmptyException("No se puede introducir una entrada vacía.");
+                    throw new InvalidEmptyException("No se puede introducir una entrada vacía.");
                 }
 
                 numero = Double.parseDouble(entrada);
                 valido = true;
-            } catch (NumberEmptyException nee){
+            } catch (InvalidEmptyException nee){
                 System.out.println(nee.getMessage());
             }catch (NumberFormatException nfe) {
                 System.out.println("Solo se aceptan números.");

@@ -32,7 +32,7 @@ public class Ejercicio4 {
     }
 
     public static void main(String[] args) {
-        final int numeroSegundos = IO.solicitarInt("Ingrese un número de segundos (0<x): ",0, IO.Condicion.MINIMO,"El número ha de ser positivo.");
+        final int numeroSegundos = IO.solicitarInt("Ingrese un número de segundos (0<x): ",0, IO.Condicion.MINIMO);
 
         System.out.println(convertirSegundos(numeroSegundos));
     }

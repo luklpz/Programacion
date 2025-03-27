@@ -18,7 +18,7 @@ public class Main {
                     "2. Atender siguiente paciente\n" +
                     "3. Mostrar estado de las colas\n" +
                     "4. Salir\n";
-            respuesta = IO.solicitarInt(menu, 1, 4, "Se ha intruducido una opción inválida.");
+            respuesta = IO.solicitarInt(menu, 1, 4);
             cerrar = procesarRespuesta(respuesta);
         }while(!cerrar);
         return true;
@@ -48,11 +48,11 @@ public class Main {
                 System.out.println(getColas(true));
 
                 //Creamos el paciente con la información que solicitamos al usuario
-                respuesta = IO.solicitarInt("¿A que consulta deseas ingresar?\n",1,5,mensajeError);
+                respuesta = IO.solicitarInt("¿A que consulta deseas ingresar?\n",1,5);
                 System.out.println("Preparando la consulta...");
-                sip = String.valueOf(IO.solicitarInt("Intruduzca el número SIP (número de 8 caracteres): ",10000000,99999999,mensajeError));
-                nombre = IO.solicitarString("Introduzca el nombre del usuario: ",false);
-                apellidos = IO.solicitarString("Introduzca los apellidos del usuario: ",false);
+                sip = String.valueOf(IO.solicitarInt("Intruduzca el número SIP (número de 8 caracteres): ",10000000,99999999));
+                nombre = IO.solicitarString("Introduzca el nombre del usuario: ");
+                apellidos = IO.solicitarString("Introduzca los apellidos del usuario: ");
                 horaFechaCita = FH.solicitarFechaHora("Ingrese la fecha y la hora de la cita:");
 
                 //Procesamos las respuestas
@@ -66,7 +66,7 @@ public class Main {
                 System.out.println(getColas(true));
 
                 //Creamos el paciente con la información que solicitamos al usuario
-                respuesta = IO.solicitarInt("¿A que consulta deseas ingresar?\n",1,5,mensajeError);
+                respuesta = IO.solicitarInt("¿A que consulta deseas ingresar?\n",1,5);
                 System.out.println("Preparando la consulta...");
 
                 System.out.printf("´Siguiente paciente:\n%s\n\n\n",hospital.getConsultas(respuesta-1).getPacientes().pop().toString());

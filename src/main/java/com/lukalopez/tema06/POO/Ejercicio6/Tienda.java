@@ -27,7 +27,7 @@ public class Tienda {
         int respuesta;
 
         do {
-            respuesta = IO.solicitarInt(menuTienda(),0,4,"\n\nERROR: Se ha introducido una opción invalida.\nPrueba de nuevo.\n\n");
+            respuesta = IO.solicitarInt(menuTienda(),0,4);
             switch (respuesta) {
                 case 1 -> {
 

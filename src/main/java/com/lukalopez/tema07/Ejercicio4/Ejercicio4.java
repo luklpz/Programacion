@@ -2,7 +2,7 @@ package com.lukalopez.tema07.Ejercicio4;
 
 import com.lukalopez.lib.Array;
 import com.lukalopez.lib.Escaner;
-import com.lukalopez.tema07.Ejercicio1.NumberEmptyException;
+import com.lukalopez.lib.Excepciones.InvalidEmptyException;
 
 public class Ejercicio4 {
 
@@ -20,13 +20,13 @@ public class Ejercicio4 {
                         entrada = Escaner.lector.nextLine().trim();
 
                         if (entrada.isEmpty()) {
-                            throw new NumberEmptyException("No se puede introducir una entrada vacía.");
+                            throw new InvalidEmptyException("No se puede introducir una entrada vacía.");
                         }
                         numero = Integer.parseInt(entrada);
                         array[contador]=numero;
                         valido=true;
                         contador++;
-                    } catch(NumberEmptyException nee){
+                    } catch(InvalidEmptyException nee){
                         System.out.println(nee.getMessage());
                     } catch (NumberFormatException nfe) {
                         System.out.println("Solo se aceptan números.");

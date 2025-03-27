@@ -14,7 +14,7 @@ public class Ejercicio13 {
         //Imprimimos el menú
         System.out.println("\n\nMENÚ PRINCIPAL\n==============\n1. Palabra más larga.\n2. Palabra más corta.\n3. Número de vocales.\n------------------------------------\n0. Salir\n");
         //Solicitamos y validamos las opciones del menu
-        return IO.solicitarInt("",0,3,"\nSe ha introducido una opción inválida. Ingrese una entrada válida:\n");
+        return IO.solicitarInt("",0,3);
     }
 
     /**
