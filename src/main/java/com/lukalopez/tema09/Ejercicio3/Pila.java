@@ -4,11 +4,15 @@ import java.util.ArrayList;
 
 public class Pila<T> implements IPila {
 
-     private final ArrayList<T> arrayList = new ArrayList<>();
+     private final ArrayList<T> data;
+
+    public Pila() {
+        this.data =  new ArrayList<>();
+    }
 
     @Override
     public T push(T e) {
-        arrayList.add(e);
+        data.add(e);
         return e;
     }
 
@@ -17,14 +21,14 @@ public class Pila<T> implements IPila {
         if (isEmpty()){
             return null;
         }
-        T aux = arrayList.getLast();
-        arrayList.remove(size()-1);
+        T aux = data.getLast();
+        data.remove(size()-1);
         return aux;
     }
 
     @Override
     public int size() {
-        return arrayList.size();
+        return data.size();
     }
 
     @Override
@@ -32,11 +36,11 @@ public class Pila<T> implements IPila {
         if (isEmpty()){
             return null;
         }
-        return arrayList.getLast();
+        return data.getLast();
     }
 
     @Override
     public boolean isEmpty() {
-        return arrayList.isEmpty();
+        return data.isEmpty();
     }
 }
