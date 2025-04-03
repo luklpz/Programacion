@@ -4,9 +4,8 @@ import java.util.ArrayList;
 
 public class Pila<T> implements IPila {
 
-    ArrayList<T> arrayList = new ArrayList<>();
+     private final ArrayList<T> arrayList = new ArrayList<>();
 
-    //Que es eso xd
     @Override
     public T push(T e) {
         arrayList.add(e);

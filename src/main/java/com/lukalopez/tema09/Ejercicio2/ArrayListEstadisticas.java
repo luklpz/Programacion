@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ArrayListEstadisticas implements IEstadisticas{
-    private ArrayList<Double> arrayList = new ArrayList<>();
+    private final ArrayList<Double> arrayList;
 
     public ArrayListEstadisticas(ArrayList<Double> arrayList) {
         this.arrayList = arrayList;

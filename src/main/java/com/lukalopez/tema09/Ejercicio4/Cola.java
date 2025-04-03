@@ -3,9 +3,8 @@ package com.lukalopez.tema09.Ejercicio4;
 import java.util.ArrayList;
 
 public class Cola<T> implements ICola{
-    ArrayList<T> arrayList = new ArrayList<>();
+    private final ArrayList<T> arrayList = new ArrayList<>();
 
-    //Que es esto
     @Override
     public boolean add(T  e) {
         arrayList.add(e);
