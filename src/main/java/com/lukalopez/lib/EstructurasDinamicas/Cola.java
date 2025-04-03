@@ -1,11 +1,15 @@
 package com.lukalopez.lib.EstructurasDinamicas;
 
-public class Cola<T> {
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+public class Cola<T> implements Iterable<T>, Iterator<T> {
 
     //Declaración de las variables.
     private final static int CAPACIDAD_INICIAL = 10;
     private T[] data;
     private int size;
+    private int contador=-1;
 
     /**
      * Constructor para una cola vacía con una capacidad inicial de 10 datos.
@@ -166,5 +170,30 @@ public class Cola<T> {
             aux[i]=data[size-i-1];
         }
         data = aux;
+    }
+
+    @Override
+    public Iterator iterator() {
+        contador=-1;
+        return this;
+    }
+
+    @Override
+    public boolean hasNext() {
+        if (contador!=size-1){
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public T next() {
+        if (!hasNext()) {
+            throw new NoSuchElementException();
+        }
+        contador++;
+        return data[contador];
     }
 }

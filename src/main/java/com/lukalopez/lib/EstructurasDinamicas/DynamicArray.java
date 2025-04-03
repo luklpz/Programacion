@@ -1,6 +1,8 @@
 package com.lukalopez.lib.EstructurasDinamicas;
 
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * DynamicArray
@@ -10,7 +12,7 @@ import java.util.Arrays;
  * @version 0.1, 2020-01-30
  * @since 0.1, 2020-01-30
  **/
-public class DynamicArray<T> {
+public class DynamicArray<T> implements Iterator<T>, Iterable<T> {
 
     /* Capacidad inicial por defecto del array */
     private final static int DEFAULT_CAPACITY = 10;
@@ -20,6 +22,8 @@ public class DynamicArray<T> {
     private T[] data;
     /* Número de elementos del array */
     private int size;
+
+    private int contador;
 
 
     /**
@@ -38,6 +42,7 @@ public class DynamicArray<T> {
         T[] aux = (T[]) new Object[capacity];
         data = aux;
         size = 0;
+        contador=-1;
     }
 
     /**
@@ -260,5 +265,30 @@ public class DynamicArray<T> {
 
     public boolean isEmpty(){
         return size == 0;
+    }
+
+    @Override
+    public Iterator iterator() {
+        contador=-1;
+        return this;
+    }
+
+    @Override
+    public boolean hasNext() {
+        if (contador!=size-1){
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public T next() {
+        if (!hasNext()) {
+            throw new NoSuchElementException();
+        }
+        contador++;
+        return data[contador];
     }
 }

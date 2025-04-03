@@ -1,10 +1,14 @@
 package com.lukalopez.lib.EstructurasDinamicas;
 
-public class Pila<T> {
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+public class Pila<T> implements Iterable<T>, Iterator<T> {
     //Declaración de las variables.
     private final static int CAPACIDAD_INICIAL = 10;
     private T[] data;
     private int size;
+    private int contador;
 
     /**
      * Constructor para una pila vacía con una capacidad inicial de 10 datos.
@@ -22,6 +26,7 @@ public class Pila<T> {
         T[] aux = (T[]) new Object[capacidad];
         data = aux;
         size = 0;
+        contador=0;
     }
 
     /**
@@ -35,6 +40,7 @@ public class Pila<T> {
         }
         data[size]=valor;
         size++;
+        contador++;
         return true;
     }
 
@@ -138,7 +144,7 @@ public class Pila<T> {
         if (size==0){
             return null;
         }
-        Pila<T> aux = new Pila<T>();
+        Pila<T> aux = new Pila();
         for (int i = size-n; i < size; i++) {
             aux.push(data[i]);
         }
@@ -161,5 +167,29 @@ public class Pila<T> {
             aux[i]=data[size-i-1];
         }
         data = aux;
+    }
+    @Override
+    public Iterator iterator() {
+        contador=-1;
+        return this;
+    }
+
+    @Override
+    public boolean hasNext() {
+        if (contador!=0){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public T next() {
+        if (!hasNext()){
+            throw new NoSuchElementException();
+        } else {
+            contador--;
+            return data[contador];
+        }
     }
 }

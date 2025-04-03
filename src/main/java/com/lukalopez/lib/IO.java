@@ -63,7 +63,7 @@ public class IO {
                 entrada = Escaner.lector.nextLine().trim();
 
                 //Verificamos que la entrada no sea nula
-                isEmptyCheck(entrada);
+                isBlankCheck(entrada);
 
                 numero = Integer.parseInt(entrada);
 
@@ -137,7 +137,7 @@ public class IO {
                 entrada = Escaner.lector.nextLine().trim();
 
                 //Verificamos que la entrada no sea nula
-                isEmptyCheck(entrada);
+                isBlankCheck(entrada);
 
                 numero = Double.parseDouble(entrada);
 
@@ -209,7 +209,7 @@ public class IO {
                 entrada = Escaner.lector.nextLine().trim();
 
                 //Verificamos que la entrada no sea nula
-                isEmptyCheck(entrada);
+                isBlankCheck(entrada);
 
                 numero = Float.parseFloat(entrada);
 
@@ -282,7 +282,7 @@ public class IO {
                 entrada = Escaner.lector.nextLine().trim();
 
                 //Verificamos que la entrada no sea nula
-                isEmptyCheck(entrada);
+                isBlankCheck(entrada);
                 lngEntrada=entrada.length();
                 //Verificamos que no supere el máximo ni el mínimo
                 if (lngEntrada>lngMax){
@@ -381,8 +381,13 @@ public class IO {
     //                             MÉTODOS AUXILIARES                            \\
     //===========================================================================\\
 
-    private static void isEmptyCheck(String cadena) throws InvalidEmptyException{
-        if (cadena.isEmpty()) {
+    /**
+     * Mét0do para verificar si una cadena de texto se encuentra vacía o solo cuenta con espacios en blanco, esi es el caso lanza una InvalidEmptyExcepcion.
+     * @param cadena 'String' que se desea comprobar.
+     * @throws InvalidEmptyException Se lanza esta excepción si la cadena de texto resulta estar vacía o solo contener espacios en blanco.
+     */
+    public static void isBlankCheck(String cadena) throws InvalidEmptyException{
+        if (cadena.isBlank()) {
             throw new InvalidEmptyException("No se puede introducir una entrada vacía.");
         }
     }
