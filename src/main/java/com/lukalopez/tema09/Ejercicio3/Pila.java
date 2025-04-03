@@ -2,7 +2,7 @@ package com.lukalopez.tema09.Ejercicio3;
 
 import java.util.ArrayList;
 
-public class Pila<T> implements IPila {
+public class Pila<T> implements IPila<T> {
 
      private final ArrayList<T> data;
 

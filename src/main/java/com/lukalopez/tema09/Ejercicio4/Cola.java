@@ -2,7 +2,7 @@ package com.lukalopez.tema09.Ejercicio4;
 
 import java.util.ArrayList;
 
-public class Cola<T> implements ICola{
+public class Cola<T> implements ICola<T>{
     private final ArrayList<T> data;
 
     public Cola() {
@@ -10,7 +10,7 @@ public class Cola<T> implements ICola{
     }
 
     @Override
-    public boolean add(T  e) {
+    public boolean add(T e) {
         data.add(e);
         return true;
     }
