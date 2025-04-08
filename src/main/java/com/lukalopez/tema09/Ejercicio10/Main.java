@@ -1,5 +1,6 @@
 package com.lukalopez.tema09.Ejercicio10;
 
+import com.lukalopez.lib.Escaner;
 import com.lukalopez.lib.FH;
 import com.lukalopez.lib.IO;
 import javax.naming.InvalidNameException;
@@ -13,6 +14,7 @@ public class Main {
 
     public static <registroEmpleados> void main(String[] args) {
         ejecutarMenu();
+        Escaner.dispose();
     }
 
     /**
