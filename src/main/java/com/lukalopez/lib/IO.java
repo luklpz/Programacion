@@ -1,8 +1,6 @@
 package com.lukalopez.lib;
 
-import com.lukalopez.lib.Excepciones.InvalidLowerLimitException;
-import com.lukalopez.lib.Excepciones.InvalidUpperLimitException;
-import com.lukalopez.lib.Excepciones.InvalidEmptyException;
+import com.lukalopez.lib.Excepciones.*;
 
 public class IO {
 
@@ -277,7 +275,7 @@ public class IO {
         do {
             valido=false;
             try {
-                //Solicitamos el número
+                //Solicitamos el string
                 System.out.print(mensaje);
                 entrada = Escaner.lector.nextLine().trim();
 
@@ -390,5 +388,51 @@ public class IO {
         if (cadena.isBlank()) {
             throw new InvalidEmptyException("No se puede introducir una entrada vacía.");
         }
+    }
+
+    /**
+     * Mét0do para solicitar un DNI validándolo.
+     * @param mensaje Mensaje que se le muestra al usuario.
+     * @return Devuelve un 'String' que contiene el DNI validado.
+     */
+    public static String solicitarDNI(String mensaje){
+        String LETRAS = "TRWAGMYFPDXBNJZSQVHLCKE";
+        final int DEFAULT_LENGTH = 9;
+        String entrada=null;
+        int numero;
+        char letra;
+        boolean valido;
+
+        do {
+            valido=false;
+            try {
+                //Solicitamos el número
+                System.out.print(mensaje);
+                entrada = Escaner.lector.nextLine().trim();
+
+                //Verificamos que la entrada no sea nula
+                isBlankCheck(entrada);
+
+                if (!(entrada.length()==9)){
+                    throw new InvalidLimitsException("Formato incorrecto.\nEl DNI consta de 8 números seguidos de una letra.");
+                }
+
+                numero = Integer.parseInt(entrada.substring(0,8));
+                letra = entrada.charAt(entrada.length()-1);
+                if (!(letra==LETRAS.charAt(numero % 23))){
+                    throw new InvalidLetterException("Formato incorrecto.\nLa letra introducida no coincide con la que le corresponde a los números.");
+                }
+                valido = true;
+            } catch (InvalidEmptyException nee){
+                System.out.println(nee.getMessage());
+            } catch(InvalidLimitsException ile){
+                System.out.println(ile.getMessage());
+            } catch (NumberFormatException nfe){
+                System.out.println("Formato incorrecto.\nLos ocho primeros caracteres han de ser números.");
+            } catch (InvalidLetterException ile){
+                System.out.println(ile.getMessage());
+            }
+        } while (!valido);
+        return entrada;
     }
 }
