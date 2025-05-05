@@ -11,6 +11,11 @@ public class Poligono {
         this.puntos = puntos;
     }
 
+    /**
+     * Mét0do para modificar la posición del polígono.
+     * @param x Cantidad de movimiento en el eje x.
+     * @param y Cantidad de movimiento en el eje y.
+     */
     public void traslada(double x, double y){
         for (Punto aux : puntos){
             aux.setX(aux.getX()+x);
@@ -18,6 +23,10 @@ public class Poligono {
         }
     }
 
+    /**
+     * Número de vértices que presenta el polígono.
+     * @return Devuelve el número de vértices que tiene el polígono.
+     */
     public int numVertices(){
         return puntos.size();
     }
@@ -29,6 +38,10 @@ public class Poligono {
                 '}';
     }
 
+    /**
+     * Calcular el perimietro del polígono.
+     * @return Devuelve el perimetro del polígono.
+     */
     public double perimetro(){
         double perimetro=0;
         Punto aux = puntos.getLast();

@@ -15,6 +15,11 @@ public class Punto {
         new Punto(0,0);
     }
 
+    /**
+     * Mét0do para calcular la distancia entre dos puntos.
+     * @param punto Punto sobre el cual calcular la distancia.
+     * @return Devuelve la distancia entre el punto 'this' y el proporcionado.
+     */
     public double distancia(Punto punto){
         final double DX = Math.abs(this.x-punto.x);
         final double DY = Math.abs(this.y-punto.y);

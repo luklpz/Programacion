@@ -17,14 +17,26 @@ public class Coche {
         this.marchaActual=0;
     }
 
-    public void acelerar(double distancia){
-        velocidadActual+=distancia;
+    /**
+     * Mét0do para aumentar la velocidad del vehículo.
+     * @param
+     */
+    public void acelerar(double velocidad){
+        velocidadActual+=velocidad;
     }
 
-    public void frenar(double distancia){
-        velocidadActual+=distancia;
+    /**
+     * Mét0do para reducir la velocidad del vehículo.
+     * @param velocidad
+     */
+    public void frenar(double velocidad){
+        velocidadActual+=velocidad;
     }
 
+    /**
+     * Mét0do para modificar la marcha actual del vehículo.
+     * @param marcha
+     */
     protected void cambiarMarcha(int marcha){
         marchaActual=marcha;
     }
