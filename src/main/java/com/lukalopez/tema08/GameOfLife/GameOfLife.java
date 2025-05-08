@@ -16,7 +16,7 @@ public class GameOfLife {
         ventana.setSize(size.getWidth(), size.getHeigh());
         ventana.setResizable(false);
 
-        Tablero tablero = new Tablero(size.getWidth(), size.getHeigh());
+        Tablero tablero = new Tablero(size.getWidth(), size.getHeigh(), Tablero.DEFAULT_TAMANO_CELDA);
         ventana.add(tablero);
         ventana.setVisible(true);
 

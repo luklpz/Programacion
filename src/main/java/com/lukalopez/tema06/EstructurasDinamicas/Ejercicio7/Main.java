@@ -4,6 +4,7 @@ import com.lukalopez.lib.FH;
 import com.lukalopez.lib.IO;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Main {
 
@@ -53,7 +54,7 @@ public class Main {
                 sip = String.valueOf(IO.solicitarInt("Intruduzca el número SIP (número de 8 caracteres): ",10000000,99999999));
                 nombre = IO.solicitarString("Introduzca el nombre del usuario: ");
                 apellidos = IO.solicitarString("Introduzca los apellidos del usuario: ");
-                horaFechaCita = FH.solicitarFechaHora("Ingrese la fecha y la hora de la cita:");
+                horaFechaCita = FH.solicitarFechaHora("Ingrese la fecha y la hora de la cita:", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
 
                 //Procesamos las respuestas
                 return false;

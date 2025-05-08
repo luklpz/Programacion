@@ -4,6 +4,7 @@ import com.lukalopez.lib.Escaner;
 import com.lukalopez.lib.FH;
 import com.lukalopez.lib.IO;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Ejercicio5 {
 
@@ -17,7 +18,7 @@ public class Ejercicio5 {
 
         //Explicación del programa y solicitar datos
         System.out.println("En este programa  calcularemos la fecha y la hora estimada de llegada a Marte en función de\nuna fecha y hora de salida desde la Tierra y una velocidad constante de la nave espacial.\n");
-        fechaHoraSalida= FH.solicitarFechaHora("Para ello, introduzca a continuación la fecha y hora de salida:");
+        fechaHoraSalida= FH.solicitarFechaHora("Para ello, introduzca a continuación la fecha y hora de salida:", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
         velocidadNave = IO.solicitarFloat("\nSeguidamente, introduzca la velocidad de la nave en Km/h:",0.001f,1079999999.999f);
 
         //Cálculo de resultados

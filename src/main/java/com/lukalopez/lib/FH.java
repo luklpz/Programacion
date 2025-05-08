@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class FH {
 
@@ -38,15 +39,22 @@ public class FH {
     /**
      * Solicita una fecha y una hora escritas en el formato indicado.
      *
-     * @param mensajeIncial Mensaje que se imprime para solicitar la fecha y la hora.
+     * @param mensaje Mensaje que se imprime para solicitar la fecha y la hora.
+     * @param formato Formato en el que se desa solicitar la fehca/hora.
      * @return Es el 'LocalDateTime' que contiene la fecha y la hora en el formato indicado.
      * @author luklpz
      */
-    public static LocalDateTime solicitarFechaHora(String mensajeIncial) {
-        System.out.print(mensajeIncial);
-        String fecha = String.format("%02d/%02d/%d %02d:%02d:%02d",solicitarDia(),solicitarMes(),solicitarAnyo(),solicitarSegundos(), solicitarMinutos(), solicitarHoras());
-        System.out.println();
-        return LocalDateTime.parse(fecha, DateTimeFormatter.ofPattern("%02d/%02d/%d %02d:%02d:%02d"));
+    public static LocalDateTime solicitarFechaHora(String mensaje,DateTimeFormatter formato) {
+        LocalDateTime fechaHora = null;
+        do {
+            String entrada = IO.solicitarString(mensaje);
+            try {
+                fechaHora = LocalDateTime.parse(entrada, formato);
+            } catch (DateTimeParseException e) {
+                System.out.println("Formato inválido. Por favor, intenta de nuevo.");
+            }
+        } while (fechaHora==null);
+        return fechaHora;
     }
 
 

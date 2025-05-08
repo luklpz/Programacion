@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class Coche {
+public abstract class Coche {
     private final String matricula;
     private double velocidadActual;
     private int marchaActual;

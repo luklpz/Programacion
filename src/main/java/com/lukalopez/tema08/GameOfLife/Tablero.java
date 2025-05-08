@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Tablero extends JPanel {
-    public static final int TAMANO_CELDA = 2;
+    public static final int DEFAULT_TAMANO_CELDA = 2;
 
     private final int filas;
     private final int columnas;
@@ -18,10 +18,10 @@ public class Tablero extends JPanel {
     private boolean[][] siguiente;
     private final BufferedImage buffer;
 
-    public Tablero(int filas, int columnas) {
+    public Tablero(int filas, int columnas, int tamanoCelda) {
         this.filas = filas;
         this.columnas = columnas;
-        this.tamanoCelda = TAMANO_CELDA;
+        this.tamanoCelda = tamanoCelda;
         this.celdas = new boolean[filas][columnas];
         this.siguiente = new boolean[filas][columnas];
         this.buffer = new BufferedImage(columnas * tamanoCelda, filas * tamanoCelda, BufferedImage.TYPE_INT_ARGB);
@@ -32,7 +32,7 @@ public class Tablero extends JPanel {
                 celdas[i][j] = Math.random() < 0.2;
             }
         }
-        setPreferredSize(new Dimension(columnas * TAMANO_CELDA, filas * TAMANO_CELDA));
+        setPreferredSize(new Dimension(columnas * tamanoCelda, filas * tamanoCelda));
     }
 
     public void evolucionar() {
