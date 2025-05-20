@@ -1,7 +1,6 @@
 package com.lukalopez.lib;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 
 public class Fichero {
 
