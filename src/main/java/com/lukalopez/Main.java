@@ -1,12 +1,12 @@
 package com.lukalopez;
 
-import com.lukalopez.lib.IO;
-import com.lukalopez.tema09.Ejercicio11.CentroEscolar;
-import com.lukalopez.tema10.Ejercicio7.Config;
-import com.lukalopez.tema10.Ejercicio7.DataBase;
+import com.lukalopez.lib.Fichero;
+
+
+import java.io.File;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(Config.TOTAL_ASIENTOS);
+        System.out.println(Fichero.leerArchivoBinario(new File("C:\\Users\\lukal\\Documents\\FP_DAM\\Programacion\\src\\main\\java\\com\\lukalopez\\tema11\\hola.txt")));
     }
 }
