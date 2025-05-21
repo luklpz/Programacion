@@ -102,5 +102,31 @@ public class Fichero {
             return false;
         }
     }
+
+    /**
+     * Mét0do para crear secuencias de tickets en una carpeta.
+     * @param texto Texto que contendrá el ticket.
+     * @param carpeta Carpeta donde se almacenan los tickets.
+     * @param nombreFile Nombre del archivo 'ticket'.
+     * @return Devuelve el 'File' que se acaba de crear.
+     */
+    public static boolean creadorDeTickets(String texto, String carpeta, String nombreFile) {
+        File file = new File(carpeta.trim()+nombreFile.trim()+".txt");
+        FileWriter fw = null;
+        try {
+            fw = new FileWriter(file);
+            fw.write(texto);
+            return true;
+        } catch (IOException e) {
+            System.err.println("Error al escribir en el archivo.");
+            return false;
+        } finally {
+            try {
+                if (fw != null) fw.close();
+            } catch (IOException e) {
+                System.err.println("Error al cerrar el file writer stream.");
+            }
+        }
+    }
 }
 

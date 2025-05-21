@@ -11,7 +11,7 @@ public class Registro<T> extends ArrayList<T> {
         if (!this.contains(entrada)) {
             return super.add(entrada);
         }
-        throw new RepeatedEntryException("La entrada ingresada ya existe en el registro.");
+        throw new RepeatedEntryException("La entrada insDgresada ya existe en el registro.");
     }
 
     @Override
